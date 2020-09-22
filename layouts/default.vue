@@ -14,5 +14,8 @@
   path {
     fill: $col-white;
   }
+  &:focus {
+    outline: none;
+  }
 }
 </style>
