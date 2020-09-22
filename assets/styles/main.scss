@@ -7,12 +7,14 @@ body {
   display: block;
 }
 
-.top {
-  padding: $padding * 8 $padding $padding $padding;
-}
-
-.bottom {
-  padding: $padding * 4 $padding $padding $padding;
+.section {
+  padding: 0 $padding 0 $padding;
+  .top {
+    padding-top: $padding * 8;
+  }
+  .bottom {
+    padding-top: $padding * 4;
+  }
 }
 
 .row {
