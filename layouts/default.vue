@@ -6,7 +6,13 @@
 </template>
 
 <style lang="scss" scoped>
-.logo path {
-  fill: $col-white;
+.logo {
+  position: fixed;
+  top: $padding;
+  left: $padding;
+  z-index: 100;
+  path {
+    fill: $col-white;
+  }
 }
 </style>
