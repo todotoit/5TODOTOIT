@@ -6,3 +6,29 @@ body {
 .fp-tableCell {
   display: block;
 }
+
+.top {
+  padding: $padding * 8 $padding $padding $padding;
+}
+
+.bottom {
+  padding: $padding * 4 $padding $padding $padding;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: $padding * 2;
+  .col {
+    width: 25%;
+  }
+}
+
+a {
+  color: $col-red;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
