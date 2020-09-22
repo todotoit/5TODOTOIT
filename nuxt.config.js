@@ -32,7 +32,7 @@ export default {
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: ['@nuxtjs/style-resources'],
+  modules: ['@nuxtjs/style-resources', 'nuxt-fullpage.js'],
 
   styleResources: {
     scss: ['@/assets/styles/variables.scss'],
