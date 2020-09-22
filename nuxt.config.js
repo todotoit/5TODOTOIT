@@ -35,7 +35,7 @@ export default {
   modules: ['@nuxtjs/style-resources', 'nuxt-fullpage.js'],
 
   styleResources: {
-    scss: ['@/assets/styles/variables.scss', '@/assets/style/typography.scss'],
+    scss: ['@/assets/styles/variables.scss', '@/assets/styles/typography.scss'],
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
