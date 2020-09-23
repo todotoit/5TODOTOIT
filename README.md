@@ -1,5 +1,17 @@
 # 5TODOTOIT
 
+## Optimizations
+
+```
+[ ] Preload video before show 
+[ ] Preload Team GIF before show 
+[ ] Vue Transitions
+    [ ] Between copy 
+    [ ] Between video
+    [ ] Between grid
+[ ] CDN for images and videos
+```
+
 ## Build Setup
 
 ```bash
@@ -18,3 +30,4 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+
