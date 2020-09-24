@@ -12,8 +12,7 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.5",
-    "nuxt-fullpage.js": "0.0.3"
+    "nuxt": "^2.14.5"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",

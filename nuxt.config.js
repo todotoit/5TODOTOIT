@@ -11,9 +11,9 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: '' }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }]
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
@@ -28,14 +28,14 @@ export default {
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
+    '@nuxtjs/eslint-module'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: ['@nuxtjs/style-resources', 'nuxt-fullpage.js'],
+  modules: ['@nuxtjs/style-resources'],
 
   styleResources: {
-    scss: ['@/assets/styles/variables.scss', '@/assets/styles/typography.scss'],
+    scss: ['@/assets/styles/variables.scss', '@/assets/styles/typography.scss']
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
@@ -46,8 +46,8 @@ export default {
         loader: 'vue-svg-inline-loader',
         options: {
           /* ... */
-        },
+        }
       })
-    },
-  },
+    }
+  }
 }
