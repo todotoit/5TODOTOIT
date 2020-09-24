@@ -1,11 +1,17 @@
 <template>
-  <div class="grid" :class="{ disable: dotIsActive }">
+  <div ref="grid" class="grid" :class="{ disable: dotIsActive }">
     <Dot v-for="dot in dots" :id="dot.id" :key="dot.id" :action="dot.action" />
   </div>
 </template>
 
 <script>
 import Dot from '~/components/Grid/Dot'
+const breakpoints = {
+  lg: 100,
+  md: 80,
+  sm: 60,
+  xs: 50
+}
 export default {
   name: 'Grid',
   components: {
@@ -19,10 +25,6 @@ export default {
   },
   data() {
     return {
-      grid: {
-        cols: 14,
-        rows: 7
-      },
       dots: [],
       availableActions: []
     }
@@ -34,46 +36,88 @@ export default {
   },
   mounted() {
     this.availableActions = [...this.actions]
-    for (let i = 0; i < this.grid.cols * this.grid.rows; i++) {
-      setTimeout(() => {
-        this.dots.push({
-          id: i,
-          action: this.getDotAction(i)
-        })
-      }, i * 30)
-    }
+    this.bounds = this.$refs.grid.getBoundingClientRect()
+    this.device = this.$mq
+    this.initGrid(this.device)
+    window.addEventListener('resize', this.debounceResizeCanvas)
   },
   methods: {
-    getDotAction() {
-      if (!this.availableActions.length) return
-      return this.availableActions.pop()
+    initGrid(device) {
+      this.device = device || 'md'
+      this.bounds = this.$refs.grid.getBoundingClientRect()
+      this.updateModulo()
+
+      // Clear dots array
+      this.dots = []
+
+      const cols = Math.floor(this.bounds.width / this.modulo)
+      const rows = Math.floor(this.bounds.height / this.modulo)
+
+      console.log(this.modulo, this.bounds.width, this.bounds.height, cols, rows)
+
+      document.documentElement.style.setProperty('--cols', cols)
+      document.documentElement.style.setProperty('--rows', rows)
+      document.documentElement.style.setProperty('--dotSize', this.modulo / 2 + 'px')
+
+      for (let i = 0; i < cols * rows; i++) {
+        setTimeout(() => {
+          this.dots.push({
+            id: i,
+            action: this.getDotAction(i)
+          })
+        }, i * 20)
+      }
+    },
+    updateModulo() {
+      // Modify modulo size based on device breakpoint
+      this.modulo = 100
+      for (const point in breakpoints) {
+        if (point === this.device) {
+          this.modulo = breakpoints[point]
+        }
+      }
+    },
+    getDotAction(i) {
+      if (!this.availableActions.length && i > this.availableActions.length - 1) return
+      return this.availableActions[i]
+    },
+    debounceResizeCanvas(e) {
+      if (this.resizeDebounce) clearTimeout(this.resizeDebounce)
+      this.resizeDebounce = setTimeout(() => {
+        this.initGrid(this.$mq)
+      }, 1000)
     }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+:root {
+  --cols: 0;
+  --rows: 0;
+  --dotSize: 20px;
+}
 .grid {
+  outline: 1px solid green;
   width: 100%;
+  height: 32%;
   z-index: 1000;
-  padding: 0 $padding/2;
   position: absolute;
   left: 0;
-  bottom: $padding;
+  bottom: 0;
   display: grid;
-  grid-template-columns: 0.75fr repeat(12, 1fr) 0.75fr;
-  grid-template-rows: repeat(7, 1fr);
-  grid-gap: $padding*1.5;
+  grid-template-columns: repeat(var(--cols), 0.5fr);
+  grid-template-rows: repeat(var(--rows), 0.5fr);
+  grid-gap: $padding * 1.5;
+  align-items: center;
+  transform: all $animationDuration $bezier;
   &.disable /deep/ .dot:not(.clickable) {
     opacity: 0;
   }
   /deep/ .dot {
+    width: var(--dotSize);
+    height: var(--dotSize);
     justify-self: center;
   }
-}
-@function randomNum($min, $max) {
-  $rand: random();
-  $randomNum: $min + floor($rand * (($max - $min) + 1));
-  @return $randomNum;
 }
 </style>
