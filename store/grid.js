@@ -4,6 +4,7 @@ export const state = () => ({
   substatement: null,
   activeDot: null,
   currentGrid: null,
+  isVisible: true,
   actions: {
     substatements,
     team
@@ -13,6 +14,9 @@ export const state = () => ({
 export const getters = {
   currentGrid: (state) => {
     return state.currentGrid
+  },
+  isVisible: (state) => {
+    return state.isVisible
   },
   activeDot: (state) => {
     return state.activeDot
@@ -35,5 +39,9 @@ export const mutations = {
   },
   setDot(state, data) {
     state.activeDot = data
+  },
+  setVisibility(state, data) {
+    console.log(data)
+    state.isVisible = data
   }
 }
