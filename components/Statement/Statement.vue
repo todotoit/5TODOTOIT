@@ -3,7 +3,7 @@
     <Intersect :threshold="threshold" @enter="intersect('substatements')">
       <Substatement />
     </Intersect>
-    <Grid :actions="actions" />
+    <Grid ref="grid" :actions="actions" />
     <Intersect :threshold="threshold" @enter="intersect('team')">
       <Team />
     </Intersect>
@@ -39,6 +39,7 @@ export default {
     intersect(page) {
       if (this.currentGrid === page) return
       this.$store.commit('grid/setGrid', page)
+      this.$refs.grid.initGrid(this.$mq)
     }
   }
 }
