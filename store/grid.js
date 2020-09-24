@@ -1,11 +1,11 @@
-import { substatements, people } from '~/assets/data.js'
+import { substatements, team } from '~/assets/data.js'
 
 export const state = () => ({
   substatement: null,
   activeDot: null,
   actions: {
     substatements,
-    people
+    team
   }
 })
 
@@ -23,6 +23,7 @@ export const getters = {
 
 export const mutations = {
   setStatement(state, data) {
+    console.log('DATA', data)
     state.substatement = data
   },
   setDot(state, data) {
