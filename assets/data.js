@@ -25,7 +25,7 @@ export const substatements = [
   }
 ]
 
-export const people = [
+export const team = [
   {
     name: 'Andrea Clemente',
     jobs: 'Co-Founder & Managing director',
@@ -33,7 +33,7 @@ export const people = [
   },
   {
     name: 'Fabio Franchino',
-    jobs: 'Co-Founder & CTA',
+    jobs: 'Co-Founder & CTO',
     file: '~/assets/people/fabiofranchino.gif'
   },
   {
