@@ -29,71 +29,71 @@ export const team = [
   {
     name: 'Andrea Clemente',
     jobs: 'Co-Founder & Managing director',
-    file: '~/assets/people/andreaclemente.gif'
+    file: '/team/andreaclemente.gif'
   },
   {
     name: 'Fabio Franchino',
     jobs: 'Co-Founder & CTO',
-    file: '~/assets/people/fabiofranchino.gif'
+    file: '/team/fabiofranchino.gif'
   },
   {
     name: 'Michelle Nebiolo',
     jobs: 'Content & Project Manager',
-    file: '~/assets/people/michellenebiolo.gif'
+    file: '/team/michellenebiolo.gif'
   },
   {
     name: 'Julie Faure',
     jobs: 'Project Manager',
-    file: '~/assets/people/juliefaure.gif'
+    file: '/team/juliefaure.gif'
   },
   {
     name: 'Marco Aimo',
     jobs: 'Full Stack Developer',
-    file: '~/assets/people/marcoaimo.gif'
+    file: '/team/marcoaimo.gif'
   },
   {
     name: 'Luca Zanconi',
     jobs: 'Native & 3D Software developer',
-    file: '~/assets/people/lucazanconi.gif'
+    file: '/team/lucazanconi.gif'
   },
   {
     name: 'Emilio Bondioli',
     jobs: 'Interaction designer & Developer',
-    file: '~/assets/people/emiliobondioli.gif'
+    file: '/team/emiliobondioli.gif'
   },
   {
     name: 'Kerem Türkyilmaz',
     jobs: 'Designer & Junior Developer',
-    file: '~/assets/people/keremturkyilmaz.gif'
+    file: '/team/keremturkyilmaz.gif'
   },
   {
     name: 'Marta Monge',
     jobs: 'Art Director e Visual designer',
-    file: '~/assets/people/martamonge.gif'
+    file: '/team/martamonge.gif'
   },
   {
     name: 'Federica Zucchini',
     jobs: 'Interaction Designer',
-    file: '~/assets/people/federicazucchini.gif'
+    file: '/team/federicazucchini.gif'
   },
   {
     name: 'Matteo Palu',
     jobs: 'Graphic Designer',
-    file: '~/assets/people/matteopalu.gif'
+    file: '/team/matteopalu.gif'
   },
   {
     name: 'Virginia Toffetti',
     jobs: 'Product Designer',
-    file: '~/assets/people/virginiatoffetti.gif'
+    file: '/team/virginiatoffetti.gif'
   },
   {
     name: 'Edoardo Falletta',
     jobs: 'Business Development',
-    file: '~/assets/people/edoardofalletta.gif'
+    file: '/team/edoardofalletta.gif'
   },
   {
     name: 'Alessandra Martina',
     jobs: 'Administrative Assistant',
-    file: '~/assets/people/alessandramartina.gif'
+    file: '/team/alessandramartina.gif'
   }
 ]
