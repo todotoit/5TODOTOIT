@@ -1,9 +1,7 @@
 <template>
-  <div
-    class="dot"
-    :class="{ clickable: action, active: id === activeDot }"
-    @click="runAction"
-  ></div>
+  <div class="dot" :class="{ clickable: action, active: id === activeDot }" @click="runAction">
+    <p>{{ id }}</p>
+  </div>
 </template>
 
 <script>
@@ -44,6 +42,14 @@ export default {
   background-color: $col-white;
   border-radius: 50px;
   transition: all $animationDuration $bezier;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  p {
+    color: black;
+    font-size: 1rem;
+  }
   &.clickable:not(.active) {
     background-color: $col-red;
     &:hover {
