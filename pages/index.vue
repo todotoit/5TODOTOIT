@@ -13,6 +13,7 @@ import Substatment from '~/components/Substatment'
 import About from '~/components/About'
 
 export default {
+  name: 'Index',
   components: {
     Home,
     Substatment,
