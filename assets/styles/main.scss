@@ -21,6 +21,15 @@ body {
   overflow-y: scroll;
 }
 
+.grid {
+  padding: 0 $padding/2;
+  padding-bottom: $padding/2;
+  @media screen and (max-width: $mqSmallMobile) {
+    padding: 0 $padding/4;
+    padding-bottom: $padding/4;
+  }
+}
+
 section {
   padding: 0 $padding 0 $padding;
   height: 100vh;
