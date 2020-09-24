@@ -32,7 +32,21 @@ export default {
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: ['@nuxtjs/style-resources'],
+  modules: [
+    '@nuxtjs/style-resources',
+    [
+      'nuxt-mq',
+      {
+        // Default breakpoint for SSR
+        defaultBreakpoint: 'lg',
+        breakpoints: {
+          sm: 600,
+          md: 992,
+          lg: Infinity
+        }
+      }
+    ]
+  ],
 
   styleResources: {
     scss: ['@/assets/styles/variables.scss', '@/assets/styles/typography.scss']
