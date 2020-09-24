@@ -1,16 +1,27 @@
 <template>
-  <div ref="grid" class="grid" :class="{ disable: dotIsActive }">
-    <div v-show="isGrid" class="dots">
-      <Dot v-for="dot in dots" :id="dot.id" :key="dot.id" :action="dot.action" />
+  <div ref="grid" class="grid">
+    <div v-show="isGrid" class="dots" :class="{ disable: dotIsActive }">
+      <Dot
+        v-for="dot in dots"
+        :id="dot.id"
+        :key="dot.id"
+        :action="dot.action"
+        type="dot"
+      />
     </div>
-    <div v-show="!isGrid" class="list">
-      <List />
+    <div v-show="!isGrid" class="peoples" :class="{ disable: dotIsActive }">
+      <Dot
+        v-for="(action, id) in actions"
+        :id="id"
+        :key="id"
+        :action="action"
+        type="people"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import List from '~/components/Grid/List'
 import Dot from '~/components/Grid/Dot'
 
 const breakpoints = {
@@ -22,8 +33,7 @@ const breakpoints = {
 export default {
   name: 'Grid',
   components: {
-    Dot,
-    List
+    Dot
   },
   props: {
     actions: {
@@ -116,26 +126,46 @@ export default {
 .grid {
   z-index: 10;
   width: 100%;
-  height: 100%;
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  height: 400px;
+  .peoples {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /deep/ .dot-wrapper {
+      width: 20%;
+      display: inline-block;
+    }
+    &.disable /deep/ .dot-wrapper .people:not(.active) {
+      opacity: 0.2;
+    }
+    @media screen and (max-width: $mqTablet) {
+      flex-direction: column;
+      /deep/ .dot-wrapper {
+        width: 100%;
+      }
+    }
+  }
   .dots {
     width: 100%;
-    height: 30%;
+    height: 100%;
     display: grid;
     grid-template-columns: repeat(var(--cols), 0.5fr);
     grid-template-rows: repeat(var(--rows), 0.5fr);
     grid-gap: $padding * 1.5;
     align-items: center;
     transform: all $animationDuration $bezier;
-    &.disable /deep/ .dot:not(.clickable) {
+    &.disable /deep/ .dot-wrapper:not(.clickable) {
       opacity: 0;
     }
-    /deep/ .dot {
+    /deep/ .dot-wrapper {
       width: var(--dotSize);
       height: var(--dotSize);
       justify-self: center;
