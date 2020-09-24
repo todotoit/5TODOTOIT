@@ -64,14 +64,11 @@ export default {
       )
 
       for (let i = 0; i < this.cols * this.rows; i++) {
-        setTimeout(() => {
-          this.dots.push({
-            id: i,
-            action: this.getAction(i)
-          })
-        }, i * 20)
+        this.dots.push({
+          id: i,
+          action: this.getAction(i)
+        })
       }
-
     },
     getAction(i) {
       if (!this.availableActions.length) return
