@@ -1,12 +1,13 @@
 <template>
-  <div class="home">
+  <section class="home">
     <div class="middle">
       <h1 class="big-title">
-        Hello, we are TODO. <br> We design experiences that blend the digital world into real life, so
-        people can live valuable, transformative moments.
+        Hello, we are TODO. <br />
+        We design experiences that blend the digital world into real life, so people can live
+        valuable, transformative moments.
       </h1>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

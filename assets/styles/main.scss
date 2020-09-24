@@ -19,8 +19,7 @@ body {
   display: block;
 }
 
-.section {
-  // outline: 4px solid gray;
+section {
   padding: 0 $padding 0 $padding;
   height: 100vh;
   @media screen and (max-width: $mqMobile) {

@@ -1,22 +1,22 @@
 <template>
   <div class="container">
     <img svg-inline class="logo" src="@/assets/icons/TODO_LOGO.svg" />
-    <Home class="section" />
-    <Substatment class="section" />
-    <About class="section" />
+    <Home />
+    <Statement />
+    <About />
   </div>
 </template>
 
 <script>
 import Home from '~/components/Home'
-import Substatment from '~/components/Substatment'
+import Statement from '~/components/Statement/Statement'
 import About from '~/components/About'
 
 export default {
   name: 'Index',
   components: {
     Home,
-    Substatment,
+    Statement,
     About
   }
 }

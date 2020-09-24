@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <section class="about">
     <div class="top">
       <h1 class="title">
         If you want to get to know us, find out if we are available for a project, submit your
@@ -69,7 +69,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
