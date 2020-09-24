@@ -4,6 +4,15 @@ body {
   height: 100%;
   font-family: $fontFamily;
   color: $col-white;
+  @media screen and (max-width: $mqTablet) {
+    outline: 4px solid red;
+  }
+  @media screen and (max-width: $mqMobile) {
+    outline: 4px solid green;
+  }
+  @media screen and (max-width: $mqSmallMobile) {
+    outline: 4px solid yellow;
+  }
 }
 
 .fp-tableCell {
@@ -11,17 +20,31 @@ body {
 }
 
 .section {
-  outline: 4px solid gray;
+  // outline: 4px solid gray;
   padding: 0 $padding 0 $padding;
   height: 100vh;
+  @media screen and (max-width: $mqMobile) {
+    padding: 0 $padding/2 0 $padding/2;
+  }
   .top {
     position: relative;
     height: 40%;
     padding-top: $padding * 4;
+    @media screen and (max-width: $mqMobile) {
+      padding-top: $padding * 2.5;
+    }
+    @media screen and (max-width: $mqSmallMobile) {
+      height: 30%;
+      padding-top: $padding * 2;
+    }
   }
   .bottom {
     position: relative;
     height: 60%;
+    @media screen and (max-width: $mqSmallMobile) {
+      height: 70%;
+      padding-top: $padding * 2;
+    }
   }
 }
 
@@ -30,8 +53,16 @@ body {
   display: flex;
   flex-direction: row;
   padding-bottom: $padding * 2;
+  @media screen and (max-width: $mqMobile) {
+    flex-direction: column;
+    padding-bottom: 0;
+  }
   .col {
     width: 25%;
+    @media screen and (max-width: $mqMobile) {
+      padding-bottom: $padding;
+      width: 100%;
+    }
   }
 }
 

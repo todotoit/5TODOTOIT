@@ -30,6 +30,14 @@ export default {
     top: $padding;
     left: $padding;
     z-index: 100;
+    @media screen and (max-width: $mqMobile) {
+      top: $padding/2;
+      left: $padding/2;
+      transform: translateX(2px);
+    }
+    @media screen and (max-width: $mqSmallMobile) {
+      width: 70px;
+    }
     path {
       fill: $col-white;
     }
