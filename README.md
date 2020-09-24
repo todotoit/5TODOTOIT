@@ -10,6 +10,8 @@
     [ ] Between video
     [ ] Between grid
 [ ] CDN for images and videos
+[ ] SEO
+[ ] Implement Scroll Transition
 ```
 
 ## Build Setup
