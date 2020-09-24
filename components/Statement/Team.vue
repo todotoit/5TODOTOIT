@@ -1,11 +1,17 @@
 <template>
   <section class="team">
-    <div v-if="!substatement" class="top">
-      <h1 class="title">{{ copy }}</h1>
-    </div>
-    <div v-else class="top">
-      <h1 class="title">{{ substatement.name }}</h1>
-      <h1 class="title">{{ substatement.jobs }}</h1>
+    <div class="top">
+      <h1 v-if="!substatement" class="title">{{ copy }}</h1>
+      <h1 v-else class="title">
+        <span>{{ substatement.name }}</span>
+        <br />
+        {{ substatement.jobs }}
+      </h1>
+      <div class="cta-link">
+        SWITCH MODE
+        <span :class="{ 'is-active': isGrid }" @click.prevent="toggleView(true)">GRID</span> /
+        <span :class="{ 'is-active': !isGrid}" @click.prevent="toggleView(false)">LIST</span>
+      </div>
     </div>
     <div v-if="substatement" class="background-anim">
       <img :src="substatement.file" alt />
@@ -29,6 +35,9 @@ export default {
     substatement() {
       return this.$store.getters['grid/substatement']
     },
+    isGrid() {
+      return this.$store.getters['grid/isVisible']
+    },
     copy() {
       return this.substatement
         ? this.substatement.copy
@@ -36,6 +45,12 @@ export default {
     },
     currentVideo() {
       return this.substatement ? this.substatement.file : null
+    }
+  },
+  methods: {
+    toggleView(data) {
+      if (data === null) return
+      this.$store.commit('grid/setVisibility', data)
     }
   }
 }
@@ -46,8 +61,19 @@ export default {
   position: relative;
   background-color: $col-black;
   .top {
-    .title:first-child:not(:only-child) {
+    .title span {
       color: $col-red;
+    }
+    .is-active {
+      color: $col-red;
+    }
+    .cta-link {
+      padding-top: $padding * 2;
+      z-index: 1000;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
   .background-anim {
@@ -63,7 +89,7 @@ export default {
     justify-content: center;
     z-index: -1;
     img {
-      width: 100% ;
+      width: 100%;
       height: 100%;
       object-fit: cover;
     }

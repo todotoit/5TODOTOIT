@@ -1,10 +1,16 @@
 <template>
   <div ref="grid" class="grid" :class="{ disable: dotIsActive }">
-    <Dot v-for="dot in dots" :id="dot.id" :key="dot.id" :action="dot.action" />
+    <div v-show="isGrid" class="dots">
+      <Dot v-for="dot in dots" :id="dot.id" :key="dot.id" :action="dot.action" />
+    </div>
+    <div v-show="!isGrid" class="list">
+      <List />
+    </div>
   </div>
 </template>
 
 <script>
+import List from '~/components/Grid/List'
 import Dot from '~/components/Grid/Dot'
 
 const breakpoints = {
@@ -16,7 +22,8 @@ const breakpoints = {
 export default {
   name: 'Grid',
   components: {
-    Dot
+    Dot,
+    List
   },
   props: {
     actions: {
@@ -33,13 +40,16 @@ export default {
   computed: {
     dotIsActive() {
       return this.$store.getters['grid/activeDot'] !== null
+    },
+    isGrid() {
+      return this.$store.getters['grid/isVisible']
     }
   },
   mounted() {
     this.availableActions = [...this.actions]
     this.bounds = this.$refs.grid.getBoundingClientRect()
     this.device = this.$mq
-    this.gridContainer = this.$refs.grid
+    this.gridContainer = this.$refs.grid.firstChild
     window.addEventListener('resize', this.debounceResizeCanvas)
   },
   methods: {
@@ -104,26 +114,32 @@ export default {
   --dotSize: 20px;
 }
 .grid {
-  outline: 1px solid green;
+  z-index: 10;
   width: 100%;
-  height: 32%;
-  z-index: 1000;
+  height: 100%;
   position: absolute;
+  top: 0;
   left: 0;
-  bottom: 0;
-  display: grid;
-  grid-template-columns: repeat(var(--cols), 0.5fr);
-  grid-template-rows: repeat(var(--rows), 0.5fr);
-  grid-gap: $padding * 1.5;
-  align-items: center;
-  transform: all $animationDuration $bezier;
-  &.disable /deep/ .dot:not(.clickable) {
-    opacity: 0;
-  }
-  /deep/ .dot {
-    width: var(--dotSize);
-    height: var(--dotSize);
-    justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  .dots {
+    width: 100%;
+    height: 30%;
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 0.5fr);
+    grid-template-rows: repeat(var(--rows), 0.5fr);
+    grid-gap: $padding * 1.5;
+    align-items: center;
+    transform: all $animationDuration $bezier;
+    &.disable /deep/ .dot:not(.clickable) {
+      opacity: 0;
+    }
+    /deep/ .dot {
+      width: var(--dotSize);
+      height: var(--dotSize);
+      justify-self: center;
+    }
   }
 }
 </style>

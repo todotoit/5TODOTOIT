@@ -24,7 +24,7 @@ export default {
   },
   data() {
     return {
-      threshold: [0.8, 0.8]
+      threshold: [0.2, 0.2]
     }
   },
   computed: {
