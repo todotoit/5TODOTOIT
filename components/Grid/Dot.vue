@@ -43,8 +43,8 @@ export default {
 .dot {
   background-color: $col-white;
   border-radius: 50px;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   transition: all $animationDuration $bezier;
   &.clickable:not(.active) {
     background-color: $col-red;

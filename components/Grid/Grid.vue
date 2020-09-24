@@ -20,8 +20,8 @@ export default {
   data() {
     return {
       grid: {
-        cols: 12,
-        rows: 8
+        cols: 14,
+        rows: 7
       },
       dots: [],
       availableActions: []
@@ -59,18 +59,18 @@ export default {
   padding: $padding 0;
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: $padding;
   display: grid;
-  grid-template-columns: 0.75fr repeat(10, 1fr) 0.75fr;
-  grid-template-rows: repeat(8, 1fr);
+  grid-template-columns: 0.75fr repeat(12, 1fr) 0.75fr;
+  grid-template-rows: repeat(7, 1fr);
   grid-gap: $padding * 2;
   /deep/ .dot {
     justify-self: center;
   }
-  /deep/ .dot:nth-child(12n) {
+  /deep/ .dot:nth-child(14n) {
     justify-self: end;
   }
-  /deep/ .dot:nth-child(12n + 1) {
+  /deep/ .dot:nth-child(14n + 1) {
     justify-self: start;
   }
   &.disable /deep/ .dot:not(.clickable) {
