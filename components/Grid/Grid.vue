@@ -6,6 +6,7 @@
 
 <script>
 import Dot from '~/components/Grid/Dot'
+
 const breakpoints = {
   lg: 100,
   md: 80,
@@ -38,39 +39,46 @@ export default {
     this.availableActions = [...this.actions]
     this.bounds = this.$refs.grid.getBoundingClientRect()
     this.device = this.$mq
-    this.initGrid(this.device)
+    this.gridContainer = this.$refs.grid
     window.addEventListener('resize', this.debounceResizeCanvas)
   },
   methods: {
     initGrid(device) {
+      console.log('Init Grid')
       this.device = device || 'md'
-      this.bounds = this.$refs.grid.getBoundingClientRect()
+      this.modulo = null
+      this.bounds = this.gridContainer.getBoundingClientRect()
       this.updateModulo()
 
       // Clear dots array
       this.dots = []
 
-      const cols = Math.floor(this.bounds.width / this.modulo)
-      const rows = Math.floor(this.bounds.height / this.modulo)
+      this.cols = Math.floor(this.bounds.width / this.modulo)
+      this.rows = Math.floor(this.bounds.height / this.modulo)
 
-      console.log(this.modulo, this.bounds.width, this.bounds.height, cols, rows)
+      document.documentElement.style.setProperty('--cols', this.cols)
+      document.documentElement.style.setProperty('--rows', this.rows)
+      document.documentElement.style.setProperty(
+        '--dotSize',
+        this.modulo / 2 + 'px'
+      )
 
-      document.documentElement.style.setProperty('--cols', cols)
-      document.documentElement.style.setProperty('--rows', rows)
-      document.documentElement.style.setProperty('--dotSize', this.modulo / 2 + 'px')
-
-      for (let i = 0; i < cols * rows; i++) {
+      for (let i = 0; i < this.cols * this.rows; i++) {
         setTimeout(() => {
           this.dots.push({
             id: i,
-            action: this.getDotAction(i)
+            action: this.getAction(i)
           })
         }, i * 20)
       }
+
+    },
+    getAction(i) {
+      if (!this.availableActions.length) return
+      if (i % this.cols === this.cols - 1 || i % this.cols === 0) return
+      return this.availableActions.shift()
     },
     updateModulo() {
-      // Modify modulo size based on device breakpoint
-      this.modulo = 100
       for (const point in breakpoints) {
         if (point === this.device) {
           this.modulo = breakpoints[point]
@@ -78,10 +86,11 @@ export default {
       }
     },
     getDotAction(i) {
-      if (!this.availableActions.length && i > this.availableActions.length - 1) return
+      if (!this.availableActions.length && i > this.availableActions.length - 1)
+        return
       return this.availableActions[i]
     },
-    debounceResizeCanvas(e) {
+    debounceResizeCanvas() {
       if (this.resizeDebounce) clearTimeout(this.resizeDebounce)
       this.resizeDebounce = setTimeout(() => {
         this.initGrid(this.$mq)
