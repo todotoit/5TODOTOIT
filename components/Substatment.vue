@@ -5,9 +5,9 @@
         {{ copy }}
       </h1>
     </div>
-    <div class="bottom">
-      <Grid :actions="actions" />
-    </div>
+    <!-- <div class="bottom"> -->
+    <Grid :actions="actions" />
+    <!-- </div> -->
     <div v-show="currentVideo" class="background-video">
       <video
         loop
@@ -53,6 +53,7 @@ export default {
 
 <style lang="scss" scoped>
 .substatment {
+  position: relative;
   background-color: $col-violet;
   &.has-video {
     background-color: transparent;

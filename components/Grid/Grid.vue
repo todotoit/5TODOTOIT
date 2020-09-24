@@ -56,25 +56,19 @@ export default {
 .grid {
   width: 100%;
   z-index: 1000;
-  padding: $padding 0;
+  padding: 0 $padding/2;
   position: absolute;
   left: 0;
   bottom: $padding;
   display: grid;
   grid-template-columns: 0.75fr repeat(12, 1fr) 0.75fr;
   grid-template-rows: repeat(7, 1fr);
-  grid-gap: $padding * 2;
+  grid-gap: $padding*1.5;
+  &.disable /deep/ .dot:not(.clickable) {
+    opacity: 0;
+  }
   /deep/ .dot {
     justify-self: center;
-  }
-  /deep/ .dot:nth-child(14n) {
-    justify-self: end;
-  }
-  /deep/ .dot:nth-child(14n + 1) {
-    justify-self: start;
-  }
-  &.disable /deep/ .dot:not(.clickable) {
-    opacity: 0.2;
   }
 }
 @function randomNum($min, $max) {
