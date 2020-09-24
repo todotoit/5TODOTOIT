@@ -1,30 +1,23 @@
 <template>
-  <section class="substatment">
+  <section class="team">
     <div class="top">
       <h1 class="title">
         {{ copy }}
       </h1>
     </div>
-    <div v-show="currentVideo" class="background-anim">
-      <video
-        loop
-        autoplay
-        muted
-        playsinline
-        class="video"
-        :src="currentVideo"
-      ></video>
-    </div>
+    <!-- <div v-show="currentGIF" class="background-anim">
+      <img :src="" alt="">
+    </div> -->
   </section>
 </template>
 
 <script>
 export default {
-  name: 'Substatment',
+  name: 'Team',
   data() {
     return {
       defaultSubstatment:
-        'Experiences are more than the sum of their parts. And what we do is more than the projects in our portfolio. Always be exploring.'
+        'Different is better. Our team shares rich layers of expertise, diverse backgrounds and a common passion for a job well done.'
     }
   },
   computed: {
@@ -45,10 +38,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.substatment {
+.team {
   position: relative;
-  background-color: $col-violet;
-  .background-anim {
+  background-color: $col-black;
+  .background-video {
     position: fixed;
     top: 0;
     left: 0;
