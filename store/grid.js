@@ -3,6 +3,7 @@ import { substatements, team } from '~/assets/data.js'
 export const state = () => ({
   substatement: null,
   activeDot: null,
+  currentGrid: null,
   actions: {
     substatements,
     team
@@ -10,6 +11,9 @@ export const state = () => ({
 })
 
 export const getters = {
+  currentGrid: (state) => {
+    return state.currentGrid
+  },
   activeDot: (state) => {
     return state.activeDot
   },
@@ -22,8 +26,11 @@ export const getters = {
 }
 
 export const mutations = {
+  setGrid(state, data) {
+    if (state.currentGrid === data) return
+    state.currentGrid = data
+  },
   setStatement(state, data) {
-    console.log('DATA', data)
     state.substatement = data
   },
   setDot(state, data) {
