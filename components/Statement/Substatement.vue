@@ -1,13 +1,10 @@
 <template>
-  <div class="substatment" :class="{ 'has-video': currentVideo }">
+  <section class="substatment" :class="{ 'has-video': currentVideo }">
     <div class="top">
       <h1 class="title">
         {{ copy }}
       </h1>
     </div>
-    <!-- <div class="bottom"> -->
-    <Grid :actions="actions" />
-    <!-- </div> -->
     <div v-show="currentVideo" class="background-video">
       <video
         loop
@@ -18,16 +15,12 @@
         :src="currentVideo"
       ></video>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
-import Grid from '~/components/Grid/Grid'
 export default {
   name: 'Substatment',
-  components: {
-    Grid
-  },
   data() {
     return {
       defaultSubstatment:

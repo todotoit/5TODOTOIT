@@ -15,26 +15,31 @@ body {
   }
 }
 
-.fp-tableCell {
-  display: block;
+.main-container {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 section {
   padding: 0 $padding 0 $padding;
   height: 100vh;
   @media screen and (max-width: $mqMobile) {
-    padding: 0 $padding/2 0 $padding/2;
+    padding: 0 $padding/2;
+  }
+  @media screen and (max-width: $mqSmallMobile) {
+    padding: 0 $padding/4;
   }
   .top {
     position: relative;
     height: 40%;
-    padding-top: $padding * 4;
+    padding-top: calc(#{$navbar} + #{$padding});
     @media screen and (max-width: $mqMobile) {
-      padding-top: $padding * 2.5;
+      padding-top: calc(40px + #{$padding/2});
     }
     @media screen and (max-width: $mqSmallMobile) {
       height: 30%;
-      padding-top: $padding * 2;
+      padding-top: calc(40px + #{$padding/4});
     }
   }
   .bottom {
@@ -52,13 +57,13 @@ section {
   display: flex;
   flex-direction: row;
   padding-bottom: $padding * 2;
-  @media screen and (max-width: $mqMobile) {
+  @media screen and (max-width: $mqTablet) {
     flex-direction: column;
     padding-bottom: 0;
   }
   .col {
     width: 25%;
-    @media screen and (max-width: $mqMobile) {
+    @media screen and (max-width: $mqTablet) {
       padding-bottom: $padding;
       width: 100%;
     }

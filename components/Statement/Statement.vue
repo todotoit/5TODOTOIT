@@ -1,9 +1,20 @@
 <template>
-  <section class="statement"></section>
+  <div class="statement">
+    <Substatement />
+  </div>
 </template>
 
 <script>
-export default {}
+import Substatement from '~/components/Statement/Substatement'
+export default {
+  components: {
+    Substatement
+  }
+}
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.statement {
+  padding: 0;
+}
+</style>

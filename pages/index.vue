@@ -1,6 +1,8 @@
 <template>
-  <div class="container">
-    <img svg-inline class="logo" src="@/assets/icons/TODO_LOGO.svg" />
+  <div class="main-container">
+    <div class="logo">
+      <img svg-inline class="todo" src="@/assets/icons/TODO_LOGO.svg" />
+    </div>
     <Home />
     <Statement />
     <About />
@@ -23,21 +25,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
+.logo {
+  height: $navbar;
   width: 100%;
-  height: 100%;
-  .logo {
-    position: fixed;
-    top: $padding;
-    left: $padding;
-    z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 $padding;
+  @media screen and (max-width: $mqMobile) {
+    height: 40px;
+    padding: 0 $padding/2;
+  }
+  .todo {
     @media screen and (max-width: $mqMobile) {
-      top: $padding/2;
-      left: $padding/2;
-      transform: translateX(2px);
+      width: 70px;
     }
     @media screen and (max-width: $mqSmallMobile) {
-      width: 70px;
+      transform: translateX(-4px);
+      width: 60px;
     }
     path {
       fill: $col-white;
