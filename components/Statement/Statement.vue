@@ -3,7 +3,7 @@
     <Intersect :threshold="threshold" @enter="intersect('substatements')">
       <Substatement />
     </Intersect>
-    <Dots v-show="isGridVisible" :actions="actions" />
+    <Dots v-show="isGridVisible" />
     <Intersect :threshold="threshold" @enter="intersect('team')">
       <Team />
     </Intersect>
@@ -24,15 +24,12 @@ export default {
   },
   data() {
     return {
-      threshold: [0.2, 0.2]
+      threshold: [0.4, 0.4]
     }
   },
   computed: {
     currentGrid() {
       return this.$store.getters['grid/currentGrid']
-    },
-    actions() {
-      return this.$store.getters['grid/actions'](this.currentGrid)
     },
     isGridVisible() {
       return this.$store.getters['grid/isVisible']
