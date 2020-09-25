@@ -1,23 +1,27 @@
 <template>
   <section class="team">
     <div class="top">
-      <h1 v-if="!substatement" class="title">{{ copy }}</h1>
+      <h1 v-if="!person" class="title">{{ copy }}</h1>
       <h1 v-else class="title">
-        <span>{{ substatement.name }}</span>
+        <span>{{ person.name }}</span>
         <br />
-        <span>{{ substatement.jobs }}</span>
+        <span>{{ person.jobs }}</span>
       </h1>
       <div class="cta-link">
         SWITCH MODE
-        <span :class="{ 'is-active': isGridVisible }" @click.prevent="toggleView(true)">GRID</span> /
-        <span :class="{ 'is-active': !isGridVisible }" @click.prevent="toggleView(false)">LIST</span>
+        <span :class="{ 'is-active': isGridVisible }" @click.prevent="toggleView(true)">GRID</span>
+        /
+        <span
+          :class="{ 'is-active': !isGridVisible }"
+          @click.prevent="toggleView(false)"
+        >LIST</span>
       </div>
     </div>
     <div v-if="!isGridVisible" class="list" :class="{ disable: dotIsActive }">
       <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
     </div>
-    <div v-if="substatement" class="background-anim">
-      <img :src="substatement.file" alt />
+    <div v-if="person" class="background-anim">
+      <img :src="person.file" alt />
     </div>
   </section>
 </template>
@@ -32,7 +36,7 @@ export default {
   },
   data() {
     return {
-      defaultsubstatement:
+      defaultCopy:
         'Different is better. Our team shares rich layers of expertise, diverse backgrounds and a common passion for a job well done.'
     }
   },
@@ -43,24 +47,24 @@ export default {
     dotIsActive() {
       return !!this.$store.getters['grid/activeDot']
     },
-    substatement() {
-      return this.$store.getters['grid/substatement']
+    person() {
+      return this.$store.getters['grid/person']
     },
     isGridVisible() {
       return this.$store.getters['grid/isVisible']
     },
     copy() {
-      return this.substatement ? this.substatement.copy : this.defaultsubstatement
+      return this.person ? this.person.copy : this.defaultCopy
     },
     currentVideo() {
-      return this.substatement ? this.substatement.file : null
+      return this.person ? this.person.file : null
     }
   },
   methods: {
     toggleView(data) {
       if (data === null) return
       this.$store.commit('grid/setDot', null)
-      this.$store.commit('grid/setStatement', null)
+      this.$store.commit('grid/setPerson', null)
       this.$store.commit('grid/setVisibility', data)
     }
   }
@@ -130,7 +134,8 @@ export default {
     z-index: 1;
     img {
       filter: brightness(90%);
-      width: 30%;
+      width: 540px;
+      height: 540px;
       object-fit: cover;
       @media screen and (max-width: $mqMobile) {
         width: 100%;
