@@ -22,17 +22,21 @@ export default {
   computed: {
     activeDot() {
       return this.$store.getters['grid/activeDot']
+    },
+    currentGrid() {
+      return this.$store.getters['grid/currentGrid']
     }
   },
   methods: {
     runAction() {
       if (!this.action) return
+      const mutation = this.currentGrid === 'team' ? 'setPerson' : 'setStatement'
       if (this.id !== this.activeDot) {
         this.$store.commit('grid/setDot', this.id)
-        this.$store.commit('grid/setStatement', this.action)
+        this.$store.commit(`grid/${mutation}`, this.action)
       } else {
         this.$store.commit('grid/setDot', null)
-        this.$store.commit('grid/setStatement', null)
+        this.$store.commit(`grid/${mutation}`, null)
       }
     }
   }
@@ -42,8 +46,6 @@ export default {
 <style lang="scss" scoped>
 .dot {
   transition: all $animationDuration $bezier;
-  width: 100%;
-  height: 100%;
   background-color: $col-white;
   border-radius: 50px;
   &.clickable:not(.active) {
