@@ -3,13 +3,18 @@
     <div class="logo">
       <img svg-inline class="todo" src="@/assets/icons/TODO_LOGO.svg" />
     </div>
-    <Home />
+    <Intersect :threshold="threshold" @enter="intersect">
+      <Home />
+    </Intersect>
     <Statement />
-    <About />
+    <Intersect :threshold="threshold" @enter="intersect">
+      <About />
+    </Intersect>
   </div>
 </template>
 
 <script>
+import Intersect from 'vue-intersect'
 import Home from '~/components/Home'
 import Statement from '~/components/Statement/Statement'
 import About from '~/components/About'
@@ -18,8 +23,20 @@ export default {
   name: 'Index',
   components: {
     Home,
+    Intersect,
     Statement,
     About
+  },
+  data() {
+    return {
+      threshold: [0.4]
+    }
+  },
+  methods: {
+    intersect() {
+      console.log('IS INTERSECT')
+      this.$store.commit('grid/setGrid', null)
+    }
   }
 }
 </script>
