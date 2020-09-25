@@ -50,7 +50,11 @@ export default {
   ],
 
   styleResources: {
-    scss: ['@/assets/styles/variables.scss', '@/assets/styles/typography.scss']
+    scss: [
+      '@/assets/styles/variables.scss',
+      '@/assets/styles/typography.scss',
+      '@/assets/styles/transitions.scss'
+    ]
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
