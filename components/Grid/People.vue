@@ -31,10 +31,10 @@ export default {
       if (!this.action) return
       if (this.id !== this.activeDot) {
         this.$store.commit('grid/setDot', this.id)
-        this.$store.commit('grid/setStatement', this.action)
+        this.$store.commit('grid/setPerson', this.action)
       } else {
         this.$store.commit('grid/setDot', null)
-        this.$store.commit('grid/setStatement', null)
+        this.$store.commit('grid/setPerson', null)
       }
     }
   }
