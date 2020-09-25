@@ -5,7 +5,13 @@
         {{ copy }}
       </h1>
     </div>
-    <div v-show="currentVideo" class="background-anim">
+    <div
+      v-show="!substatement"
+      :key="1"
+      class="bg-neutral"
+      :class="{ 'is-disable': substatement }"
+    ></div>
+    <div v-show="substatement" :key="2" class="bg-anim" :class="{ 'is-enable': substatement }">
       <video
         loop
         autoplay
@@ -23,19 +29,19 @@ export default {
   name: 'Substatment',
   data() {
     return {
-      defaultSubstatment:
+      defaultSubstatement:
         'Experiences are more than the sum of their parts. And what we do is more than the projects in our portfolio. Always be exploring.'
     }
   },
   computed: {
-    substatment() {
+    substatement() {
       return this.$store.getters['grid/substatement']
     },
     copy() {
-      return this.substatment ? this.substatment.copy : this.defaultSubstatment
+      return this.substatement ? this.substatement.copy : this.defaultSubstatement
     },
     currentVideo() {
-      return this.substatment ? this.substatment.file : null
+      return this.substatement ? this.substatement.file : null
     },
     actions() {
       return this.$store.getters['grid/actions']('substatements')
@@ -47,9 +53,16 @@ export default {
 <style lang="scss" scoped>
 .substatment {
   position: relative;
-  background-color: $col-violet;
-  .background-anim {
-    position: fixed;
+  .bg-neutral {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $col-violet;
+  }
+  .bg-anim {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -59,8 +72,8 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    z-index: -1;
     .video {
+      filter: brightness(50%);
       width: 100%;
       height: 100%;
       object-fit: cover;
