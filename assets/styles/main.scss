@@ -4,15 +4,6 @@ body {
   height: 100%;
   font-family: $fontFamily;
   color: $col-white;
-  @media screen and (max-width: $mqTablet) {
-    outline: 4px solid red;
-  }
-  @media screen and (max-width: $mqMobile) {
-    outline: 4px solid green;
-  }
-  @media screen and (max-width: $mqSmallMobile) {
-    outline: 4px solid yellow;
-  }
 }
 
 .main-container {
@@ -52,6 +43,7 @@ section {
     position: relative;
     height: 40%;
     padding-top: calc(#{$navbar} + #{$padding/2});
+    z-index: 100;
     @media screen and (max-width: $mqMobile) {
       padding-top: calc(40px + #{$padding/2});
     }
