@@ -1,6 +1,8 @@
 <template>
   <div ref="dots" class="dots" :class="{ disable: dotIsActive }">
-    <Dot v-for="dot in dots" :id="dot.id" :key="dot.id" :action="dot.action" />
+    <transition-group name="scale" tag="div" class="dots-container">
+      <Dot v-for="dot in dots" :id="dot.id" :key="dot.id" :action="dot.action" />
+    </transition-group>
   </div>
 </template>
 
@@ -8,8 +10,8 @@
 import Dot from '~/components/Grid/Dot'
 
 const breakpoints = {
-  lg: 100,
-  md: 80,
+  lg: 90,
+  md: 70,
   sm: 60,
   xs: 50
 }
@@ -19,43 +21,49 @@ export default {
   components: {
     Dot
   },
-  props: {
-    actions: {
-      type: Array,
-      default: () => []
-    }
-  },
   data() {
     return {
-      dots: [],
-      availableActions: []
+      dots: []
     }
   },
   computed: {
+    actions() {
+      return this.$store.getters['grid/actions'](this.currentGrid)
+    },
     dotIsActive() {
       return this.$store.getters['grid/activeDot'] !== null
     },
     isGrid() {
       return this.$store.getters['grid/isVisible']
+    },
+    currentGrid() {
+      return this.$store.getters['grid/currentGrid']
+    }
+  },
+  watch: {
+    currentGrid() {
+      this.init()
     }
   },
   mounted() {
-    this.availableActions = [...this.actions]
     this.gridContainer = this.$refs.dots
-    this.initGrid()
+    console.log(this.gridContainer)
     window.addEventListener('resize', this.debounceResizeCanvas)
   },
   methods: {
+    init() {
+      this.initGrid()
+    },
     initGrid() {
       console.log('Init Grid')
       this.device = this.$mq || 'md'
-      this.modulo = null
+      this.modulo = this.updateModulo()
       this.bounds = this.gridContainer.getBoundingClientRect()
-      console.log(this.bounds)
-      this.updateModulo()
 
       // Clear dots array
       this.dots = []
+
+      // if (!this.currentGrid) return
 
       this.cols = Math.floor(this.bounds.width / this.modulo)
       this.rows = Math.floor(this.bounds.height / this.modulo)
@@ -67,30 +75,37 @@ export default {
       for (let i = 0; i < this.cols * this.rows; i++) {
         this.dots.push({
           id: i,
-          action: this.getAction(i)
+          action: null
         })
       }
-    },
-    getAction(i) {
-      if (!this.availableActions.length) return
-      if (i % this.cols === this.cols - 1 || i % this.cols === 0) return
-      return this.availableActions.shift()
+      this.actions.forEach((action) => {
+        let dot = 0
+        let current = 0
+        while (
+          dot % this.cols === this.cols - 1 ||
+          dot % this.cols === 0 ||
+          current < 2000 ||
+          this.dots[dot].action
+        ) {
+          dot = Math.floor(Math.random() * this.dots.length)
+          current++
+        }
+        this.dots[dot].action = action
+        this.current = 0
+      })
     },
     updateModulo() {
       for (const point in breakpoints) {
         if (point === this.device) {
-          this.modulo = breakpoints[point]
+          return breakpoints[point]
         }
+        return this.modulo
       }
-    },
-    getDotAction(i) {
-      if (!this.availableActions.length && i > this.availableActions.length - 1) return
-      return this.availableActions[i]
     },
     debounceResizeCanvas() {
       if (this.resizeDebounce) clearTimeout(this.resizeDebounce)
       this.resizeDebounce = setTimeout(() => {
-        this.initGrid(this.$mq)
+        this.init()
       }, 1000)
     }
   }
@@ -104,25 +119,28 @@ export default {
   --dotSize: 20px;
 }
 .dots {
-  z-index: 10;
-  position: absolute;
-  bottom: 0;
+  z-index: 1000;
+  position: sticky;
+  top: calc(50% - (500px) - #{$padding});
   left: 0;
   width: 100%;
-  height: 400px;
-  display: grid;
-  grid-template-columns: repeat(var(--cols), 0.5fr);
-  grid-template-rows: repeat(var(--rows), 0.5fr);
-  grid-gap: $padding * 1.5;
-  align-items: center;
-  transform: all $animationDuration $bezier;
-  &.disable /deep/ .dot:not(.clickable) {
-    opacity: 0;
-  }
-  /deep/ .dot {
-    width: var(--dotSize);
-    height: var(--dotSize);
-    justify-self: center;
+  height: 500px;
+  .dots-container {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 0.5fr);
+    grid-template-rows: repeat(var(--rows), 0.5fr);
+    grid-gap: $padding * 1.5;
+    align-items: center;
+    transform: all $animationDuration $bezier;
+    &.disable /deep/ .dot:not(.clickable) {
+      opacity: 0;
+    }
+    /deep/ .dot {
+      width: var(--dotSize);
+      height: var(--dotSize);
+      justify-self: center;
+    }
   }
 }
 </style>
