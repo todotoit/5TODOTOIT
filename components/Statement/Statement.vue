@@ -3,7 +3,7 @@
     <Intersect :threshold="threshold" @enter="intersect('substatements')">
       <Substatement />
     </Intersect>
-    <Grid ref="grid" :actions="actions" />
+    <Dots v-show="isGridVisible" :actions="actions" />
     <Intersect :threshold="threshold" @enter="intersect('team')">
       <Team />
     </Intersect>
@@ -14,12 +14,12 @@
 import Intersect from 'vue-intersect'
 import Substatement from '~/components/Statement/Substatement'
 import Team from '~/components/Statement/Team'
-import Grid from '~/components/Grid/Grid'
+import Dots from '~/components/Grid/Dots'
 export default {
   components: {
     Intersect,
     Substatement,
-    Grid,
+    Dots,
     Team
   },
   data() {
@@ -33,13 +33,15 @@ export default {
     },
     actions() {
       return this.$store.getters['grid/actions'](this.currentGrid)
+    },
+    isGridVisible() {
+      return this.$store.getters['grid/isVisible']
     }
   },
   methods: {
     intersect(page) {
       if (this.currentGrid === page) return
       this.$store.commit('grid/setGrid', page)
-      this.$refs.grid.initGrid(this.$mq)
     }
   }
 }

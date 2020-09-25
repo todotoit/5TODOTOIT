@@ -1,23 +1,6 @@
 <template>
-  <div ref="grid" class="grid">
-    <div v-show="isGrid" class="dots" :class="{ disable: dotIsActive }">
-      <Dot
-        v-for="dot in dots"
-        :id="dot.id"
-        :key="dot.id"
-        :action="dot.action"
-        type="dot"
-      />
-    </div>
-    <div v-show="!isGrid" class="peoples" :class="{ disable: dotIsActive }">
-      <Dot
-        v-for="(action, id) in actions"
-        :id="id"
-        :key="id"
-        :action="action"
-        type="people"
-      />
-    </div>
+  <div ref="dots" class="dots" :class="{ disable: dotIsActive }">
+    <Dot v-for="dot in dots" :id="dot.id" :key="dot.id" :action="dot.action" />
   </div>
 </template>
 
@@ -30,8 +13,9 @@ const breakpoints = {
   sm: 60,
   xs: 50
 }
+
 export default {
-  name: 'Grid',
+  name: 'Dots',
   components: {
     Dot
   },
@@ -57,17 +41,17 @@ export default {
   },
   mounted() {
     this.availableActions = [...this.actions]
-    this.bounds = this.$refs.grid.getBoundingClientRect()
-    this.device = this.$mq
-    this.gridContainer = this.$refs.grid.firstChild
+    this.gridContainer = this.$refs.dots
+    this.initGrid()
     window.addEventListener('resize', this.debounceResizeCanvas)
   },
   methods: {
-    initGrid(device) {
+    initGrid() {
       console.log('Init Grid')
-      this.device = device || 'md'
+      this.device = this.$mq || 'md'
       this.modulo = null
       this.bounds = this.gridContainer.getBoundingClientRect()
+      console.log(this.bounds)
       this.updateModulo()
 
       // Clear dots array
@@ -78,10 +62,7 @@ export default {
 
       document.documentElement.style.setProperty('--cols', this.cols)
       document.documentElement.style.setProperty('--rows', this.rows)
-      document.documentElement.style.setProperty(
-        '--dotSize',
-        this.modulo / 2 + 'px'
-      )
+      document.documentElement.style.setProperty('--dotSize', this.modulo / 2 + 'px')
 
       for (let i = 0; i < this.cols * this.rows; i++) {
         this.dots.push({
@@ -103,8 +84,7 @@ export default {
       }
     },
     getDotAction(i) {
-      if (!this.availableActions.length && i > this.availableActions.length - 1)
-        return
+      if (!this.availableActions.length && i > this.availableActions.length - 1) return
       return this.availableActions[i]
     },
     debounceResizeCanvas() {
@@ -123,53 +103,26 @@ export default {
   --rows: 0;
   --dotSize: 20px;
 }
-.grid {
+.dots {
   z-index: 10;
-  width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  width: 100%;
   height: 400px;
-  .peoples {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    /deep/ .dot-wrapper {
-      width: 20%;
-      display: inline-block;
-    }
-    &.disable /deep/ .dot-wrapper .people:not(.active) {
-      opacity: 0.2;
-    }
-    @media screen and (max-width: $mqTablet) {
-      flex-direction: column;
-      /deep/ .dot-wrapper {
-        width: 100%;
-      }
-    }
+  display: grid;
+  grid-template-columns: repeat(var(--cols), 0.5fr);
+  grid-template-rows: repeat(var(--rows), 0.5fr);
+  grid-gap: $padding * 1.5;
+  align-items: center;
+  transform: all $animationDuration $bezier;
+  &.disable /deep/ .dot:not(.clickable) {
+    opacity: 0;
   }
-  .dots {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(var(--cols), 0.5fr);
-    grid-template-rows: repeat(var(--rows), 0.5fr);
-    grid-gap: $padding * 1.5;
-    align-items: center;
-    transform: all $animationDuration $bezier;
-    &.disable /deep/ .dot-wrapper:not(.clickable) {
-      opacity: 0;
-    }
-    /deep/ .dot-wrapper {
-      width: var(--dotSize);
-      height: var(--dotSize);
-      justify-self: center;
-    }
+  /deep/ .dot {
+    width: var(--dotSize);
+    height: var(--dotSize);
+    justify-self: center;
   }
 }
 </style>

@@ -1,24 +1,9 @@
 <template>
-  <div class="dot-wrapper">
-    <div
-      v-if="type === 'dot'"
-      class="dot"
-      :class="{ clickable: action, active: id === activeDot }"
-      @click="runAction"
-    ></div>
-    <div
-      v-if="type === 'people' && action"
-      class="people"
-      :class="{ active: id === activeDot }"
-      @click="runAction"
-    >
-      <p class="cta-title">
-        <span>{{ action.name }}</span>
-        <br />
-        <span class="cta-small-title"> {{ action.jobs }} </span>
-      </p>
-    </div>
-  </div>
+  <div
+    class="dot"
+    :class="{ clickable: action, active: id === activeDot }"
+    @click="runAction"
+  ></div>
 </template>
 
 <script>
@@ -32,10 +17,6 @@ export default {
     id: {
       type: Number,
       default: 0
-    },
-    type: {
-      type: String,
-      default: 'dot'
     }
   },
   computed: {
@@ -59,37 +40,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.dot-wrapper {
-  .people {
-    transition: all $animationDuration $bezier;
-    p {
-      padding-right: $padding/2;
-      & span:first-child {
-        color: $col-red;
-      }
-      &:hover {
-        cursor: pointer;
-      }
+.dot {
+  transition: all $animationDuration $bezier;
+  width: 100%;
+  height: 100%;
+  background-color: $col-white;
+  border-radius: 50px;
+  &.clickable:not(.active) {
+    background-color: $col-red;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.2);
     }
   }
-  .dot {
-    transition: all $animationDuration $bezier;
-    width: 100%;
-    height: 100%;
-    background-color: $col-white;
-    border-radius: 50px;
-    &.clickable:not(.active) {
-      background-color: $col-red;
-      &:hover {
-        cursor: pointer;
-        transform: scale(1.2);
-      }
-    }
-    &.active {
-      background-color: $col-red;
-      transform-origin: center center;
-      transform: scale(2);
-    }
+  &.active {
+    background-color: $col-red;
+    transform-origin: center center;
+    transform: scale(2);
   }
 }
 </style>

@@ -1,11 +1,16 @@
 <template>
-  <div class="people" :class="{ clickable: action, active: id === activeDot }" @click="runAction">
+  <div class="people" :class="{ active: id === activeDot }" @click="runAction">
+    <h1 class="cta-link">
+      <span> {{ action.name }}</span>
+      <br />
+      <span class="cta-small-title"> {{ action.jobs }}</span>
+    </h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'List',
+  name: 'People',
   props: {
     action: {
       type: Object,
@@ -37,29 +42,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.dot {
-  background-color: $col-white;
-  border-radius: 50px;
+.people {
+  align-self: baseline;
   transition: all $animationDuration $bezier;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  p {
-    color: black;
-    font-size: 1rem;
-  }
-  &.clickable:not(.active) {
-    background-color: $col-red;
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.2);
+  .cta-link {
+    span:first-child {
+      color: $col-red;
+    }
+    span:last-child {
+      width: 70%;
     }
   }
-  &.active {
-    background-color: $col-red;
-    transform-origin: center center;
-    transform: scale(2);
+  &:hover {
+    cursor: pointer;
   }
 }
 </style>
