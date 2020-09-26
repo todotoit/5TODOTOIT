@@ -47,7 +47,6 @@ export default {
   },
   mounted() {
     this.gridContainer = this.$refs.dots
-    console.log(this.gridContainer)
     window.addEventListener('resize', this.debounceResizeCanvas)
   },
   methods: {
@@ -55,7 +54,6 @@ export default {
       this.initGrid()
     },
     initGrid() {
-      console.log('Init Grid')
       this.device = this.$mq || 'md'
       this.modulo = this.updateModulo()
       this.bounds = this.gridContainer.getBoundingClientRect()

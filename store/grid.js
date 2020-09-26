@@ -51,7 +51,6 @@ export const mutations = {
     state.activeDot = data
   },
   setVisibility(state, data) {
-    console.log(data)
     state.isVisible = data
   }
 }

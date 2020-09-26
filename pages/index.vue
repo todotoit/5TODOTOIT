@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     intersect() {
-      console.log('IS INTERSECT')
       this.$store.commit('grid/setGrid', null)
     }
   }
