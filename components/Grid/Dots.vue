@@ -54,14 +54,13 @@ export default {
       this.initGrid()
     },
     initGrid() {
-      this.device = this.$mq || 'md'
-      this.modulo = this.updateModulo()
+      this.modulo = this.updateModulo() // Update modulo based on current device
       this.bounds = this.gridContainer.getBoundingClientRect()
 
       // Clear dots array
       this.dots = []
 
-      // if (!this.currentGrid) return
+      // // if (!this.currentGrid) return
 
       this.cols = Math.floor(this.bounds.width / this.modulo)
       this.rows = Math.floor(this.bounds.height / this.modulo)
@@ -94,11 +93,9 @@ export default {
     },
     updateModulo() {
       for (const point in breakpoints) {
-        if (point === this.device) {
-          return breakpoints[point]
-        }
-        return this.modulo
+        if (point === this.$mq) return breakpoints[point]
       }
+      return this.modulo
     },
     debounceResizeCanvas() {
       if (this.resizeDebounce) clearTimeout(this.resizeDebounce)
