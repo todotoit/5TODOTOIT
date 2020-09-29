@@ -1,6 +1,11 @@
 <template>
   <div ref="dots" class="dots">
-    <transition-group name="scale" tag="div" class="dots-container" :class="{ disable: dotIsActive }">
+    <transition-group
+      name="scale"
+      tag="div"
+      class="dots-container"
+      :class="{ disable: dotIsActive }"
+    >
       <Dot v-for="dot in dots" :id="dot.id" :key="dot.id" :action="dot.action" />
     </transition-group>
   </div>
@@ -125,7 +130,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(var(--cols), 0.5fr);
     grid-template-rows: repeat(var(--rows), 0.5fr);
-    grid-gap: $padding * 1.5;
+    grid-gap: $padding;
     align-items: center;
     transform: all $animationDuration $bezier;
     &.disable /deep/ .dot:not(.clickable) {
