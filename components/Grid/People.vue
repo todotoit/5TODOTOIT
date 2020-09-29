@@ -1,5 +1,5 @@
 <template>
-  <div class="people" :class="{ active: id === activeDot }" @click="runAction">
+  <div v-if="action" class="people" :class="{ active: id === currentDot }" @click="runAction">
     <h1 class="cta-link">
       <span> {{ action.name }}</span>
       <br />
@@ -22,19 +22,19 @@ export default {
     }
   },
   computed: {
-    activeDot() {
-      return this.$store.getters['grid/activeDot']
+    currentDot() {
+      return this.$store.getters['grid/currentDot']
     }
   },
   methods: {
     runAction() {
       if (!this.action) return
-      if (this.id !== this.activeDot) {
-        this.$store.commit('grid/setDot', this.id)
-        this.$store.commit('grid/setPerson', this.action)
+      if (this.id !== this.currentDot) {
+        this.$store.commit('grid/setCurrentDot', this.id)
+        this.$store.commit('grid/setCurrentPerson', this.action)
       } else {
-        this.$store.commit('grid/setDot', null)
-        this.$store.commit('grid/setPerson', null)
+        this.$store.commit('grid/setCurrentDot', null)
+        this.$store.commit('grid/setCurrentPerson', null)
       }
     }
   }

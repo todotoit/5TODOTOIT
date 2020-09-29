@@ -4,7 +4,7 @@
       name="scale"
       tag="div"
       class="dots-container"
-      :class="{ disable: dotIsActive }"
+      :class="{ disable: currentCopy }"
     >
       <Dot v-for="dot in dots" :id="dot.id" :key="dot.id" :action="dot.action" />
     </transition-group>
@@ -32,17 +32,14 @@ export default {
     }
   },
   computed: {
+    currentGrid() {
+      return this.$store.getters['grid/currentGrid']
+    },
     actions() {
       return this.$store.getters['grid/actions'](this.currentGrid)
     },
-    dotIsActive() {
-      return this.$store.getters['grid/activeDot'] !== null
-    },
-    isGrid() {
-      return this.$store.getters['grid/isVisible']
-    },
-    currentGrid() {
-      return this.$store.getters['grid/currentGrid']
+    currentCopy() {
+      return !!this.$store.getters['grid/currentDot']
     }
   },
   watch: {
@@ -112,7 +109,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 :root {
   --cols: 0;
   --rows: 0;
@@ -126,6 +123,7 @@ export default {
   width: 100%;
   height: 500px;
   .dots-container {
+    background-color: gray;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(var(--cols), 0.5fr);

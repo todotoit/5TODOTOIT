@@ -1,7 +1,7 @@
 <template>
   <div
     class="dot"
-    :class="{ clickable: action, active: id === activeDot }"
+    :class="{ clickable: action, active: id === currentDot }"
     @click="runAction"
   ></div>
 </template>
@@ -20,22 +20,22 @@ export default {
     }
   },
   computed: {
-    activeDot() {
-      return this.$store.getters['grid/activeDot']
-    },
     currentGrid() {
       return this.$store.getters['grid/currentGrid']
+    },
+    currentDot() {
+      return this.$store.getters['grid/currentDot']
     }
   },
   methods: {
     runAction() {
       if (!this.action) return
-      const mutation = this.currentGrid === 'team' ? 'setPerson' : 'setStatement'
-      if (this.id !== this.activeDot) {
-        this.$store.commit('grid/setDot', this.id)
+      const mutation = this.currentGrid === 'team' ? 'setCurrentPerson' : 'setCurrentCopy'
+      if (this.id !== this.currentDot) {
+        this.$store.commit('grid/setCurrentDot', this.id)
         this.$store.commit(`grid/${mutation}`, this.action)
       } else {
-        this.$store.commit('grid/setDot', null)
+        this.$store.commit('grid/setCurrentDot', null)
         this.$store.commit(`grid/${mutation}`, null)
       }
     }

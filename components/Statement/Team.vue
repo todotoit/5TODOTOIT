@@ -1,7 +1,7 @@
 <template>
   <section class="team">
     <div class="top">
-      <h1 v-if="!person" class="title">{{ copy }}</h1>
+      <h1 v-if="!person" class="title">{{ teamCopy }}</h1>
       <h1 v-else class="title">
         <span>{{ person.name }}</span>
         <br />
@@ -17,11 +17,11 @@
         >LIST</span>
       </div>
     </div>
-    <div v-if="!isGridVisible" class="list" :class="{ disable: dotIsActive }">
+    <div v-if="!isGridVisible" class="list" :class="{ disable: activePeople }">
       <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
     </div>
     <div v-if="person" class="background-anim">
-      <img :src="person.file" alt />
+      <img :src="person.file" />
     </div>
   </section>
 </template>
@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      defaultCopy:
+      teamCopy:
         'Different is better. Our team shares rich layers of expertise, diverse backgrounds and a common passion for a job well done.'
     }
   },
@@ -44,17 +44,14 @@ export default {
     actions() {
       return this.$store.getters['grid/actions']('team')
     },
-    dotIsActive() {
-      return !!this.$store.getters['grid/activeDot']
-    },
-    person() {
-      return this.$store.getters['grid/person']
+    activePeople() {
+      return !!this.$store.getters['grid/currentPerson']
     },
     isGridVisible() {
       return this.$store.getters['grid/isVisible']
     },
-    copy() {
-      return this.person ? this.person.copy : this.defaultCopy
+    person() {
+      return this.$store.getters['grid/currentPerson']
     },
     currentVideo() {
       return this.person ? this.person.file : null
@@ -63,8 +60,8 @@ export default {
   methods: {
     toggleView(data) {
       if (data === null) return
-      this.$store.commit('grid/setDot', null)
-      this.$store.commit('grid/setPerson', null)
+      this.$store.commit('grid/setCurrentDot', null)
+      this.$store.commit('grid/setCurrentPerson', null)
       this.$store.commit('grid/setVisibility', data)
     }
   }
@@ -88,6 +85,7 @@ export default {
     padding: $padding 0;
     /deep/ .people {
       width: 20%;
+      padding-right: $padding;
       display: inline-block;
     }
     @media screen and (max-width: $mqTablet) {

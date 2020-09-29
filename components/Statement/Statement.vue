@@ -38,7 +38,7 @@ export default {
   methods: {
     intersect(page) {
       if (this.currentGrid === page) return
-      this.$store.commit('grid/setGrid', page)
+      this.$store.commit('grid/setCurrentGrid', page)
     }
   }
 }

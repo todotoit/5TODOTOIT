@@ -1,11 +1,13 @@
 import { substatements, team } from '~/assets/data.js'
 
 export const state = () => ({
-  substatement: null,
-  person: null,
-  activeDot: null,
-  currentGrid: null,
+  currentGrid:   null,
+  currentDot:    null,
+  currentCopy:   null,
+  currentPerson: null,
+
   isVisible: true,
+
   actions: {
     substatements,
     team
@@ -13,20 +15,23 @@ export const state = () => ({
 })
 
 export const getters = {
-  currentGrid: (state) => {
-    return state.currentGrid
-  },
-  isVisible: (state) => {
-    return state.isVisible
-  },
-  activeDot: (state) => {
-    return state.activeDot
-  },
   substatement: (state) => {
     return state.substatement
   },
-  person: (state) => {
-    return state.person
+  currentGrid: (state) => {
+    return state.currentGrid
+  },
+  currentDot: (state) => {
+    return state.currentDot
+  },
+  currentCopy: (state) => {
+    return state.currentCopy
+  },
+  currentPerson: (state) => {
+    return state.currentPerson
+  },
+  isVisible: (state) => {
+    return state.isVisible
   },
   actions: (state) => (key) => {
     return state.actions[key] || []
@@ -34,21 +39,20 @@ export const getters = {
 }
 
 export const mutations = {
-  setGrid(state, data) {
+  setCurrentGrid(state, data) {
     if (state.currentGrid === data) return
-    state.person = null
-    state.substatement = null
-    state.activeDot = null
+    state.currentCopy = null
+    state.currentPerson = null
     state.currentGrid = data
   },
-  setStatement(state, data) {
-    state.substatement = data
+  setCurrentCopy(state, data) {
+    state.currentCopy = data
   },
-  setPerson(state, data) {
-    state.person = data
+  setCurrentDot(state, data) {
+    state.currentDot = data
   },
-  setDot(state, data) {
-    state.activeDot = data
+  setCurrentPerson(state, data) {
+    state.currentPerson = data
   },
   setVisibility(state, data) {
     state.isVisible = data

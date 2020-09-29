@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     intersect() {
-      this.$store.commit('grid/setGrid', null)
+      this.$store.commit('grid/setCurrentGrid', null)
     }
   }
 }

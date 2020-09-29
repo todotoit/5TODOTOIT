@@ -2,23 +2,23 @@
   <section class="substatment">
     <div class="top">
       <h1 class="title">
-        {{ copy }}
+        {{ title }}
       </h1>
     </div>
     <div
-      v-show="!substatement"
+      v-show="!currentCopy"
       :key="1"
       class="bg-neutral"
-      :class="{ 'is-disable': substatement }"
+      :class="{ 'is-disable': currentCopy }"
     ></div>
-    <div v-show="substatement" :key="2" class="bg-anim" :class="{ 'is-enable': substatement }">
+    <div v-show="currentCopy" :key="2" class="bg-anim" :class="{ 'is-enable': currentCopy }">
       <video
         loop
         autoplay
         muted
         playsinline
         class="video"
-        :src="currentVideo"
+        :src="video"
       ></video>
     </div>
   </section>
@@ -29,22 +29,19 @@ export default {
   name: 'Substatment',
   data() {
     return {
-      defaultSubstatement:
+      defaultCopy:
         'Experiences are more than the sum of their parts. And what we do is more than the projects in our portfolio. Always be exploring.'
     }
   },
   computed: {
-    substatement() {
-      return this.$store.getters['grid/substatement']
+    currentCopy() {
+      return this.$store.getters['grid/currentCopy']
     },
-    copy() {
-      return this.substatement ? this.substatement.copy : this.defaultSubstatement
+    title() {
+      return this.currentCopy ? this.currentCopy.copy : this.defaultCopy
     },
-    currentVideo() {
-      return this.substatement ? this.substatement.file : null
-    },
-    actions() {
-      return this.$store.getters['grid/actions']('substatements')
+    video() {
+      return this.currentCopy ? this.currentCopy.file : null
     }
   }
 }
