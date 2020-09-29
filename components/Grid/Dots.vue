@@ -1,6 +1,6 @@
 <template>
-  <div ref="dots" class="dots" :class="{ disable: dotIsActive }">
-    <transition-group name="scale" tag="div" class="dots-container">
+  <div ref="dots" class="dots">
+    <transition-group name="scale" tag="div" class="dots-container" :class="{ disable: dotIsActive }">
       <Dot v-for="dot in dots" :id="dot.id" :key="dot.id" :action="dot.action" />
     </transition-group>
   </div>
