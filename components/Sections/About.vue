@@ -80,12 +80,12 @@ export default {
 
 <style lang="scss" scoped>
 .about {
-  background-color: $col-violet;
+  background-color: var(--col-primary);
   ul {
     list-style-type: none;
     li:before {
       content: '→';
-      color: $col-red;
+      color: var(--col-secondary);
       font-size: 1.5rem;
       padding-right: $padding/2;
     }

@@ -72,7 +72,7 @@ section {
 }
 
 a {
-  color: $col-red;
+  color: var(--col-secondary);
   text-decoration: none;
   &:hover {
     text-decoration: underline;

@@ -61,7 +61,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+:root {
+  --col-primary: #6123F3;
+  --col-secondary: #FF4A00;   
+}
+
 .logo {
   height: $navbar;
   width: 100%;

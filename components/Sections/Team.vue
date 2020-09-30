@@ -98,10 +98,10 @@ export default {
   }
   .top {
     .title span:first-child {
-      color: $col-red;
+      color: var(--col-secondary);
     }
     .is-active {
-      color: $col-red;
+      color: var(--col-secondary);
     }
     .cta-link {
       padding-top: $padding * 2;

@@ -56,7 +56,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: $col-violet;
+    background-color: var(--col-primary);
   }
   .bg-anim {
     position: absolute;

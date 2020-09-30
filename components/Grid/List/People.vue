@@ -52,7 +52,7 @@ export default {
   transition: all $animationDuration $bezier;
   .cta-link {
     span:first-child {
-      color: $col-red;
+      color: var(--col-secondary);
     }
     span:last-child {
       width: 70%;

@@ -54,7 +54,7 @@ export default {
   border-radius: 50px;
   &.clickable:not(.active) {
     pointer-events: all;
-    background-color: $col-red;
+    background-color: var(--col-secondary);
     &:hover {
       cursor: pointer;
       transform: scale(1.2);
@@ -62,7 +62,7 @@ export default {
   }
   &.active {
     pointer-events: all;
-    background-color: $col-red;
+    background-color: var(--col-secondary);
     transform-origin: center center;
     transform: scale(2);
   }
