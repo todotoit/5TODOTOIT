@@ -3,38 +3,59 @@
     <div class="logo">
       <img svg-inline class="todo" src="@/assets/icons/TODO_LOGO.svg" />
     </div>
-    <Intersect :threshold="threshold" @enter="intersect">
-      <Home />
-    </Intersect>
-    <Statement />
-    <Intersect :threshold="threshold" @enter="intersect">
-      <About />
-    </Intersect>
+    <Dots v-show="isGridVisible" />
+    <div class="sections">
+      <Intersect :threshold="threshold" @enter="intersect(null)">
+        <Home />
+      </Intersect>
+      <Intersect :threshold="threshold" @enter="intersect('substatements')">
+        <Substatement />
+      </Intersect>
+      <Intersect :threshold="threshold" @enter="intersect('team')">
+        <Team />
+      </Intersect>
+      <Intersect :threshold="threshold" @enter="intersect(null)">
+        <About />
+      </Intersect>
+    </div>
   </div>
 </template>
 
 <script>
 import Intersect from 'vue-intersect'
-import Home from '~/components/Home'
-import Statement from '~/components/Statement/Statement'
-import About from '~/components/About'
+import Home from '~/components/Sections/Home'
+import Substatement from '~/components/Sections/Substatement'
+import Team from '~/components/Sections/Team'
+import About from '~/components/Sections/About'
+import Dots from '~/components/Grid/Dots/Dots'
 
 export default {
   name: 'Index',
   components: {
-    Home,
     Intersect,
-    Statement,
+    Home,
+    Substatement,
+    Team,
+    Dots,
     About
   },
   data() {
     return {
-      threshold: [0.4]
+      threshold: [0.2]
+    }
+  },
+  computed: {
+    isGridVisible() {
+      return this.$store.getters['grid/isVisible']
+    },
+    currentGrid() {
+      return this.$store.getters['grid/currentGrid']
     }
   },
   methods: {
-    intersect() {
-      this.$store.commit('grid/setCurrentGrid', null)
+    intersect(page) {
+      if (this.currentGrid === page) return
+      this.$store.commit('grid/setCurrentGrid', page)
     }
   }
 }

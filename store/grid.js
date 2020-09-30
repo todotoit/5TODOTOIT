@@ -1,12 +1,12 @@
 import { substatements, team } from '~/assets/data.js'
 
 export const state = () => ({
-  currentGrid:   null,
-  currentDot:    null,
-  currentCopy:   null,
+  currentGrid: null,
+  currentDot: null,
+  currentCopy: null,
   currentPerson: null,
 
-  isVisible: true,
+  isVisible: false,
 
   actions: {
     substatements,
@@ -41,8 +41,11 @@ export const getters = {
 export const mutations = {
   setCurrentGrid(state, data) {
     if (state.currentGrid === data) return
+    state.currentDot = null
     state.currentCopy = null
     state.currentPerson = null
+    if(data) state.isVisible = true
+    else state.isVisible = false
     state.currentGrid = data
   },
   setCurrentCopy(state, data) {

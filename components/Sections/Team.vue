@@ -1,11 +1,11 @@
 <template>
   <section class="team">
     <div class="top">
-      <h1 v-if="!person" class="title">{{ teamCopy }}</h1>
+      <h1 v-if="!currentPerson" class="title">{{ teamCopy }}</h1>
       <h1 v-else class="title">
-        <span>{{ person.name }}</span>
+        <span>{{ currentPerson.name }}</span>
         <br />
-        <span>{{ person.jobs }}</span>
+        <span>{{ currentPerson.jobs }}</span>
       </h1>
       <div class="cta-link">
         SWITCH MODE
@@ -20,14 +20,14 @@
     <div v-if="!isGridVisible" class="list">
       <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
     </div>
-    <div v-if="person" class="background-anim">
-      <img :src="person.file" />
+    <div v-if="currentPerson" class="background-anim">
+      <img :src="currentPerson.file" />
     </div>
   </section>
 </template>
 
 <script>
-import People from '~/components/Grid/People'
+import People from '~/components/Grid/List/People'
 
 export default {
   name: 'Team',
@@ -44,17 +44,14 @@ export default {
     actions() {
       return this.$store.getters['grid/actions']('team')
     },
-    activePeople() {
-      return !!this.$store.getters['grid/currentPerson']
-    },
     isGridVisible() {
       return this.$store.getters['grid/isVisible']
     },
-    person() {
+    currentPerson() {
       return this.$store.getters['grid/currentPerson']
     },
     currentVideo() {
-      return this.person ? this.person.file : null
+      return this.currentPerson ? this.currentPerson.file : null
     }
   },
   methods: {

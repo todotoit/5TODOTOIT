@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Dot from '~/components/Grid/Dot'
+import Dot from '~/components/Grid/Dots/Dot'
 
 const breakpoints = {
   lg: 90,
@@ -117,13 +117,12 @@ export default {
 }
 .dots {
   z-index: 1000;
-  position: sticky;
-  top: calc(50% - (500px) - #{$padding});
+  position: fixed;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 500px;
   .dots-container {
-    background-color: gray;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(var(--cols), 0.5fr);
