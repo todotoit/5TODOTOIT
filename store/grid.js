@@ -6,7 +6,8 @@ export const state = () => ({
   currentCopy: null,
   currentPerson: null,
 
-  isVisible: false,
+  gridIsVisible: false,
+  listIsVisible: false,
 
   actions: {
     substatements,
@@ -30,8 +31,11 @@ export const getters = {
   currentPerson: (state) => {
     return state.currentPerson
   },
-  isVisible: (state) => {
-    return state.isVisible
+  gridIsVisible: (state) => {
+    return state.gridIsVisible
+  },
+  listIsVisible: (state) => {
+    return state.listIsVisible
   },
   actions: (state) => (key) => {
     return state.actions[key] || []
@@ -44,8 +48,8 @@ export const mutations = {
     state.currentDot = null
     state.currentCopy = null
     state.currentPerson = null
-    if(data) state.isVisible = true
-    else state.isVisible = false
+    if (data) state.gridIsVisible = true
+    else state.gridIsVisible = false
     state.currentGrid = data
   },
   setCurrentCopy(state, data) {
@@ -57,7 +61,10 @@ export const mutations = {
   setCurrentPerson(state, data) {
     state.currentPerson = data
   },
-  setVisibility(state, data) {
-    state.isVisible = data
+  setGridVisibility(state, data) {
+    state.gridIsVisible = data
+  },
+  setListVisibility(state, data){
+    state.listIsVisible = data
   }
 }

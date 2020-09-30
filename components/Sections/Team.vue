@@ -10,14 +10,11 @@
       <div class="cta-link">
         SWITCH MODE
         <span :class="{ 'is-active': isGridVisible }" @click.prevent="toggleView(true)">GRID</span>
-        /
-        <span
-          :class="{ 'is-active': !isGridVisible }"
-          @click.prevent="toggleView(false)"
-        >LIST</span>
+        <span> / </span>
+        <span :class="{ 'is-active': isListVisible }" @click.prevent="toggleView(false)">LIST</span>
       </div>
     </div>
-    <div v-if="!isGridVisible" class="list">
+    <div v-show="isListVisible" class="list">
       <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
     </div>
     <div v-if="currentPerson" class="background-anim">
@@ -45,7 +42,10 @@ export default {
       return this.$store.getters['grid/actions']('team')
     },
     isGridVisible() {
-      return this.$store.getters['grid/isVisible']
+      return this.$store.getters['grid/gridIsVisible']
+    },
+    isListVisible() {
+      return this.$store.getters['grid/listIsVisible']
     },
     currentPerson() {
       return this.$store.getters['grid/currentPerson']
@@ -59,7 +59,8 @@ export default {
       if (data === null) return
       this.$store.commit('grid/setCurrentDot', null)
       this.$store.commit('grid/setCurrentPerson', null)
-      this.$store.commit('grid/setVisibility', data)
+      this.$store.commit('grid/setGridVisibility', data)
+      this.$store.commit('grid/setListVisibility', !data)
     }
   }
 }

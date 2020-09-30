@@ -3,9 +3,7 @@
     <div class="logo">
       <img svg-inline class="todo" src="@/assets/icons/TODO_LOGO.svg" />
     </div>
-    <transition name="fade">
-      <Dots v-show="isGridVisible" />
-    </transition>
+    <Dots v-show="isGridVisible" />
     <div class="sections">
       <Intersect :threshold="threshold" @enter="intersect(null)">
         <Home />
@@ -54,7 +52,7 @@ export default {
   },
   computed: {
     isGridVisible() {
-      return this.$store.getters['grid/isVisible']
+      return this.$store.getters['grid/gridIsVisible']
     },
     currentGrid() {
       return this.$store.getters['grid/currentGrid']
