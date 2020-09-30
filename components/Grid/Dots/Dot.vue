@@ -1,7 +1,10 @@
 <template>
   <div
     class="dot"
-    :class="{ clickable: action, active: id === currentDot }"
+    :class="[
+      { clickable: action },
+      currentDot === id ? 'active' : Number.isInteger(currentDot) ? 'disable' : ''
+    ]"
     @click="runAction"
   ></div>
 </template>
@@ -59,6 +62,9 @@ export default {
     background-color: $col-red;
     transform-origin: center center;
     transform: scale(2);
+  }
+  &.disable:not(.clickable) {
+    opacity: 0;
   }
 }
 </style>

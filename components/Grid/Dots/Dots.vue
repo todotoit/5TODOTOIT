@@ -1,11 +1,6 @@
 <template>
   <div ref="dots" class="dots">
-    <transition-group
-      name="scale"
-      tag="div"
-      class="dots-container"
-      :class="{ disable: currentCopy }"
-    >
+    <transition-group name="scale" tag="div" class="dots-container">
       <Dot v-for="dot in dots" :id="dot.id" :key="dot.id" :action="dot.action" />
     </transition-group>
   </div>
@@ -130,9 +125,6 @@ export default {
     grid-gap: $padding;
     align-items: center;
     transform: all $animationDuration $bezier;
-    &.disable /deep/ .dot:not(.clickable) {
-      opacity: 0;
-    }
     /deep/ .dot {
       width: var(--dotSize);
       height: var(--dotSize);

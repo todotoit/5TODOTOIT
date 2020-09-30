@@ -2,7 +2,7 @@
   <div
     v-if="action"
     class="people"
-    :class="[currentDot === id ? 'active' : Number.isInteger(currentDot) ? 'disable' : '', '']"
+    :class="[currentDot === id ? 'active' : Number.isInteger(currentDot) ? 'disable' : '']"
     @click="runAction"
   >
     <h1 class="cta-link">
