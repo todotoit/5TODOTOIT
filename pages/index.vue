@@ -3,7 +3,9 @@
     <div class="logo">
       <img svg-inline class="todo" src="@/assets/icons/TODO_LOGO.svg" />
     </div>
-    <Dots v-show="isGridVisible" />
+    <transition name="fade">
+      <Dots v-show="isGridVisible" />
+    </transition>
     <div class="sections">
       <Intersect :threshold="threshold" @enter="intersect(null)">
         <Home />
