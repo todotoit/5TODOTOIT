@@ -30,6 +30,12 @@ import Substatement from '~/components/Sections/Substatement'
 import Team from '~/components/Sections/Team'
 import About from '~/components/Sections/About'
 import Dots from '~/components/Grid/Dots/Dots'
+import { random } from '~/utils/'
+
+const palette = [
+  ['#6123F3', '#FF4A00'],
+  ['#02E19F', '#FF4A00']
+]
 
 export default {
   name: 'Index',
@@ -54,10 +60,18 @@ export default {
       return this.$store.getters['grid/currentGrid']
     }
   },
+  mounted() {
+    this.updatePalette()
+  },
   methods: {
     intersect(page) {
       if (this.currentGrid === page) return
       this.$store.commit('grid/setCurrentGrid', page)
+    },
+    updatePalette() {
+      const index = random(0, palette.length - 1)
+      document.documentElement.style.setProperty('--col-primary', palette[index][0])
+      document.documentElement.style.setProperty('--col-secondary', palette[index][1])
     }
   }
 }
@@ -65,8 +79,8 @@ export default {
 
 <style lang="scss">
 :root {
-  --col-primary: #6123F3;
-  --col-secondary: #FF4A00;   
+  --col-primary: #6123f3;
+  --col-secondary: #ff4a00;
 }
 
 .logo {
