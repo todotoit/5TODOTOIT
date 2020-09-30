@@ -117,6 +117,7 @@ export default {
   left: 0;
   width: 100%;
   height: 500px;
+  pointer-events: none;
   .dots-container {
     height: 100%;
     display: grid;

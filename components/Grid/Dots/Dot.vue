@@ -48,10 +48,12 @@ export default {
 
 <style lang="scss" scoped>
 .dot {
+  pointer-events: none;
   transition: all $animationDuration $bezier;
   background-color: $col-white;
   border-radius: 50px;
   &.clickable:not(.active) {
+    pointer-events: all;
     background-color: $col-red;
     &:hover {
       cursor: pointer;
@@ -59,6 +61,7 @@ export default {
     }
   }
   &.active {
+    pointer-events: all;
     background-color: $col-red;
     transform-origin: center center;
     transform: scale(2);
