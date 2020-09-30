@@ -65,6 +65,7 @@ export default {
     background-color: var(--col-secondary);
     transform-origin: center center;
     transform: scale(2);
+    cursor: pointer;
   }
   &.disable:not(.clickable) {
     opacity: 0;
