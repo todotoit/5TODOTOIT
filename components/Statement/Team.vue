@@ -17,7 +17,7 @@
         >LIST</span>
       </div>
     </div>
-    <div v-if="!isGridVisible" class="list" :class="{ disable: activePeople }">
+    <div v-if="!isGridVisible" class="list">
       <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
     </div>
     <div v-if="person" class="background-anim">
@@ -97,9 +97,6 @@ export default {
         width: 100%;
         padding-bottom: $padding;
       }
-    }
-    &.disable /deep/ .people:not(.active) {
-      opacity: 0.3;
     }
   }
   .top {

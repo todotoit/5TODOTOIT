@@ -1,5 +1,10 @@
 <template>
-  <div v-if="action" class="people" :class="{ active: id === currentDot }" @click="runAction">
+  <div
+    v-if="action"
+    class="people"
+    :class="[currentDot === id ? 'active' : Number.isInteger(currentDot) ? 'disable' : '', '']"
+    @click="runAction"
+  >
     <h1 class="cta-link">
       <span> {{ action.name }}</span>
       <br />
@@ -55,6 +60,9 @@ export default {
   }
   &:hover {
     cursor: pointer;
+  }
+  &.disable {
+    opacity: 0.3;
   }
 }
 </style>
