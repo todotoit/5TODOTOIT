@@ -48,8 +48,14 @@ export const mutations = {
     state.currentDot = null
     state.currentCopy = null
     state.currentPerson = null
-    if (data) state.gridIsVisible = true
-    else state.gridIsVisible = false
+    if (data && state.listIsVisible) {
+      state.gridIsVisible = true
+      state.listIsVisible = false
+    } else if (data) {
+      state.gridIsVisible = true
+    } else {
+      state.gridIsVisible = false
+    }
     state.currentGrid = data
   },
   setCurrentCopy(state, data) {
@@ -64,7 +70,7 @@ export const mutations = {
   setGridVisibility(state, data) {
     state.gridIsVisible = data
   },
-  setListVisibility(state, data){
+  setListVisibility(state, data) {
     state.listIsVisible = data
   }
 }
