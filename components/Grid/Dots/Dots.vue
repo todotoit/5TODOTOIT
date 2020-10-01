@@ -118,8 +118,13 @@ export default {
   left: 0;
   width: 100%;
   height: 55%;
+  padding: 0 $padding/2;
   @media screen and (max-width: $mqMobile) {
     height: 65%;
+    padding: 0 $padding/4;
+  }
+  @media screen and (max-width: $mqSmallMobile) {
+    padding: 0 $padding/6;
   }
   pointer-events: none;
   .dots-container {
