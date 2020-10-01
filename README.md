@@ -12,7 +12,6 @@
 [ ] CDN for images and videos
 [ ] SEO
 [ ] Implement Scroll Transition
-[ ] Random palette on refresh
 ```
 
 ## Build Setup
