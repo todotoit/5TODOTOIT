@@ -40,8 +40,11 @@ export default {
     title() {
       return this.currentCopy ? this.currentCopy.copy : this.defaultCopy
     },
+    videoRatio() {
+      return this.$mq === 'sm' || this.$mq === 'xs' ? 'vertical' : 'horizontal'
+    },
     video() {
-      return this.currentCopy ? this.currentCopy.file : null
+      return this.currentCopy ? this.currentCopy.file[this.videoRatio] : null
     }
   }
 }
