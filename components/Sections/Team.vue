@@ -1,7 +1,7 @@
 <template>
   <section class="team">
     <div class="top">
-      <h1 v-if="!currentPerson" class="title">{{ teamCopy }}</h1>
+      <h1 v-if="isListVisible || !currentPerson" class="title">{{ teamCopy }}</h1>
       <h1 v-else class="title">
         <span>{{ currentPerson.name }}</span>
         <br />
@@ -72,9 +72,10 @@ export default {
   display: flex;
   flex-direction: column;
   background-color: $col-black;
+  justify-content: space-between;
   .list {
     width: 100%;
-    height: 400px;
+    height: 50%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
