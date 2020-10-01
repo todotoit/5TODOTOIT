@@ -7,6 +7,8 @@
         <br />
         <span>{{ currentPerson.jobs }}</span>
       </h1>
+    </div>
+    <div class="controls">
       <div class="cta-link">
         SWITCH MODE
         <span :class="{ 'is-active': isGridVisible }" @click.prevent="toggleView(true)">GRID</span>
@@ -105,12 +107,19 @@ export default {
     .is-active {
       color: var(--col-secondary);
     }
+  }
+  .controls {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-100%);
+    display: inline-block;
     .cta-link {
-      padding-top: $padding * 2;
-      z-index: 1000;
-      &:hover {
-        cursor: pointer;
+      span.is-active {
+        color: var(--col-secondary);
       }
+    }
+    @media screen and (max-width: $mqMobile) {
+      top: 32%;
     }
   }
   .background-anim {
