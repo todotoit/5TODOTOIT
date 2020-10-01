@@ -44,7 +44,6 @@ export default {
   },
   mounted() {
     this.gridContainer = this.$refs.dots
-    console.log(this.$mq)
     window.addEventListener('resize', this.debounceResizeCanvas)
   },
   methods: {
