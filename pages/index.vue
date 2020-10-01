@@ -98,6 +98,7 @@ export default {
   .todo {
     @media screen and (max-width: $mqMobile) {
       width: 70px;
+      transform: translateX(2px);
     }
     @media screen and (max-width: $mqSmallMobile) {
       transform: translateX(-4px);
