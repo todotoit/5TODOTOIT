@@ -10,9 +10,9 @@
 import Dot from '~/components/Grid/Dots/Dot'
 
 const breakpoints = {
-  lg: 90,
-  md: 70,
-  sm: 60,
+  lg: 80,
+  md: 65,
+  sm: 55,
   xs: 50
 }
 
@@ -44,6 +44,7 @@ export default {
   },
   mounted() {
     this.gridContainer = this.$refs.dots
+    console.log(this.$mq)
     window.addEventListener('resize', this.debounceResizeCanvas)
   },
   methods: {
@@ -116,7 +117,10 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 500px;
+  height: 55%;
+  @media screen and (max-width: $mqMobile) {
+    height: 65%;
+  }
   pointer-events: none;
   .dots-container {
     height: 100%;
