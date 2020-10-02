@@ -62,16 +62,10 @@ export default {
       const context = this
       this.$store.commit('sections/updateCurrent', value)
       const section = this.$store.getters['sections/sections'][this.current]
-      this.$scrollTo(section.target, 500, {
-        easing: 'linear',
+      this.$scrollTo(section.target, 50, {
+        easing: 'ease',
         onDone() {
-          if (section.id === 1) {
-            context.$store.commit('grid/setCurrentGrid', 'substatements')
-          } else if (section.id === 2) {
-            context.$store.commit('grid/setCurrentGrid', 'team')
-          } else {
-            context.$store.commit('grid/setCurrentGrid', null)
-          }
+          context.$store.commit('grid/setCurrentGrid', section.grid)
         }
       })
     },
