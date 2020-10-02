@@ -25,7 +25,9 @@ export default {
   css: ['@/assets/styles/partials/reset.css', '@/assets/styles/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/fullpage.js' },
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,

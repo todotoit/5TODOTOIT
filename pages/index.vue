@@ -4,7 +4,7 @@
       <img svg-inline class="todo" src="@/assets/icons/TODO_LOGO.svg" />
     </div>
     <Dots v-show="isGridVisible" />
-    <div class="sections">
+    <div v-fullpage-scroll="{ callback: changeSection, delay: 400 }" class="sections">
       <Intersect :threshold="threshold" @enter="intersect(null)">
         <Home />
       </Intersect>
@@ -62,6 +62,10 @@ export default {
     this.updatePalette()
   },
   methods: {
+    changeSection(value) {
+      console.log('Update Current')
+      // this.$store.commit('sections/updateCurrent', value)
+    },
     intersect(page) {
       if (this.currentGrid === page) return
       this.$store.commit('grid/setCurrentGrid', page)
