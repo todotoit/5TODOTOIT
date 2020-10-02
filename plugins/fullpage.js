@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { normalizeWheel } from '~/plugins/vendor/normalize-scroll'
+import { normalizeWheel } from '~/plugins/vendor/normalize-wheel'
 
 const currentScroll = 0
 const scrollOffset = 100
