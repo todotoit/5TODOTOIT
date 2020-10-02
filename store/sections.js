@@ -10,10 +10,10 @@ export const state = () => ({
 
 export const getters = {
   sections: (state) => {
-    return state.pages
+    return state.sections
   },
   section: (state) => {
-    return state.page
+    return state.section
   }
 }
 
