@@ -8,6 +8,7 @@
 
 <script>
 import Dot from '~/components/Grid/Dots/Dot'
+import { debounce } from '~/utils/'
 
 const breakpoints = {
   lg: 80,
@@ -44,7 +45,7 @@ export default {
   },
   mounted() {
     this.gridContainer = this.$refs.dots
-    window.addEventListener('resize', this.debounceResizeCanvas)
+    window.addEventListener('resize', debounce(this.init, 1000))
   },
   methods: {
     init() {
@@ -93,12 +94,6 @@ export default {
         if (point === this.$mq) return breakpoints[point]
       }
       return this.modulo
-    },
-    debounceResizeCanvas() {
-      if (this.resizeDebounce) clearTimeout(this.resizeDebounce)
-      this.resizeDebounce = setTimeout(() => {
-        this.init()
-      }, 1000)
     }
   }
 }
