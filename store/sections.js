@@ -5,7 +5,7 @@ export const state = () => ({
     { id: 1, target: '#substatement', name: 'Substatement' },
     { id: 2, target: '#team,', name: 'Team' },
     { id: 3, target: '#about', name: 'About' }
-  ],
+  ]
 })
 
 export const getters = {
@@ -19,6 +19,11 @@ export const getters = {
 
 export const mutations = {
   updateCurrent(state, data) {
+    if (
+      (state.current === 0 && data < 0) ||
+      (state.current === state.sections.length - 1 && data > 0)
+    )
+      return
     state.current += data
   }
 }

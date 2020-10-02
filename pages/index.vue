@@ -56,6 +56,12 @@ export default {
     },
     currentGrid() {
       return this.$store.getters['grid/currentGrid']
+    },
+    sections() {
+      return this.$store.getters['sections/sections']
+    },
+    current() {
+      return this.$store.getters['sections/current']
     }
   },
   mounted() {
@@ -63,8 +69,9 @@ export default {
   },
   methods: {
     changeSection(value) {
-      console.log('Update Current')
-      // this.$store.commit('sections/updateCurrent', value)
+      this.$store.commit('sections/updateCurrent', value)
+      const nextSection = this.$store.getters['sections/sections'][this.current]
+      console.log(nextSection.target)
     },
     intersect(page) {
       if (this.currentGrid === page) return
