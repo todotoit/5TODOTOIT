@@ -1,12 +1,14 @@
 <template>
   <section class="team">
     <div class="top">
-      <h1 v-if="isListVisible || !currentPerson" class="title">{{ teamCopy }}</h1>
-      <h1 v-else class="title">
-        <span>{{ currentPerson.name }}</span>
-        <br />
-        <span>{{ currentPerson.jobs }}</span>
-      </h1>
+      <transition name="fade" mode="out-in">
+        <h1 v-if="isListVisible || !currentPerson" :key="teamCopy" class="title">{{ teamCopy }}</h1>
+        <h1 v-else :key="currentPerson.name" class="title">
+          <span>{{ currentPerson.name }}</span>
+          <br />
+          <span>{{ currentPerson.jobs }}</span>
+        </h1>
+      </transition>
     </div>
     <div class="controls">
       <div class="cta-link">
@@ -20,7 +22,9 @@
       <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
     </div>
     <div v-if="currentPerson" class="background-anim">
-      <img :src="currentPerson.file" />
+      <transition name="fade" mode="out-in">
+        <img :key="currentPerson.name" :src="currentPerson.file" />
+      </transition>
     </div>
   </section>
 </template>

@@ -1,9 +1,11 @@
 <template>
   <section class="substatment">
     <div class="top">
-      <h1 class="title">
-        {{ title }}
-      </h1>
+      <transition name="fade" mode="out-in">
+        <h1 :key="title" class="title">
+          {{ title }}
+        </h1>
+      </transition>
     </div>
     <div
       v-show="!currentCopy"
