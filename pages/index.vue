@@ -5,24 +5,15 @@
     </div>
     <Dots v-show="isGridVisible" />
     <div v-fullpage-scroll="{ callback: changeSection, delay: 400 }" class="sections">
-      <Intersect :threshold="threshold" @enter="intersect(null)">
-        <Home />
-      </Intersect>
-      <Intersect :threshold="threshold" @enter="intersect('substatements')">
-        <Substatement />
-      </Intersect>
-      <Intersect :threshold="threshold" @enter="intersect('team')">
-        <Team />
-      </Intersect>
-      <Intersect :threshold="threshold" @enter="intersect(null)">
-        <About />
-      </Intersect>
+      <Home id="home" />
+      <Substatement id="substatement" />
+      <Team id="team" />
+      <About id="about" />
     </div>
   </div>
 </template>
 
 <script>
-import Intersect from 'vue-intersect'
 import Home from '~/components/Sections/Home'
 import Substatement from '~/components/Sections/Substatement'
 import Team from '~/components/Sections/Team'
@@ -38,7 +29,6 @@ const palette = [
 export default {
   name: 'Index',
   components: {
-    Intersect,
     Home,
     Substatement,
     Team,
@@ -69,9 +59,21 @@ export default {
   },
   methods: {
     changeSection(value) {
+      const context = this
       this.$store.commit('sections/updateCurrent', value)
-      const nextSection = this.$store.getters['sections/sections'][this.current]
-      console.log(nextSection.target)
+      const section = this.$store.getters['sections/sections'][this.current]
+      this.$scrollTo(section.target, 500, {
+        easing: 'linear',
+        onDone() {
+          if (section.id === 1) {
+            context.$store.commit('grid/setCurrentGrid', 'substatements')
+          } else if (section.id === 2) {
+            context.$store.commit('grid/setCurrentGrid', 'team')
+          } else {
+            context.$store.commit('grid/setCurrentGrid', null)
+          }
+        }
+      })
     },
     intersect(page) {
       if (this.currentGrid === page) return
