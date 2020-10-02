@@ -78,12 +78,15 @@ export default {
   .list {
     width: 100%;
     height: 50%;
+    height: 55%;
+    @media screen and (max-width: $mqMobile) {
+      height: 65%;
+    }
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-end;
     z-index: 4;
-    padding: $padding 0;
     /deep/ .people {
       width: 20%;
       padding-right: $padding;
@@ -110,16 +113,15 @@ export default {
   }
   .controls {
     position: absolute;
-    top: 45%;
-    transform: translateY(-100%);
+    top: 40%;
+    @media screen and (max-width: $mqMobile) {
+      top: 30%;
+    }
     display: inline-block;
     .cta-link {
       span.is-active {
         color: var(--col-secondary);
       }
-    }
-    @media screen and (max-width: $mqMobile) {
-      top: 32%;
     }
   }
   .background-anim {
@@ -136,7 +138,10 @@ export default {
     align-items: center;
     z-index: 1;
     img {
-      filter: brightness(90%);
+      filter: brightness(80%);
+      @media screen and (max-width: $mqMobile) {
+        filter: brightness(70%);
+      }
       width: 540px;
       height: 540px;
       object-fit: cover;
