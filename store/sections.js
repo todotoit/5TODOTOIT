@@ -3,7 +3,7 @@ export const state = () => ({
   sections: [
     { id: 0, target: '#home', name: 'Home' },
     { id: 1, target: '#substatement', name: 'Substatement' },
-    { id: 2, target: '#team,', name: 'Team' },
+    { id: 2, target: '#team', name: 'Team' },
     { id: 3, target: '#about', name: 'About' }
   ]
 })
