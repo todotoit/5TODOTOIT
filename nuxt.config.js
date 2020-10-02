@@ -1,3 +1,5 @@
+import { meta } from './meta'
+
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
   ssr: false,
@@ -6,18 +8,14 @@ export default {
     port: 3000, // default: 3000
     host: '0.0.0.0' // default: localhost
   },
-  
+
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'TODO',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
-    ],
+    meta,
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }]
   },
 
@@ -25,9 +23,7 @@ export default {
   css: ['@/assets/styles/partials/reset.css', '@/assets/styles/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-    { src: '~/plugins/fullpage.js' },
-  ],
+  plugins: [{ src: '~/plugins/fullpage.js' }],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
