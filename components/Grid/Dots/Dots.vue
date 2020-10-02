@@ -13,7 +13,7 @@ import { debounce } from '~/utils/'
 const breakpoints = {
   lg: 80,
   md: 65,
-  sm: 55,
+  sm: 50,
   xs: 50
 }
 
@@ -40,7 +40,7 @@ export default {
   },
   watch: {
     currentGrid() {
-      this.init()
+      setTimeout(this.init, 500)
     }
   },
   mounted() {
