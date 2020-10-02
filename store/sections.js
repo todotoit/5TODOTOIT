@@ -18,7 +18,7 @@ export const getters = {
 }
 
 export const mutations = {
-  setCurrent(state, data) {
-    state.current = data
+  updateCurrent(state, data) {
+    state.current += data
   }
 }
