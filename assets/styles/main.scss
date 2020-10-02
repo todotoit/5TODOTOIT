@@ -1,43 +1,31 @@
 html,
 body {
-  width: 100%;
-  height: 100%;
   font-family: $fontFamily;
   color: $col-white;
 }
 
-#__nuxt,
-#__layout, .main-container {
-  width: 100%;
-  height: 100%;
-}
-
 .sections {
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-}
-
-section {
-  padding: 0 $padding;
-  min-height: 100vh;
-  @media screen and (max-width: $mqMobile) {
-    padding: 0 $padding/2;
-  }
-  @media screen and (max-width: $mqSmallMobile) {
-    padding: 0 $padding/4;
-  }
-  .top {
-    position: relative;
-    padding-top: $navbar;
-    z-index: 100;
+  section {
+    padding: 0 $padding;
+    height: 100vh;
     @media screen and (max-width: $mqMobile) {
-      padding-top: calc(40px);
+      padding: 0 $padding/2;
     }
-  }
-  .bottom {
-    position: relative;
-    padding-top: $padding * 2;
+    @media screen and (max-width: $mqSmallMobile) {
+      padding: 0 $padding/4;
+    }
+    .top {
+      position: relative;
+      padding-top: $navbar;
+      z-index: 100;
+      @media screen and (max-width: $mqMobile) {
+        padding-top: calc(40px);
+      }
+    }
+    .bottom {
+      position: relative;
+      padding-top: $padding * 2;
+    }
   }
 }
 
