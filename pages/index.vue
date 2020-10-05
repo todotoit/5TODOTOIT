@@ -67,7 +67,7 @@ export default {
       clearTimeout(this.hintTimeout)
     },
     changeSection(value) {
-      if(this.hint) this.hideHint();
+      this.hideHint();
       this.$store.commit('sections/updateCurrent', value)
       const section = this.$store.getters['sections/sections'][this.current]
       this.$scrollTo(section.target, 50, {
