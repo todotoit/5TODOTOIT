@@ -4,7 +4,7 @@
       <img svg-inline class="todo" src="@/assets/icons/TODO_LOGO.svg" />
     </div>
     <Dots v-show="isGridVisible" />
-    <div v-fullpage-scroll="{ callback: changeSection, delay: 400 }" class="sections">
+    <div v-fullpage-scroll="{ callback: goToTheSection, delay: 400 }" class="sections">
       <Home id="home" />
       <Substatement id="substatement" :hint="hint" />
       <Team id="team" />
@@ -19,7 +19,7 @@ import Substatement from '~/components/Sections/Substatement'
 import Team from '~/components/Sections/Team'
 import About from '~/components/Sections/About'
 import Dots from '~/components/Grid/Dots/Dots'
-import { random } from '~/utils/'
+import { random, debounce } from '~/utils/'
 
 const palette = [
   ['#6123F3', '#FF4A00'],
@@ -60,20 +60,26 @@ export default {
     this.hintTimeout = setTimeout(() => {
       this.hint = true
     }, 3000)
+    window.addEventListener(
+      'resize',
+      debounce(() => {
+        this.goToTheSection(0)
+      }, 400)
+    )
   },
   methods: {
     hideHint() {
       this.hint = false
       clearTimeout(this.hintTimeout)
     },
-    changeSection(value) {
-      this.hideHint();
+    goToTheSection(value) {
+      this.hideHint()
       this.$store.commit('sections/updateCurrent', value)
-      const section = this.$store.getters['sections/sections'][this.current]
-      this.$scrollTo(section.target, 50, {
+      const targetSection = this.$store.getters['sections/sections'][this.current]
+      this.$scrollTo(targetSection.target, 50, {
         easing: 'ease',
         onDone: () => {
-          this.$store.commit('grid/setCurrentGrid', section.grid)
+          this.$store.commit('grid/setCurrentGrid', targetSection.grid)
         }
       })
     },

@@ -24,6 +24,7 @@ body {
   section {
     padding: 0 $padding;
     height: 100vh;
+    overflow: hidden;
     @media screen and (max-width: $mqMobile) {
       padding: 0 $padding/2;
     }
@@ -78,4 +79,9 @@ a {
   &:hover {
     text-decoration: underline;
   }
+}
+
+::selection {
+  background-color: var(--col-secondary);
+  // color: var(--col-primary);
 }
