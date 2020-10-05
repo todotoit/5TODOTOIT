@@ -62,20 +62,20 @@ export const meta = [
     hid: 'og:site_name',
     name: 'og:site_name',
     property: 'og:site_name',
-    content: 'OCH | Design + Art Direction'
+    content: 'TODO | Design studio. Always be exploring'
   },
   {
     hid: 'og:title',
     name: 'og:title',
     property: 'og:title',
-    content: 'OCH | Design + Art Direction'
+    content: 'TODO | Design studio. Always be exploring'
   },
   {
     hid: 'og:description',
     name: 'og:description',
     property: 'og:description',
     content:
-      'OCH is a collaborative design practice based in Milan. OCH is research, intuition, iteration, straightforward concept and clean execution.'
+      'Since 2007, TODO has been creating on- and offline experiences that blend the digital world into real life, so people can live valuable, transformative moments.'
   },
   {
     hid: 'og:url',
