@@ -6,7 +6,7 @@
     <Dots v-show="isGridVisible" />
     <div v-fullpage-scroll="{ callback: changeSection, delay: 400 }" class="sections">
       <Home id="home" />
-      <Substatement id="substatement" />
+      <Substatement id="substatement" :hint="hint" />
       <Team id="team" />
       <About id="about" />
     </div>
@@ -37,7 +37,8 @@ export default {
   },
   data() {
     return {
-      threshold: [0.8]
+      threshold: [0.8],
+      hint: false
     }
   },
   computed: {
@@ -56,9 +57,17 @@ export default {
   },
   mounted() {
     this.updatePalette()
+    this.hintTimeout = setTimeout(() => {
+      this.hint = true
+    }, 3000)
   },
   methods: {
+    hideHint() {
+      this.hint = false
+      clearTimeout(this.hintTimeout)
+    },
     changeSection(value) {
+      if(this.hint) this.hideHint();
       this.$store.commit('sections/updateCurrent', value)
       const section = this.$store.getters['sections/sections'][this.current]
       this.$scrollTo(section.target, 50, {

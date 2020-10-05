@@ -1,5 +1,5 @@
 <template>
-  <section class="substatment">
+  <section class="substatment" :class="{ hint: hint }">
     <div class="top">
       <transition name="fade" mode="out-in">
         <h1 :key="title" class="title">
@@ -39,6 +39,12 @@
 <script>
 export default {
   name: 'Substatment',
+  props: {
+    hint: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       defaultCopy:
@@ -69,6 +75,10 @@ export default {
 
 <style lang="scss" scoped>
 .substatment {
+  transition: transform $animationDuration $bezier;
+  &.hint {
+    transform: translateY(-20px);
+  }
   position: relative;
   .controls {
     .cta-link {
