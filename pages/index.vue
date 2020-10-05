@@ -59,13 +59,12 @@ export default {
   },
   methods: {
     changeSection(value) {
-      const context = this
       this.$store.commit('sections/updateCurrent', value)
       const section = this.$store.getters['sections/sections'][this.current]
       this.$scrollTo(section.target, 50, {
         easing: 'ease',
-        onDone() {
-          context.$store.commit('grid/setCurrentGrid', section.grid)
+        onDone: () => {
+          this.$store.commit('grid/setCurrentGrid', section.grid)
         }
       })
     },
