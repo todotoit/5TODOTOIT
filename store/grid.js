@@ -72,5 +72,10 @@ export const mutations = {
   },
   setListVisibility(state, data) {
     state.listIsVisible = data
+  },
+  reset(state) {
+    state.currentDot = null
+    state.currentCopy = null
+    state.currentPerson = null
   }
 }

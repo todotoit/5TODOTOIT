@@ -74,8 +74,7 @@ export default {
       this.$store.commit('grid/setListVisibility', !data)
     },
     close() {
-      this.$store.commit('grid/setCurrentDot', null)
-      this.$store.commit('grid/setCurrentPerson', null)
+      this.$store.commit('grid/reset')
     }
   }
 }
