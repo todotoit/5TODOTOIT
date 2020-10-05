@@ -4,6 +4,22 @@ body {
   color: $col-white;
 }
 
+.controls {
+  position: absolute;
+  top: 40%;
+  z-index: 100;
+  display: inline-block;
+  p {
+    display: inline-block;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  @media screen and (max-width: $mqMobile) {
+    top: 30%;
+  }
+}
+
 .sections {
   section {
     padding: 0 $padding;

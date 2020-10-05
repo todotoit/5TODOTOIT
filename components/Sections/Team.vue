@@ -11,12 +11,17 @@
       </transition>
     </div>
     <div class="controls">
-      <div class="cta-link">
-        SWITCH MODE
-        <span :class="{ 'is-active': isGridVisible }" @click.prevent="toggleView(true)">GRID</span>
-        <span> / </span>
-        <span :class="{ 'is-active': isListVisible }" @click.prevent="toggleView(false)">LIST</span>
-      </div>
+      <transition name="fade" mode="out-in">
+        <div v-if="!currentPerson" :key="'buttons'" class="cta-link">
+          SWITCH MODE
+          <p :class="{ 'is-active': isGridVisible }" @click.prevent="toggleView(true)">GRID</p>
+          <p>/</p>
+          <p :class="{ 'is-active': isListVisible }" @click.prevent="toggleView(false)">LIST</p>
+        </div>
+        <div v-else :key="'button'" class="cta-link" @click.prevent="close">
+          <p class="is-active">CLOSE</p>
+        </div>
+      </transition>
     </div>
     <div v-show="isListVisible" class="list">
       <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
@@ -67,6 +72,10 @@ export default {
       this.$store.commit('grid/setCurrentPerson', null)
       this.$store.commit('grid/setGridVisibility', data)
       this.$store.commit('grid/setListVisibility', !data)
+    },
+    close() {
+      this.$store.commit('grid/setCurrentDot', null)
+      this.$store.commit('grid/setCurrentPerson', null)
     }
   }
 }
@@ -116,15 +125,11 @@ export default {
     }
   }
   .controls {
-    position: absolute;
-    top: 40%;
-    @media screen and (max-width: $mqMobile) {
-      top: 30%;
-    }
-    display: inline-block;
     .cta-link {
-      span.is-active {
-        color: var(--col-secondary);
+      p {
+        &.is-active {
+          color: var(--col-secondary);
+        }
       }
     }
   }

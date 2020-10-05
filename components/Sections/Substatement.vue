@@ -13,6 +13,16 @@
       class="bg-neutral"
       :class="{ 'is-disable': currentCopy }"
     ></div>
+    <div class="controls">
+      <transition name="fade" mode="out-in">
+        <div v-if="!currentCopy" :key="'buttons'" class="cta-link">
+          CLICK ON THE <span>DOTS</span> TO FIND OUT
+        </div>
+        <div v-else :key="'button'" class="cta-link" @click.prevent="close">
+          <p>CLOSE</p>
+        </div>
+      </transition>
+    </div>
     <div v-show="currentCopy" :key="2" class="bg-anim" :class="{ 'is-enable': currentCopy }">
       <video
         loop
@@ -48,6 +58,12 @@ export default {
     video() {
       return this.currentCopy ? this.currentCopy.file[this.videoRatio] : null
     }
+  },
+  methods: {
+    close() {
+      this.$store.commit('grid/setCurrentDot', null)
+      this.$store.commit('grid/setCurrentPerson', null)
+    }
   }
 }
 </script>
@@ -55,6 +71,16 @@ export default {
 <style lang="scss" scoped>
 .substatment {
   position: relative;
+  .controls {
+    .cta-link {
+      span {
+        color: var(--col-secondary);
+      }
+      p {
+        color: var(--col-secondary);
+      }
+    }
+  }
   .bg-neutral {
     position: absolute;
     top: 0;
