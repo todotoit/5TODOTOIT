@@ -89,30 +89,17 @@ export default {
   justify-content: space-between;
   .list {
     width: 100%;
-    height: 50%;
     height: 55%;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: baseline;
+    z-index: 4;
+    @media screen and (max-width: $mqTablet) {
+      overflow-y: scroll;
+      flex-flow: column nowrap;
+    }
     @media screen and (max-width: $mqMobile) {
       height: 65%;
-    }
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    z-index: 4;
-    /deep/ .people {
-      width: 20%;
-      padding-right: $padding;
-      display: inline-block;
-    }
-    @media screen and (max-width: $mqTablet) {
-      max-width: 100%;
-      overflow-y: scroll;
-      flex-direction: column;
-      flex-wrap: nowrap;
-      /deep/ .people {
-        width: 100%;
-        padding-bottom: $padding;
-      }
     }
   }
   .top {

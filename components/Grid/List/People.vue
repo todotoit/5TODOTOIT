@@ -50,6 +50,20 @@ export default {
 .people {
   align-self: baseline;
   transition: all $animationDuration $bezier;
+  display: block;
+  width: 20%;
+  padding-right: $padding;
+  padding-bottom: $padding * 4;
+  &:hover {
+    cursor: pointer;
+  }
+  &.disable {
+    opacity: 0.3;
+  }
+  @media screen and (max-width: $mqTablet) {
+    width: 100%;
+    padding-bottom: $padding;
+  }
   .cta-link {
     span:first-child {
       color: var(--col-secondary);
@@ -57,12 +71,6 @@ export default {
     span:last-child {
       width: 70%;
     }
-  }
-  &:hover {
-    cursor: pointer;
-  }
-  &.disable {
-    opacity: 0.3;
   }
 }
 </style>
