@@ -1,17 +1,5 @@
 # 5TODOTOIT
 
-## Optimizations
-
-```
-[ ] Lista che scrolla, disabilitare scroll della pagina
-[ ] Quando sono nella vista lista, e faccio il resize, si spacca la grid dots
-[ ] Normalizzare lo scroll, touch, trackpad e mouse
-[ ] Check Media Queries
-[ ] Delay animation on dot clickable 
-[ ] Dot Attraction
-[ ] Click fuori dalla griglia, resetta lo stato 
-```
-
 ## Build Setup
 
 ```bash
