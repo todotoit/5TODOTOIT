@@ -1,5 +1,5 @@
 <template>
-  <div ref="dots" class="dots">
+  <div ref="dots" class="dots" :class="{ hint: hint }">
     <transition-group name="scale" tag="div" class="dots-container">
       <Dot v-for="dot in dots" :id="dot.id" :key="dot.id" :action="dot.action" />
     </transition-group>
@@ -24,7 +24,8 @@ export default {
   },
   data() {
     return {
-      dots: []
+      dots: [],
+      hint: false
     }
   },
   computed: {
@@ -46,6 +47,9 @@ export default {
   mounted() {
     this.gridContainer = this.$refs.dots
     window.addEventListener('resize', debounce(this.init, 1000))
+    this.hintTimeout = setTimeout(() => {
+      this.hint = true
+    }, 2000)
   },
   methods: {
     init() {
@@ -113,6 +117,16 @@ export default {
   width: 100%;
   height: 55%;
   padding: 0 $padding/2;
+  &.hint {
+    .dots-container {
+      /deep/ .clickable {
+        animation: scale $animationDuration * 4 $bezier;
+      }
+      /deep/ .clickable.dot:nth-child(1) {
+        // animation-delay: (($i) + s);
+      }
+    }
+  }
   @media screen and (max-width: $mqMobile) {
     height: 65%;
     padding: 0 $padding/4;
@@ -134,6 +148,18 @@ export default {
       height: var(--dotSize);
       justify-self: center;
     }
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.7);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 </style>
