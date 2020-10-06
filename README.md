@@ -3,15 +3,13 @@
 ## Optimizations
 
 ```
-[ ] Preload video before show 
-[ ] Preload Team GIF before show 
-[ ] Vue Transitions
-    [ ] Between copy 
-    [ ] Between video
-    [ ] Between grid
-[ ] CDN for images and videos
-[ ] SEO
-[ ] Implement Scroll Transition
+[ ] Lista che scrolla, disabilitare scroll della pagina
+[ ] Quando sono nella vista lista, e faccio il resize, si spacca la grid dots
+[ ] Normalizzare lo scroll, touch, trackpad e mouse
+[ ] Check Media Queries
+[ ] Delay animation on dot clickable 
+[ ] Dot Attraction
+[ ] Click fuori dalla griglia, resetta lo stato 
 ```
 
 ## Build Setup
