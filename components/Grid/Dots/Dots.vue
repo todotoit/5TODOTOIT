@@ -1,7 +1,7 @@
 <template>
   <div ref="dots" class="dots" :class="{ hint: hint }">
     <transition-group name="scale" tag="div" class="dots-container">
-      <Dot v-for="dot in dots" :id="dot.id" :key="dot.id" :action="dot.action" />
+      <Dot v-for="dot in dots" :key="dot.id" :action="dot.action" />
     </transition-group>
   </div>
 </template>
@@ -34,9 +34,6 @@ export default {
     },
     actions() {
       return this.$store.getters['grid/actions'](this.currentGrid)
-    },
-    currentCopy() {
-      return !!this.$store.getters['grid/currentDot']
     }
   },
   watch: {
@@ -116,9 +113,9 @@ export default {
     .dots-container {
       /deep/ .clickable {
         animation: scale $animationDuration * 4 $bezier;
-      }
-      /deep/ .clickable.dot:nth-child(1) {
-        // animation-delay: (($i) + s);
+        &:nth-child(1) {
+          // animation-delay: (($i) + s);
+        }
       }
     }
   }

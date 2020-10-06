@@ -2,7 +2,7 @@
   <div
     v-if="action"
     class="people"
-    :class="[currentDot === id ? 'active' : Number.isInteger(currentDot) ? 'disable' : '']"
+    :class="isActive"
     @click="runAction"
   >
     <h1 class="cta-link">
@@ -20,25 +20,28 @@ export default {
     action: {
       type: Object,
       default: null
-    },
-    id: {
-      type: Number,
-      default: 0
     }
   },
   computed: {
-    currentDot() {
-      return this.$store.getters['grid/currentDot']
+    currentAction() {
+      return this.$store.getters['grid/currentAction']
+    },
+    isActive() {
+      if (this.currentAction) {
+        if(this.action.id === this.currentAction) return 'active'
+        else return 'disabled'
+      }
+      return ''
     }
   },
   methods: {
     runAction() {
       if (!this.action) return
-      if (this.id !== this.currentDot) {
-        this.$store.commit('grid/setCurrentDot', this.id)
+      if (this.action.id !== this.currentAction) {
+        this.$store.commit('grid/setCurrentAction', this.action.id)
         this.$store.commit('grid/setCurrentPerson', this.action)
       } else {
-        this.$store.commit('grid/setCurrentDot', null)
+        this.$store.commit('grid/setCurrentAction', null)
         this.$store.commit('grid/setCurrentPerson', null)
       }
     }
@@ -57,7 +60,7 @@ export default {
   &:hover {
     cursor: pointer;
   }
-  &.disable {
+  &.disabled {
     opacity: 0.3;
   }
   @media screen and (max-width: $mqTablet) {

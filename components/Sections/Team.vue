@@ -68,7 +68,7 @@ export default {
   methods: {
     toggleView(data) {
       if (data === null) return
-      this.$store.commit('grid/setCurrentDot', null)
+      this.$store.commit('grid/setCurrentAction', null)
       this.$store.commit('grid/setCurrentPerson', null)
       this.$store.commit('grid/setGridVisibility', data)
       this.$store.commit('grid/setListVisibility', !data)

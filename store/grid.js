@@ -2,9 +2,9 @@ import { substatements, team } from '~/assets/data.js'
 
 export const state = () => ({
   currentGrid: null,
-  currentDot: null,
   currentCopy: null,
   currentPerson: null,
+  currentAction: null,
 
   gridIsVisible: false,
   listIsVisible: false,
@@ -22,8 +22,8 @@ export const getters = {
   currentGrid: (state) => {
     return state.currentGrid
   },
-  currentDot: (state) => {
-    return state.currentDot
+  currentAction: (state) => {
+    return state.currentAction
   },
   currentCopy: (state) => {
     return state.currentCopy
@@ -45,7 +45,7 @@ export const getters = {
 export const mutations = {
   setCurrentGrid(state, data) {
     if (state.currentGrid === data) return
-    state.currentDot = null
+    state.currentAction = null
     state.currentCopy = null
     state.currentPerson = null
     if (data && state.listIsVisible) {
@@ -61,8 +61,8 @@ export const mutations = {
   setCurrentCopy(state, data) {
     state.currentCopy = data
   },
-  setCurrentDot(state, data) {
-    state.currentDot = data
+  setCurrentAction(state,data) {
+    state.currentAction = data  
   },
   setCurrentPerson(state, data) {
     state.currentPerson = data
@@ -74,7 +74,7 @@ export const mutations = {
     state.listIsVisible = data
   },
   reset(state) {
-    state.currentDot = null
+    state.currentAction = null
     state.currentCopy = null
     state.currentPerson = null
   }

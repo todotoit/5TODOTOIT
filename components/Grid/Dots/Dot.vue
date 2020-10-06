@@ -1,12 +1,5 @@
 <template>
-  <div
-    class="dot"
-    :class="[
-      { clickable: action },
-      currentDot === id ? 'active' : Number.isInteger(currentDot) ? 'disable' : ''
-    ]"
-    @click="runAction"
-  ></div>
+  <div class="dot" :class="[{ clickable: action }, isActive]" @click="runAction"></div>
 </template>
 
 <script>
@@ -16,29 +9,32 @@ export default {
     action: {
       type: Object,
       default: null
-    },
-    id: {
-      type: Number,
-      default: 0
     }
   },
   computed: {
     currentGrid() {
       return this.$store.getters['grid/currentGrid']
     },
-    currentDot() {
-      return this.$store.getters['grid/currentDot']
+    currentAction() {
+      return this.$store.getters['grid/currentAction']
+    },
+    isActive() {
+      if (this.currentAction) {
+        if (!this.action) return 'disabled'
+        else if (this.action.id === this.currentAction) return 'active' 
+      }
+      return ''
     }
   },
   methods: {
     runAction() {
       if (!this.action) return
       const mutation = this.currentGrid === 'team' ? 'setCurrentPerson' : 'setCurrentCopy'
-      if (this.id !== this.currentDot) {
-        this.$store.commit('grid/setCurrentDot', this.id)
+      if (this.action.id !== this.currentAction) {
+        this.$store.commit('grid/setCurrentAction', this.action.id)
         this.$store.commit(`grid/${mutation}`, this.action)
       } else {
-        this.$store.commit('grid/setCurrentDot', null)
+        this.$store.commit('grid/setCurrentAction', null)
         this.$store.commit(`grid/${mutation}`, null)
       }
     }
@@ -67,7 +63,7 @@ export default {
     transform: scale(2);
     cursor: pointer;
   }
-  &.disable:not(.clickable) {
+  &.disabled:not(.clickable) {
     opacity: 0;
   }
 }
