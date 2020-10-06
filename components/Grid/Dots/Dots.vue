@@ -41,28 +41,22 @@ export default {
   },
   watch: {
     currentGrid() {
-      setTimeout(this.init, 500)
+      setTimeout(this.initGrid, 500)
     }
   },
   mounted() {
     this.gridContainer = this.$refs.dots
-    window.addEventListener('resize', debounce(this.init, 1000))
+    window.addEventListener('resize', debounce(this.initGrid, 1000))
     this.hintTimeout = setTimeout(() => {
       this.hint = true
     }, 2000)
   },
   methods: {
-    init() {
-      this.initGrid()
-    },
     initGrid() {
-      this.modulo = this.updateModulo() // Update modulo based on current device
+      this.modulo = this.updateModulo()
       this.bounds = this.gridContainer.getBoundingClientRect()
 
-      // Clear dots array
       this.dots = []
-
-      // // if (!this.currentGrid) return
 
       this.cols = Math.floor(this.bounds.width / this.modulo)
       this.rows = Math.floor(this.bounds.height / this.modulo)
