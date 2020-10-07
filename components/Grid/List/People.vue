@@ -3,7 +3,7 @@
     v-if="action"
     class="people"
     :class="isActive"
-    @click="runAction"
+    @click.stop="runAction"
   >
     <h1 class="cta-link">
       <span> {{ action.name }}</span>
