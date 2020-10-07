@@ -23,7 +23,7 @@ export default {
   css: ['@/assets/styles/partials/reset.css', '@/assets/styles/main.scss'],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [{ src: '~/plugins/fullpage.js' }],
+  plugins: [{ src: '~/plugins/fullpage.js' }, { src: '~/plugins/vue-clickaway.js', ssr: false }],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,

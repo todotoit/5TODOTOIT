@@ -1,5 +1,10 @@
 <template>
-  <div class="dot" :class="[{ clickable: action }, isActive]" @click="runAction"></div>
+  <div
+    v-on-clickaway="close"
+    class="dot"
+    :class="[{ clickable: action }, isActive]"
+    @click.stop="runAction"
+  ></div>
 </template>
 
 <script>
@@ -21,7 +26,7 @@ export default {
     isActive() {
       if (this.currentAction) {
         if (!this.action) return 'disabled'
-        else if (this.action.id === this.currentAction) return 'active' 
+        else if (this.action.id === this.currentAction) return 'active'
       }
       return ''
     }
@@ -37,6 +42,11 @@ export default {
         this.$store.commit('grid/setCurrentAction', null)
         this.$store.commit(`grid/${mutation}`, null)
       }
+    },
+    close () {
+      const mutation = this.currentGrid === 'team' ? 'setCurrentPerson' : 'setCurrentCopy'
+      this.$store.commit('grid/setCurrentAction', null)
+      this.$store.commit(`grid/${mutation}`, null)
     }
   }
 }
@@ -49,7 +59,7 @@ export default {
   background-color: $col-white;
   border-radius: 50px;
   &.clickable:not(.active) {
-    pointer-events: all;
+    pointer-events: auto;
     background-color: var(--col-secondary);
     &:hover {
       cursor: pointer;
@@ -57,7 +67,7 @@ export default {
     }
   }
   &.active {
-    pointer-events: all;
+    pointer-events: auto;
     background-color: var(--col-secondary);
     transform-origin: center center;
     transform: scale(2);
