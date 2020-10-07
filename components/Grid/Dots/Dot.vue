@@ -43,7 +43,7 @@ export default {
         this.$store.commit(`grid/${mutation}`, null)
       }
     },
-    close () {
+    close() {
       const mutation = this.currentGrid === 'team' ? 'setCurrentPerson' : 'setCurrentCopy'
       this.$store.commit('grid/setCurrentAction', null)
       this.$store.commit(`grid/${mutation}`, null)
@@ -55,25 +55,22 @@ export default {
 <style lang="scss" scoped>
 .dot {
   pointer-events: none;
-  transition: all $animationDuration $bezier;
   background-color: $col-white;
   border-radius: 50px;
-  &.clickable:not(.active) {
+  &.clickable {
+    cursor: pointer;
     pointer-events: auto;
     background-color: var(--col-secondary);
+    transition: transform $animationDuration $bezier;
+    will-change: transform;
     &:hover {
-      cursor: pointer;
       transform: scale(1.2);
     }
+    &.active {
+      transform: scale(2);
+    }
   }
-  &.active {
-    pointer-events: auto;
-    background-color: var(--col-secondary);
-    transform-origin: center center;
-    transform: scale(2);
-    cursor: pointer;
-  }
-  &.disabled:not(.clickable) {
+  &.disabled {
     opacity: 0;
   }
 }
