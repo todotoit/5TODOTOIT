@@ -57,6 +57,7 @@ export default {
   pointer-events: none;
   background-color: $col-white;
   border-radius: 50px;
+  transition: background-color .3s $bezier;
   &.clickable {
     cursor: pointer;
     pointer-events: auto;

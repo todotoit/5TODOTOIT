@@ -1,7 +1,7 @@
 <template>
   <div ref="dots" class="dots" :class="{ hint: hint }">
     <transition-group v-show="isGridVisible" name="scale" tag="div" class="dots-container">
-      <Dot v-for="dot in dots" :key="dot.id" :action="dot.action" />
+      <Dot v-for="dot in dots" :key="dot.id" :action="dot.action" :index="dot.index" :style="{ animationDelay: `${(dot.index+1) * 100}ms`}" />
     </transition-group>
   </div>
 </template>
@@ -41,6 +41,9 @@ export default {
   },
   watch: {
     currentGrid() {
+      this.dots.map(d => {
+        d.action = null
+      })
       setTimeout(this.initGrid, 500)
     }
   },
@@ -85,6 +88,10 @@ export default {
         }
         this.dots[dot].action = action
         this.current = 0
+      })
+      this.dots.filter((d) => { return d.action }).map((d,i) => {
+        d.index = i
+        return d
       })
     },
     updateModulo() {
