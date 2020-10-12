@@ -76,9 +76,13 @@ Vue.directive('fullpage-scroll', {
     })
     el.addEventListener('touchmove', touch)
     document.addEventListener('keydown', (e) => {
-      e.preventDefault()
-      if(e.key === 'ArrowUp') return options.callback(-1)
-      if(e.key === 'ArrowDown') return options.callback(1)
+      if(e.key === 'ArrowUp') {
+        e.preventDefault()
+        return options.callback(-1)
+      } else if(e.key === 'ArrowDown') {
+        e.preventDefault()
+        return options.callback(1)
+      }
     })
   }
 })
