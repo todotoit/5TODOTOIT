@@ -4,7 +4,7 @@
       <img svg-inline class="todo" src="@/assets/icons/TODO_LOGO.svg" />
     </div>
     <div v-fullpage-scroll="{ callback: goToTheSection, delay: 400 }" class="sections">
-      <Dots v-show="isGridVisible" />
+      <Dots />
       <Home id="home" />
       <Substatement id="substatement" :hint="hint" />
       <Team id="team" />

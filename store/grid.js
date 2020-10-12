@@ -62,7 +62,7 @@ export const mutations = {
     state.currentCopy = data
   },
   setCurrentAction(state,data) {
-    state.currentAction = data  
+    state.currentAction = data
   },
   setCurrentPerson(state, data) {
     state.currentPerson = data

@@ -1,6 +1,6 @@
 <template>
   <div ref="dots" class="dots" :class="{ hint: hint }">
-    <transition-group name="scale" tag="div" class="dots-container">
+    <transition-group v-show="isGridVisible" name="scale" tag="div" class="dots-container">
       <Dot v-for="dot in dots" :key="dot.id" :action="dot.action" />
     </transition-group>
   </div>
@@ -29,6 +29,9 @@ export default {
     }
   },
   computed: {
+    isGridVisible() {
+      return this.$store.getters['grid/gridIsVisible']
+    },
     currentGrid() {
       return this.$store.getters['grid/currentGrid']
     },
@@ -113,9 +116,6 @@ export default {
     .dots-container {
       /deep/ .clickable {
         animation: scale $animationDuration * 4 $bezier;
-        &:nth-child(1) {
-          // animation-delay: (($i) + s);
-        }
       }
     }
   }
@@ -136,7 +136,6 @@ export default {
     grid-template-rows: repeat(var(--rows), 0.5fr);
     grid-gap: $padding;
     align-items: center;
-    transform: all $animationDuration $bezier;
     /deep/ .dot {
       width: var(--dotSize);
       height: var(--dotSize);
