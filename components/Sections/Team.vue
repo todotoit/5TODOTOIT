@@ -28,7 +28,15 @@
     </div>
     <div v-if="currentPerson" class="background-anim">
       <transition name="fade" mode="out-in">
-        <img :key="currentPerson.name" :src="currentPerson.file" />
+        <video
+          :key="currentPerson.name"
+          loop
+          autoplay
+          muted
+          playsinline
+          class="video"
+          :src="currentPerson.file"
+        ></video>
       </transition>
     </div>
   </section>
@@ -132,7 +140,7 @@ export default {
     justify-content: center;
     align-items: center;
     z-index: 1;
-    img {
+    video {
       filter: brightness(80%);
       @media screen and (max-width: $mqMobile) {
         filter: brightness(70%);
