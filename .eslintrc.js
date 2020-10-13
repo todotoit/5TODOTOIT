@@ -20,6 +20,8 @@ module.exports = {
     'vue/singleline-html-element-content-newline': 'off',
     'vue/html-self-closing': 'off',
     'no-unused-vars': ['warn', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
-    'vue/no-unused-components': ['warn', { ignoreWhenBindingPresent: true }]
+    'vue/no-unused-components': ['warn', { ignoreWhenBindingPresent: true }],
+    'prefer-const': 'warn',
+    'spaced-comment': 'warn'
   }
 }
