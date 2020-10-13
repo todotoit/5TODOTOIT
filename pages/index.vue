@@ -3,7 +3,7 @@
     <div class="logo">
       <img svg-inline class="todo" src="@/assets/icons/TODO_LOGO.svg" />
     </div>
-    <div v-fullpage-scroll="{ callback: goToTheSection, delay: 400 }" class="sections">
+    <div v-fullpage-scroll="{ callback: goToTheSection, delay: 1000 }" class="sections">
       <Dots />
       <Home id="home" />
       <Substatement id="substatement" :hint="hint" />
@@ -74,12 +74,14 @@ export default {
     },
     goToTheSection(value) {
       this.hideHint()
+      this.$store.commit('sections/isScrolling', true)
       this.$store.commit('sections/updateCurrent', value)
       const targetSection = this.$store.getters['sections/sections'][this.current]
       this.$scrollTo(targetSection.target, 50, {
         easing: 'ease',
         onDone: () => {
           this.$store.commit('grid/setCurrentGrid', targetSection.grid)
+          this.$store.commit('sections/isScrolling', false)
         }
       })
     },

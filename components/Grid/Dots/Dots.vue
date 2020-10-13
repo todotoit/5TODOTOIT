@@ -1,8 +1,10 @@
 <template>
   <div ref="dots" class="dots" :class="{ hint: hint }">
-    <transition-group v-show="isGridVisible" name="scale" tag="div" class="dots-container">
-      <Dot v-for="dot in dots" :key="dot.id" :action="dot.action" :index="dot.index" :style="{ animationDelay: `${(dot.index+1) * 100}ms`}" />
-    </transition-group>
+    <transition name="fade" :duration="{ enter: 300, leave: 500 }">
+      <div v-show="isGridVisible" class="dots-container">
+        <Dot v-for="dot in dots" :key="dot.id" :action="dot.action" :index="dot.index" :style="{ animationDelay: `${(dot.index+1) * 100}ms`}" />
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -149,6 +151,13 @@ export default {
       justify-self: center;
     }
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s $bezier;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 
 @keyframes scale {

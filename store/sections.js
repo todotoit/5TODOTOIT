@@ -1,5 +1,6 @@
 export const state = () => ({
   current: 0,
+  isScrolling: false,
   sections: [
     { id: 0, target: '#home', name: 'Home', grid: null },
     { id: 1, target: '#substatement', name: 'Substatement', grid: 'substatements' },
@@ -14,6 +15,9 @@ export const getters = {
   },
   current: (state) => {
     return state.current
+  },
+  isScrolling: (state) => {
+    return state.isScrolling
   }
 }
 
@@ -25,5 +29,8 @@ export const mutations = {
     )
       return
     state.current += data
+  },
+  isScrolling(state, value) {
+    state.isScrolling = value
   }
 }

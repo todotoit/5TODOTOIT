@@ -27,9 +27,10 @@ Vue.directive('fullpage-scroll', {
       event.preventDefault()
       event.stopPropagation()
       if (isScrolling) return
+      isScrolling = true
       const wheel = normalizeWheel(event)
       const spinY = Math.abs(wheel.spinY)
-      if (spinY <= 0.025) lastspin = 0
+      if (spinY <= 0.01) lastspin = 0
       if (timeout || Math.abs(lastspin) >= spinY) return
 
       timeout = setTimeout(() => {
@@ -40,13 +41,15 @@ Vue.directive('fullpage-scroll', {
       }, options.delay)
 
       lastspin = wheel.spinY
-      if (wheel.spinY > 0.05) options.callback(1)
-      if (wheel.spinY < -0.05) options.callback(-1)
+      if (wheel.spinY > 0.01) options.callback(1)
+      if (wheel.spinY < -0.01) options.callback(-1)
     }
 
     const handleTouch = (event) => {
       event.preventDefault()
       event.stopPropagation()
+      if (isScrolling) return
+      isScrolling = true
       offsetMobile = touchStart - event.touches[0].pageY
 
       if (timeout || Math.abs(lastspin) >= Math.abs(offsetMobile)) return
@@ -55,6 +58,7 @@ Vue.directive('fullpage-scroll', {
         lastspin = 0
         clearTimeout(timeout)
         timeout = null
+        isScrolling = false
       }, options.delay)
 
       lastspin = offsetMobile
