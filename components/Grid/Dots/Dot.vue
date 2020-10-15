@@ -57,12 +57,12 @@ export default {
   pointer-events: none;
   background-color: $col-white;
   border-radius: 50px;
-  transition: background-color .3s $bezier;
+  transition: background-color 0.3s $bezier, transform 0.2s ease-out;
+  will-change: transform;
   &.clickable {
     cursor: pointer;
     pointer-events: auto;
     background-color: var(--col-secondary);
-    transition: transform $animationDuration $bezier;
     will-change: transform;
     &:hover {
       transform: scale(1.2);

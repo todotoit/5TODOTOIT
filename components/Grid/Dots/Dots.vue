@@ -1,8 +1,15 @@
 <template>
   <div ref="dots" class="dots" :class="{ hint: hint }">
     <transition name="fade" :duration="{ enter: 300, leave: 500 }">
-      <div v-show="isGridVisible" class="dots-container">
-        <Dot v-for="dot in dots" :key="dot.id" :action="dot.action" :index="dot.index" :style="{ animationDelay: `${(dot.index+1) * 100}ms`}" />
+      <div v-show="isGridVisible" v-move-dots class="dots-container">
+        <Dot
+          v-for="dot in dots"
+          ref="dot"
+          :key="dot.id"
+          :action="dot.action"
+          :index="dot.index"
+          :style="{ animationDelay: `${(dot.index + 1) * 100}ms` }"
+        />
       </div>
     </transition>
   </div>
@@ -43,7 +50,7 @@ export default {
   },
   watch: {
     currentGrid() {
-      this.dots.map(d => {
+      this.dots.map((d) => {
         d.action = null
       })
       setTimeout(this.initGrid, 500)
@@ -91,9 +98,16 @@ export default {
         this.dots[dot].action = action
         this.current = 0
       })
-      this.dots.filter((d) => { return d.action }).map((d,i) => {
-        d.index = i
-        return d
+      this.dots
+        .filter((d) => {
+          return d.action
+        })
+        .map((d, i) => {
+          d.index = i
+          return d
+        })
+      if (this.$refs.dot) this.$refs.dot.forEach((d) => {
+        d.$el.style.transform = ''
       })
     },
     updateModulo() {
@@ -145,18 +159,27 @@ export default {
     grid-template-rows: repeat(var(--rows), 0.5fr);
     grid-gap: $padding;
     align-items: center;
+    pointer-events: auto;
     /deep/ .dot {
       width: var(--dotSize);
       height: var(--dotSize);
       justify-self: center;
     }
+
+    &:hover {
+      /deep/ .dot:not(.clickable) {
+        transition: none;
+      }
+    }
   }
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .3s $bezier;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s $bezier;
 }
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
