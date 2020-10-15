@@ -20,8 +20,8 @@ import Dot from '~/components/Grid/Dots/Dot'
 import { debounce } from '~/utils/'
 
 const breakpoints = {
-  lg: 80,
-  md: 65,
+  lg: 60,
+  md: 60,
   sm: 50,
   xs: 50
 }

@@ -3,7 +3,7 @@ import Vue from 'vue'
 Vue.directive('move-dots', {
   inserted(el) {
     let x, y
-    const strength = 800
+    const strength = 500
     const mouseMoveHandler = (e) => {
       x = e.clientX
       y = e.clientY
