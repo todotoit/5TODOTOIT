@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'GT-America';
+  font-weight: 500;
+  src: url('./GT-America-Extended-Medium.woff') format('woff'),
+    url('./GT-America-Extended-Medium.woff2') format('woff2');
+}

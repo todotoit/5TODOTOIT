@@ -1,0 +1,17 @@
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 300ms ease;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.scale-enter-active .scale-leave-active {
+  transition: transform $animationDuration $bezier;
+}
+
+.scale-enter,
+.scale-leave-to {
+  transform: scale(0);
+}
