@@ -89,8 +89,16 @@ export default {
       font-size: 1.5rem;
       padding-right: $padding/2;
     }
-    li:hover {
-      cursor: pointer;
+    li {
+      transition: margin .3s $bezier;
+      &:hover {
+        cursor: pointer;
+        margin-left: 20px;
+
+        a {
+          text-decoration: none;
+        }
+      }
     }
   }
 }
