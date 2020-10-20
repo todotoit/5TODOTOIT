@@ -147,6 +147,7 @@ export default {
       }
       width: 540px;
       height: 540px;
+      margin-top: 80px;
       object-fit: cover;
       @media screen and (max-width: $mqMobile) {
         width: 100%;

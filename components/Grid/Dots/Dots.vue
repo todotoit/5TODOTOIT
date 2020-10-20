@@ -75,7 +75,7 @@ export default {
 
       document.documentElement.style.setProperty('--cols', this.cols)
       document.documentElement.style.setProperty('--rows', this.rows)
-      document.documentElement.style.setProperty('--dotSize', this.modulo / 2 + 'px')
+      document.documentElement.style.setProperty('--dotSize', this.modulo / 2.5 + 'px')
 
       for (let i = 0; i < this.cols * this.rows; i++) {
         this.dots.push({
@@ -132,7 +132,7 @@ export default {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 55%;
+  height: 65%;
   padding: 0 $padding/2;
   padding-bottom: $padding/2;
   &.hint {

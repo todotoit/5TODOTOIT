@@ -3,7 +3,7 @@ import Vue from 'vue'
 Vue.directive('move-dots', {
   inserted(el) {
     let x, y
-    const strength = 500
+    const strength = 750
     const mouseMoveHandler = (e) => {
       x = e.clientX
       y = e.clientY
@@ -28,6 +28,7 @@ Vue.directive('move-dots', {
         ex += (Math.cos(angle) * strength) / dist
         ey += (Math.sin(angle) * strength) / dist
         // end repulsion calculation
+        if (dist > 300) ex = ey = 0
         dot.style.transform = `translate(${ex}px, ${ey}px)`
       })
       window.requestAnimationFrame(animate)

@@ -16,7 +16,7 @@
     <div class="controls">
       <transition name="fade" mode="out-in">
         <div v-if="!currentCopy" :key="'buttons'" class="cta-link">
-          CLICK ON THE <span>DOTS</span> TO FIND OUT
+          CURIOUS? CLICK ON THE <span>RED DOTS</span>
         </div>
         <div v-else :key="'button'" class="cta-link" @click.prevent="close">
           <p>CLOSE</p>
