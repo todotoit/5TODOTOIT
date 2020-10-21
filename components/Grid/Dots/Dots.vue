@@ -165,12 +165,6 @@ export default {
       height: var(--dotSize);
       justify-self: center;
     }
-
-    &:hover {
-      /deep/ .dot:not(.clickable) {
-        transition: none;
-      }
-    }
   }
 }
 
