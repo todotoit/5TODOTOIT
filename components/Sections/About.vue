@@ -69,6 +69,12 @@
         </div>
       </div>
     </div>
+    <h1 id="mama2020">
+      We rebranded TODO with <br>
+      one single purpose. <br>
+      Make Andre mad again!
+      <div>#mama2020</div>
+    </h1>
   </section>
 </template>
 
@@ -100,6 +106,13 @@ export default {
         }
       }
     }
+  }
+}
+#mama2020 {
+  color: var(--col-primary);
+  user-select: none;
+  div {
+    font-size: small;
   }
 }
 </style>
