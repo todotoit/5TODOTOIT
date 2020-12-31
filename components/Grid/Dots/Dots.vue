@@ -1,6 +1,6 @@
 <template>
   <div ref="dots" class="dots" :class="{ hint: hint }">
-    <transition name="fade" :duration="{ enter: 300, leave: 500 }">
+    <transition name="fade" :duration="{ enter: 500, leave: 200 }">
       <div v-show="isGridVisible" v-move-dots class="dots-container">
         <Dot
           v-for="dot in dots"
@@ -106,9 +106,10 @@ export default {
           d.index = i
           return d
         })
-      if (this.$refs.dot) this.$refs.dot.forEach((d) => {
-        d.$el.style.transform = ''
-      })
+      if (this.$refs.dot)
+        this.$refs.dot.forEach((d) => {
+          d.$el.style.transform = ''
+        })
     },
     updateModulo() {
       for (const point in breakpoints) {

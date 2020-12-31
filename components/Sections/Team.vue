@@ -23,9 +23,11 @@
         </div>
       </transition>
     </div>
-    <div v-show="isListVisible" class="list">
-      <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
-    </div>
+    <transition name="fade" :duration="{ enter: 500, leave: 200 }">
+      <div v-show="isListVisible" class="list">
+        <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
+      </div>
+    </transition>
     <div v-if="currentPerson" class="background-anim">
       <transition name="fade" mode="out-in">
         <video
@@ -97,7 +99,7 @@ export default {
   justify-content: space-between;
   .list {
     width: 100%;
-    height: 55%;
+    height: 65%;
     display: flex;
     flex-flow: row wrap;
     align-content: baseline;
