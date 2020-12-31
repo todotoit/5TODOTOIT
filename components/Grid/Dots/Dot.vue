@@ -63,7 +63,6 @@ export default {
     cursor: pointer;
     pointer-events: auto;
     background-color: var(--col-secondary);
-    will-change: transform;
     &:hover {
       transform: scale(1.5);
     }
