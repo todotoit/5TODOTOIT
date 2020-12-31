@@ -1,15 +1,8 @@
 <template>
   <div ref="dots" class="dots" :class="{ hint: hint }">
-    <transition name="fade" :duration="{ enter: 500, leave: 200 }">
+    <transition name="fade" :duration="{ enter: 600, leave: 200 }">
       <div v-show="isGridVisible" v-move-dots class="dots-container">
-        <Dot
-          v-for="dot in dots"
-          ref="dot"
-          :key="dot.id"
-          :action="dot.action"
-          :index="dot.index"
-          :style="{ animationDelay: `${(dot.index + 1) * 100}ms` }"
-        />
+        <Dot v-for="dot in dots" ref="dot" :key="dot.id" :action="dot.action" :index="dot.index" />
       </div>
     </transition>
   </div>
@@ -139,8 +132,13 @@ export default {
   &.hint {
     .dots-container {
       /deep/ .clickable {
-        animation: scale $animationDuration * 4 $bezier;
+        animation: scale 2s $bezier 1s;
       }
+    }
+  }
+  .dots-container {
+    /deep/ .dot {
+      animation: pop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
   }
   @media screen and (max-width: $mqMobile) {
@@ -176,6 +174,15 @@ export default {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes scale {
