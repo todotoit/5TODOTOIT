@@ -25,6 +25,7 @@ export default {
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
     { src: '~/plugins/scroll.js' },
+    { src: '~/plugins/text-animation.js' },
     { src: '~/plugins/vue-clickaway.js', ssr: false },
     { src: '~/plugins/move-dots.js', ssr: false }
   ],
