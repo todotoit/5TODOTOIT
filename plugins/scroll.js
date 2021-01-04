@@ -25,14 +25,11 @@ Vue.directive('scroll', {
     let delayTimeout = null
 
     const hasScrollableParent = (target) => {
-      console.log(target.scrollTop, target.scrollHeight)
       // if element is not scrollable check parent
       if (target.scrollTop <= 0 && target.scrollHeight - target.clientHeight <= 10) {
-        console.log('Is inside')
         if (target.parentElement === el) return false
         return hasScrollableParent(target.parentElement)
       }
-      console.log('Is Outside')
       return target.parentElement
     }
 
