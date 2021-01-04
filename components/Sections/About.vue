@@ -1,64 +1,44 @@
 <template>
   <section class="about">
     <div class="top">
-      <h1 class="title">
-        If you want to get to know us, find out if we are available for a project, submit your
-        portfolio or interact with us in any other way, here is where you can find us.
+      <h1 v-animate-in class="title">
+        If you want to get to know us, find out if we are available for a project, submit your portfolio or interact with us in any other way, here is
+        where you can find us.
       </h1>
     </div>
     <div class="bottom">
       <div class="row">
-        <div class="col">
+        <div v-animate-in="{ delay: 0.25 }" class="col">
           <p class="cta-title">Join our team</p>
-          <a
-            class="cta-link"
-            href="mailto:careers@todo.to.it"
-            target="_blank"
-          >careers@todo.to.it</a>
+          <a class="cta-link" href="mailto:careers@todo.to.it" target="_blank">careers@todo.to.it</a>
         </div>
-        <div class="col">
+        <div v-animate-in="{ delay: 0.3 }" class="col">
           <p class="cta-title">Work with us</p>
           <a class="cta-link" href="mailto:info@todo.to.it" target="_blank">info@todo.to.it</a>
         </div>
-        <div class="col">
+        <div v-animate-in="{ delay: 0.35 }" class="col">
           <p class="cta-title">Follow us</p>
           <ul>
             <li>
-              <a
-                class="cta-link"
-                href="https://www.facebook.com/todotoit/"
-                target="_blank"
-              >Facebook</a>
+              <a class="cta-link" href="https://www.facebook.com/todotoit/" target="_blank">Facebook</a>
             </li>
             <li>
-              <a
-                class="cta-link"
-                href="https://www.instagram.com/todotoit/?hl=en"
-                target="_blank"
-              >Instagram</a>
+              <a class="cta-link" href="https://www.instagram.com/todotoit/?hl=en" target="_blank">Instagram</a>
             </li>
             <li>
-              <a
-                class="cta-link"
-                href="https://www.flickr.com/photos/todotoit"
-                target="_blank"
-              >Flickr</a>
+              <a class="cta-link" href="https://www.flickr.com/photos/todotoit" target="_blank">Flickr</a>
             </li>
             <li>
               <a class="cta-link" href="https://vimeo.com/todotoit" target="_blank">Vimeo</a>
             </li>
             <li>
-              <a
-                class="cta-link"
-                href="https://www.linkedin.com/company/todo/"
-                target="_blank"
-              >Linkedin</a>
+              <a class="cta-link" href="https://www.linkedin.com/company/todo/" target="_blank">Linkedin</a>
             </li>
           </ul>
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div v-animate-in="{ delay: 0.7 }" class="col">
           <p class="cta-title">Send us flowers and chocolate</p>
           <a
             class="cta-link"
@@ -70,8 +50,8 @@
       </div>
     </div>
     <h1 id="mama2020">
-      We rebranded TODO with <br>
-      one single purpose. <br>
+      We rebranded TODO with <br />
+      one single purpose. <br />
       Make Andre mad again!
       <div>#mama2020</div>
     </h1>
@@ -96,7 +76,7 @@ export default {
       padding-right: $padding/2;
     }
     li {
-      transition: margin .3s $bezier;
+      transition: margin 0.3s $bezier;
       &:hover {
         cursor: pointer;
         margin-left: 20px;

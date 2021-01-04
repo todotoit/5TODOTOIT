@@ -2,23 +2,21 @@
   <section class="team">
     <div class="top">
       <transition name="fade" mode="out-in">
-        <h1 v-if="isListVisible || !currentPerson" :key="teamCopy" class="title">{{ teamCopy }}</h1>
-        <h1 v-else :key="currentPerson.name" class="title">
-          <span>{{ currentPerson.name }}</span>
-          <br />
-          <span>{{ currentPerson.jobs }}</span>
+        <h1 v-if="isListVisible || !currentPerson" :key="teamCopy" v-animate-in class="title">{{ teamCopy }}</h1>
+        <h1 v-else :key="currentPerson.name" v-animate-in class="title">
+          <span>{{ currentPerson.name }}</span><br /><span>{{ currentPerson.jobs }}</span>
         </h1>
       </transition>
     </div>
     <div class="controls">
       <transition name="fade" mode="out-in">
-        <div v-if="!currentPerson" :key="'buttons'" class="cta-link">
+        <div v-if="!currentPerson" :key="'buttons'" v-animate-in="{ delay: 0.25 }" class="cta-link">
           SWITCH MODE
           <p :class="{ 'is-active': isGridVisible }" @click.prevent="toggleView(true)">GRID</p>
           <p>/</p>
           <p :class="{ 'is-active': isListVisible }" @click.prevent="toggleView(false)">LIST</p>
         </div>
-        <div v-else :key="'button'" class="cta-link" @click.prevent="close">
+        <div v-else :key="'button'" v-animate-in="{ delay: 0.1 }" class="cta-link" @click.prevent="close">
           <p class="is-active">CLOSE</p>
         </div>
       </transition>
@@ -54,8 +52,7 @@ export default {
   },
   data() {
     return {
-      teamCopy:
-        'Different is better. Our team shares rich layers of expertise, diverse backgrounds and a common passion for a job well done.'
+      teamCopy: 'Different is better. Our team shares rich layers of expertise, diverse backgrounds and a common passion for a job well done.'
     }
   },
   computed: {

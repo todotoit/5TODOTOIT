@@ -2,28 +2,17 @@
   <section class="substatment" :class="{ hint: hint }">
     <div class="top">
       <transition name="fade" mode="out-in">
-        <h1 :key="title" class="title">
-          {{ title }}
-        </h1>
+        <h1 :key="title" v-animate-in class="title">{{ title }}</h1>
       </transition>
     </div>
-    <div
-      v-show="!currentCopy"
-      :key="1"
-      class="bg-neutral"
-      :class="{ 'is-disable': currentCopy }"
-    ></div>
+    <div v-show="!currentCopy" class="bg-neutral" :class="{ 'is-disable': currentCopy }" />
     <div class="controls">
       <transition name="fade" mode="out-in">
-        <div v-if="!currentCopy" :key="'buttons'" class="cta-link">
-          CURIOUS? CLICK ON THE <span>RED DOTS</span>
-        </div>
-        <div v-else :key="'button'" class="cta-link" @click.prevent="close">
-          <p>CLOSE</p>
-        </div>
+        <div v-if="!currentCopy" :key="'buttons'" v-animate-in="{ delay: 0.25 }" class="cta-link">CURIOUS? CLICK ON THE <span>RED DOTS</span></div>
+        <div v-if="currentCopy" :key="'button'" v-animate-in="{ delay: 0.25 }" class="cta-link" @click.prevent="close"><p>CLOSE</p></div>
       </transition>
     </div>
-    <div v-show="currentCopy" :key="2" class="bg-anim" :class="{ 'is-enable': currentCopy }">
+    <div v-show="currentCopy" class="bg-anim" :class="{ 'is-enable': currentCopy }">
       <video
         loop
         autoplay
@@ -47,8 +36,7 @@ export default {
   },
   data() {
     return {
-      defaultCopy:
-        'Experiences are more than the sum of their parts. And what we do is more than the projects in our portfolio. Always be exploring.'
+      defaultCopy: 'Experiences are more than the sum of their parts. And what we do is more than the projects in our portfolio. Always be exploring.'
     }
   },
   computed: {
