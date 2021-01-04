@@ -3,7 +3,7 @@
     <div class="logo">
       <img svg-inline class="todo" src="@/assets/icons/TODO_LOGO.svg" />
     </div>
-    <div v-fullpage-scroll="{ callback: goToTheSection, delay: 1000 }" class="sections">
+    <div v-scroll="{ callback: goToTheSection }" class="sections">
       <Dots />
       <Home id="home" />
       <Substatement id="substatement" :hint="hint" />
