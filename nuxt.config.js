@@ -39,10 +39,21 @@ export default {
     '@nuxtjs/eslint-module'
   ],
 
+  // Configure polyfills:
+  polyfill: {
+    features: [
+      {
+        require: 'intersection-observer',
+        detect: () => 'IntersectionObserver' in window
+      }
+    ]
+  },
+
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     '@nuxtjs/style-resources',
     'vue-scrollto/nuxt',
+    'nuxt-polyfill',
     [
       'nuxt-mq',
       {
@@ -59,11 +70,7 @@ export default {
   ],
 
   styleResources: {
-    scss: [
-      '@/assets/styles/variables.scss',
-      '@/assets/styles/typography.scss',
-      '@/assets/styles/transitions.scss'
-    ]
+    scss: ['@/assets/styles/variables.scss', '@/assets/styles/typography.scss', '@/assets/styles/transitions.scss']
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
