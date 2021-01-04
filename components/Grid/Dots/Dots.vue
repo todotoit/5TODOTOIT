@@ -1,10 +1,8 @@
 <template>
   <div ref="dots" class="dots" :class="{ hint: hint }">
-    <transition name="fade" :duration="{ enter: 600, leave: 200 }">
-      <div v-show="isGridVisible" v-move-dots class="dots-container">
-        <Dot v-for="dot in dots" ref="dot" :key="dot.id" :action="dot.action" :index="dot.index" />
-      </div>
-    </transition>
+    <div v-show="isGridVisible" v-move-dots class="dots-container">
+      <Dot v-for="dot in dots" ref="dot" :key="dot.id" :action="dot.action" :index="dot.index" />
+    </div>
   </div>
 </template>
 
@@ -79,12 +77,7 @@ export default {
       this.actions.forEach((action) => {
         let dot = 0
         let current = 0
-        while (
-          dot % this.cols === this.cols - 1 ||
-          dot % this.cols === 0 ||
-          current < 2000 ||
-          this.dots[dot].action
-        ) {
+        while (dot % this.cols === this.cols - 1 || dot % this.cols === 0 || current < 2000 || this.dots[dot].action) {
           dot = Math.floor(Math.random() * this.dots.length)
           current++
         }
@@ -132,13 +125,13 @@ export default {
   &.hint {
     .dots-container {
       /deep/ .clickable {
-        animation: scale 2s $bezier 1s;
+        animation: scale 2s $bezier;
       }
     }
   }
   .dots-container {
     /deep/ .dot {
-      animation: pop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: pop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s forwards;
     }
   }
   @media screen and (max-width: $mqMobile) {
@@ -186,14 +179,11 @@ export default {
 }
 
 @keyframes scale {
-  0% {
+  from {
     transform: scale(1);
   }
-  50% {
+  to {
     transform: scale(1.7);
-  }
-  100% {
-    transform: scale(1);
   }
 }
 </style>
