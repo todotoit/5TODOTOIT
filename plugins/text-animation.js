@@ -10,7 +10,7 @@ Vue.directive('animate-in', {
   inserted(el, binding) {
     const observeOptions = {
       root: null,
-      threshold: 1
+      threshold: 0.5
     }
     const options = binding.value || {}
     const animationOptions = {
