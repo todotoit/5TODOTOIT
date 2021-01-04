@@ -42,9 +42,6 @@ export default {
     }
   },
   computed: {
-    isGridVisible() {
-      return this.$store.getters['grid/gridIsVisible']
-    },
     currentGrid() {
       return this.$store.getters['grid/currentGrid']
     },
@@ -62,9 +59,7 @@ export default {
     }, 3000)
     window.addEventListener(
       'resize',
-      debounce(() => {
-        this.goToTheSection(0)
-      }, 400)
+      debounce(() => this.goToTheSection(0), 200)
     )
   },
   methods: {
@@ -73,21 +68,19 @@ export default {
       clearTimeout(this.hintTimeout)
     },
     goToTheSection(value) {
+      // Hide next page hint
       this.hideHint()
-      this.$store.commit('sections/isScrolling', true)
+
+      // Update current with next section index
       this.$store.commit('sections/updateCurrent', value)
       const targetSection = this.$store.getters['sections/sections'][this.current]
-      this.$scrollTo(targetSection.target, 50, {
+
+      this.$scrollTo(targetSection.target, 150, {
         easing: 'ease',
         onDone: () => {
           this.$store.commit('grid/setCurrentGrid', targetSection.grid)
-          this.$store.commit('sections/isScrolling', false)
         }
       })
-    },
-    intersect(page) {
-      if (this.currentGrid === page) return
-      this.$store.commit('grid/setCurrentGrid', page)
     },
     updatePalette() {
       const index = random(0, palette.length - 1)
