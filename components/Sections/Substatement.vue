@@ -87,16 +87,6 @@ export default {
     background-color: var(--col-primary);
   }
   .bg-anim {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    overflow-y: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     .video {
       filter: brightness(45%);
       width: 100%;

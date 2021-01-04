@@ -26,7 +26,7 @@
         <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
       </div>
     </transition>
-    <div v-if="currentPerson" class="background-anim">
+    <div v-if="currentPerson" class="bg-anim">
       <transition name="fade" mode="out-in">
         <video
           :key="currentPerson.name"
@@ -126,29 +126,16 @@ export default {
       }
     }
   }
-  .background-anim {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    overflow-y: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
+  .bg-anim {
     video {
       filter: brightness(80%);
-      @media screen and (max-width: $mqMobile) {
-        filter: brightness(70%);
-      }
       width: 540px;
       height: 540px;
       margin-top: 80px;
       object-fit: cover;
       @media screen and (max-width: $mqMobile) {
+        margin-top: 0;
+        filter: brightness(70%);
         width: 100%;
         height: 100%;
       }
