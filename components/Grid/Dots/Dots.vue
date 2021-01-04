@@ -131,7 +131,7 @@ export default {
   }
   .dots-container {
     /deep/ .dot {
-      animation: pop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s forwards;
+      animation: pop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s;
     }
   }
   @media screen and (max-width: $mqMobile) {
