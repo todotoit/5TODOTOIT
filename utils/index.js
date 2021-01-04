@@ -19,3 +19,13 @@ export const debounce = (func, wait, immediate) => {
     if (callNow) func.apply(context, args)
   }
 }
+
+export function average(array, take) {
+  if (!take) take = array.length;
+  let sum = 0;
+  const lastElements = array.slice(Math.max(array.length - take, 1));
+  for (let i = 0; i < lastElements.length; i++) {
+    sum = sum + lastElements[i];
+  }
+  return sum / take;
+}
