@@ -110,7 +110,10 @@ a {
 .observer {
   opacity: 0;
   transform: translateY(75px);
-  transition: opacity 1s $bezier, transform $animationDuration * 2 $bezier;
+  &.enter,
+  &.leave {
+    transition: opacity 1s $bezier, transform $animationDuration * 2 $bezier;
+  }
   &.enter {
     opacity: 1;
     transform: translateY(0px);
