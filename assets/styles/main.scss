@@ -2,6 +2,11 @@ html,
 body {
   font-family: $fontFamily;
   color: $col-white;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
 }
 
 .controls {
@@ -21,6 +26,7 @@ body {
 }
 
 .sections {
+  position: relative;
   section {
     padding: 0 $padding;
     height: 100vh;
