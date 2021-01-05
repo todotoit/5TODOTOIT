@@ -17,8 +17,10 @@ Vue.directive('animate-in', {
         const intersection = e[0]
         el.classList.add('observer')
         if (intersection.isIntersecting) {
-          el.classList.add('enter')
           el.classList.remove('leave')
+          setTimeout(() => {
+            el.classList.add('enter')
+          })
         } else {
           el.classList.add('leave')
           el.classList.remove('enter')
