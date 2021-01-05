@@ -4,10 +4,10 @@ import { average } from '~/utils'
 
 const defaultOptions = {
   container: document.body,
-  offset: 0,
+  offset: 20,
   cancelable: false,
-  threshold: 0.5,
-  delay: 1500,
+  threshold: 0.2,
+  delay: 500,
   mobile: true
 }
 
@@ -25,8 +25,8 @@ Vue.directive('scroll', {
     let delayTimeout = null
 
     const hasScrollableParent = (target) => {
-      // if element is not scrollable check parent
-      if (target.scrollTop <= 0 && target.scrollHeight - target.clientHeight <= 10) {
+      // if element is not scrollable check the parent
+      if (target.scrollTop <= 0 && target.scrollHeight - target.clientHeight <= options.offset) {
         if (target.parentElement === el) return false
         return hasScrollableParent(target.parentElement)
       }
@@ -38,7 +38,6 @@ Vue.directive('scroll', {
     }
 
     function handleTouch(event) {
-      console.log('Scroll')
       offsetMobile = touchStart - event.touches[0].clientY
       event.deltaY = event.wheelDelta = Math.sign(offsetMobile) * -2
       if (Math.abs(offsetMobile) > 8) return handleWheel(event)
@@ -64,7 +63,11 @@ Vue.directive('scroll', {
         delayTimeout = null
       }, options.delay)
       const direction = Math.sign(wheel.spinY)
-      move(direction)
+
+      // Trigger Callback
+      if (direction === -1) goToSection(-1)
+      if (direction === 1) goToSection(1)
+
       return false
     }
 
@@ -77,24 +80,12 @@ Vue.directive('scroll', {
       return delta >= options.threshold
     }
 
-    const wheel = (event) => {
-      handleScroll(event, handleWheel)
-    }
-    const touch = (event) => {
-      handleScroll(event, handleTouch)
-    }
-
-    function move(direction) {
-      if (direction === -1) goToSection(-1)
-      if (direction === 1) goToSection(1)
-    }
-
     // Listen for events
-    el.addEventListener('wheel', wheel, { passive: false })
+    el.addEventListener('wheel', (e) => handleScroll(e, handleWheel), { passive: false })
     el.addEventListener('touchstart', (e) => (touchStart = e.touches[0].clientY), {
       passive: false
     })
-    el.addEventListener('touchmove', touch, { passive: false, cancelable: true })
+    el.addEventListener('touchmove', (e) => handleScroll(e, handleTouch), { passive: false, cancelable: true })
 
     // Keyboards events
     document.addEventListener('keydown', (e) => {

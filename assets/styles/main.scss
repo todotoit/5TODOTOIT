@@ -99,3 +99,17 @@ a {
   justify-content: center;
   align-items: center;
 }
+
+// Observer animation class
+.observer {
+  opacity: 0;
+  transform: translateY(75px);
+  transition: opacity 1s $bezier, transform $animationDuration * 2 $bezier;
+  &.enter {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  &.leave {
+    opacity: 0;
+  }
+}

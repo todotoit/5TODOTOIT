@@ -1,6 +1,6 @@
 <template>
-  <div ref="dots" class="dots" :class="{ hint: hint }">
-    <div v-show="isGridVisible" v-move-dots class="dots-container">
+  <div ref="dots" class="dots">
+    <div v-show="isGridVisible" v-move-dots class="dots-container" :class="{ hint: hint }">
       <Dot v-for="dot in dots" ref="dot" :key="dot.id" :action="dot.action" :index="dot.index" />
     </div>
   </div>
@@ -122,18 +122,6 @@ export default {
   height: 65%;
   padding: 0 $padding/2;
   padding-bottom: $padding/2;
-  &.hint {
-    .dots-container {
-      /deep/ .clickable {
-        animation: scale 2s $bezier;
-      }
-    }
-  }
-  .dots-container {
-    /deep/ .dot {
-      animation: pop 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2s;
-    }
-  }
   @media screen and (max-width: $mqMobile) {
     height: 65%;
     padding: 0 $padding/4;
@@ -153,20 +141,17 @@ export default {
     align-items: center;
     pointer-events: auto;
     /deep/ .dot {
+      animation: pop 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       width: var(--dotSize);
       height: var(--dotSize);
       justify-self: center;
     }
+    &.hint {
+      /deep/ .clickable {
+        animation: hint 2s $bezier;
+      }
+    }
   }
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s $bezier;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
 }
 
 @keyframes pop {
@@ -178,12 +163,15 @@ export default {
   }
 }
 
-@keyframes scale {
-  from {
+@keyframes hint {
+  0% {
     transform: scale(1);
   }
-  to {
+  50% {
     transform: scale(1.7);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 </style>
