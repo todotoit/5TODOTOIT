@@ -27,9 +27,6 @@ Vue.directive('animate-in', {
         }
       }, observeOptions)
       observer.observe(el)
-    } else {
-      // Intersection Observer isn't supported
-      return false
     }
   }
 })
