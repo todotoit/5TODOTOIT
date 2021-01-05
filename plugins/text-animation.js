@@ -5,17 +5,17 @@ const observeOptions = {
   threshold: 0.5
 }
 
+const hasIntersectionObserver = () => {
+  return 'IntersectionObserver' in window && 'IntersectionObserverEntry' in window
+}
+
 Vue.directive('animate-in', {
   inserted(el) {
     // Check if IntersectionObserver are avaiable
-    const hasIntersectionObserver = () => {
-      return 'IntersectionObserver' in window && 'IntersectionObserverEntry' in window && 'intersectionRatio' in window.IntersectionObserverEntry.prototype
-    }
-
     if (hasIntersectionObserver()) {
+      el.classList.add('observer')
       const observer = new IntersectionObserver((e) => {
         const intersection = e[0]
-        el.classList.add('observer')
         if (intersection.isIntersecting) {
           el.classList.remove('leave')
           setTimeout(() => {
