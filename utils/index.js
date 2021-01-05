@@ -29,3 +29,7 @@ export function average(array, take) {
   }
   return sum / take;
 }
+
+export function clamp(n, min, max) {
+  return Math.min(Math.max(n, min), max);
+}
