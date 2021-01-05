@@ -122,6 +122,7 @@ export default {
   height: 65%;
   padding: 0 $padding/2;
   padding-bottom: $padding/2;
+  pointer-events: none;
   @media screen and (max-width: $mqMobile) {
     height: 65%;
     padding: 0 $padding/4;
@@ -131,7 +132,6 @@ export default {
     padding: 0 $padding/6;
     padding-bottom: $padding/6;
   }
-  pointer-events: none;
   .dots-container {
     height: 100%;
     display: grid;
@@ -139,7 +139,7 @@ export default {
     grid-template-rows: repeat(var(--rows), 0.5fr);
     grid-gap: $padding;
     align-items: center;
-    pointer-events: auto;
+    pointer-events: none;
     /deep/ .dot {
       animation: pop 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       width: var(--dotSize);
