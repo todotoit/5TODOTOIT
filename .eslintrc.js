@@ -22,6 +22,7 @@ module.exports = {
     'no-unused-vars': ['warn', { vars: 'all', args: 'after-used', ignoreRestSiblings: false }],
     'vue/no-unused-components': ['warn', { ignoreWhenBindingPresent: true }],
     'prefer-const': 'warn',
-    'spaced-comment': 'warn'
+    'spaced-comment': 'warn',
+    'no-unreachable': 'warn'
   }
 }
