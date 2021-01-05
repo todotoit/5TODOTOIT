@@ -6,9 +6,7 @@ const observeOptions = {
 }
 
 Vue.directive('animate-in', {
-  inserted(el, binding) {
-    const options = binding.value || {}
-
+  inserted(el) {
     // Check if IntersectionObserver are avaiable
     const hasIntersectionObserver = () => {
       return 'IntersectionObserver' in window && 'IntersectionObserverEntry' in window && 'intersectionRatio' in window.IntersectionObserverEntry.prototype
