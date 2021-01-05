@@ -57,6 +57,7 @@ export default {
       )
 
       if (this.lock !== null) return
+      // scroll to current section
       this.scrollTo(next)
       this.current = next
 
@@ -67,18 +68,19 @@ export default {
     },
     hasScrollableInPath(target, dir) {
       if (target.scrollHeight > target.clientHeight) {
+        // target is scrollable
         const scrollHeight = target.scrollHeight - target.clientHeight
         const scrollOffset = Math.abs(target.scrollTop - scrollHeight)
         return (
-          (scrollOffset > 10 && dir > 0) ||
-          (scrollOffset <= scrollHeight - 10 && dir < 0)
+          (scrollOffset > 10 && dir > 0) || // end of scroll area, going down
+          (scrollOffset <= scrollHeight - 10 && dir < 0) // begin of scroll area, going up
         )
-      } else if (target.parentElement !== this.$el)
+      } else if (target.parentElement !== this.$el) {
+        // target is not scrollable, check parent or bail if root $el
         return this.hasScrollableInPath(target.parentElement, dir)
-      else return false
+      } else return false // target is not scrollable
     },
     scrollTo(idx) {
-      // scroll to current section
       this.$scrollTo(this.sections[idx], 500, {
         easing: 'ease',
         container: this.$el,
