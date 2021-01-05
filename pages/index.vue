@@ -37,7 +37,6 @@ export default {
   },
   data() {
     return {
-      threshold: [0.8],
       hint: false
     }
   },
