@@ -6,6 +6,7 @@
 
 <script>
 import { clamp } from '~/utils'
+const SCROLL_DELAY = 2000
 
 export default {
   name: 'Fullpage',
@@ -62,7 +63,7 @@ export default {
       // lock scrolling to prevent double scrolling
       this.lock = setTimeout(() => {
         this.lock = null
-      }, 1000)
+      }, SCROLL_DELAY)
     },
     hasScrollableInPath(target, dir) {
       if (target.scrollHeight > target.clientHeight) {
