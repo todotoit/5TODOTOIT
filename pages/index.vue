@@ -3,18 +3,19 @@
     <div class="logo">
       <img svg-inline class="todo" src="@/assets/icons/TODO_LOGO.svg" />
     </div>
-    <div v-scroll="{ callback: goToTheSection }" class="sections">
-      <Dots />
+    <Dots />
+    <Fullpage ref="fullpage" @start="handleStart" @done="handleDone">
       <Home id="home" />
       <Substatement id="substatement" :hint="hint" />
       <Team id="team" />
       <About id="about" />
-    </div>
+    </Fullpage>
   </div>
 </template>
 
 <script>
 import Home from '~/components/Sections/Home'
+import Fullpage from '~/components/Fullpage'
 import Substatement from '~/components/Sections/Substatement'
 import Team from '~/components/Sections/Team'
 import About from '~/components/Sections/About'
@@ -29,6 +30,7 @@ const palette = [
 export default {
   name: 'Index',
   components: {
+    Fullpage,
     Home,
     Substatement,
     Team,
@@ -58,7 +60,7 @@ export default {
     }, 3000)
     window.addEventListener(
       'resize',
-      debounce(() => this.goToTheSection(0), 200)
+      debounce(() => this.$refs.fullpage.reposition(), 200)
     )
   },
   methods: {
@@ -66,25 +68,27 @@ export default {
       this.hint = false
       clearTimeout(this.hintTimeout)
     },
-    goToTheSection(value) {
-      // Hide next page hint
+    handleDone({ current }) {
       this.hideHint()
-
-      // Update current with next section index
-      this.$store.commit('sections/updateCurrent', value)
-      const targetSection = this.$store.getters['sections/sections'][this.current]
-
-      this.$scrollTo(targetSection.target, 150, {
-        easing: 'ease',
-        onDone: () => {
-          this.$store.commit('grid/setCurrentGrid', targetSection.grid)
-        }
-      })
+      if (current === this.$store.getters['sections/currentIndex']) return
+      this.$store.commit('sections/setCurrent', current)
+      this.$store.commit('grid/setCurrentGrid', this.current.grid)
+    },
+    handleStart(nav) {
+      console.log(nav)
+      if (nav.to <= 0 || nav.to >= 3)
+        this.$store.commit('grid/setCurrentGrid', null)
     },
     updatePalette() {
       const index = random(0, palette.length - 1)
-      document.documentElement.style.setProperty('--col-primary', palette[index][0])
-      document.documentElement.style.setProperty('--col-secondary', palette[index][1])
+      document.documentElement.style.setProperty(
+        '--col-primary',
+        palette[index][0]
+      )
+      document.documentElement.style.setProperty(
+        '--col-secondary',
+        palette[index][1]
+      )
     }
   }
 }
