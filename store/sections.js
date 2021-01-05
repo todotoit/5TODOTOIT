@@ -1,3 +1,5 @@
+import { clamp } from '~/utils'
+
 export const state = () => ({
   current: 0,
   isScrolling: false,
@@ -9,28 +11,27 @@ export const state = () => ({
   ]
 })
 
+export const mutations = {
+  setCurrent(state, value) {
+    value = clamp(value, 0, state.sections.length)
+    state.current = value
+  },
+  isScrolling(state, value) {
+    state.isScrolling = value
+  }
+}
+
 export const getters = {
   sections: (state) => {
     return state.sections
   },
   current: (state) => {
+    return state.sections[state.current]
+  },
+  currentIndex: (state) => {
     return state.current
   },
   isScrolling: (state) => {
     return state.isScrolling
-  }
-}
-
-export const mutations = {
-  updateCurrent(state, data) {
-    if (
-      (state.current === 0 && data < 0) ||
-      (state.current === state.sections.length - 1 && data > 0)
-    )
-      return
-    state.current += data
-  },
-  isScrolling(state, value) {
-    state.isScrolling = value
   }
 }
