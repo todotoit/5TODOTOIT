@@ -2,7 +2,7 @@
   <section class="team">
     <div class="top">
       <transition name="fade" mode="out-in">
-        <h1 v-if="isListVisible || !currentPerson" :key="teamCopy" v-animate-in class="title">{{ teamCopy }}</h1>
+        <h1 v-if="isListVisible || !currentPerson" :key="teamCopy" v-animate-in="{ delay: 0.1 }" class="title">{{ teamCopy }}</h1>
         <h1 v-else :key="currentPerson.name" v-animate-in class="title">
           <span>{{ currentPerson.name }}</span><br /><span>{{ currentPerson.jobs }}</span>
         </h1>
@@ -16,7 +16,7 @@
           <p>/</p>
           <p :class="{ 'is-active': isListVisible }" @click.prevent="toggleView(false)">LIST</p>
         </div>
-        <div v-else :key="'button'" v-animate-in="{ delay: 0.1 }" class="cta-link" @click.prevent="close">
+        <div v-else :key="'button'" class="cta-link" @click.prevent="close">
           <p class="is-active">CLOSE</p>
         </div>
       </transition>

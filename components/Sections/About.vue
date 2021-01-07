@@ -2,8 +2,8 @@
   <section class="about">
     <div class="top">
       <h1 v-animate-in class="title">
-        If you want to get to know us, find out if we are available for a project, submit your portfolio or interact with us in any other way, here is
-        where you can find us.
+        If you want to get to know us, find out if we are available for a project, submit your portfolio or interact with us in any other way, here is where you can find
+        us.
       </h1>
     </div>
     <div class="bottom">
@@ -12,11 +12,11 @@
           <p class="cta-title">Join our team</p>
           <a class="cta-link" href="mailto:careers@todo.to.it" target="_blank">careers@todo.to.it</a>
         </div>
-        <div v-animate-in="{ delay: 0.3 }" class="col">
+        <div v-animate-in="{ delay: 0.35 }" class="col">
           <p class="cta-title">Work with us</p>
           <a class="cta-link" href="mailto:info@todo.to.it" target="_blank">info@todo.to.it</a>
         </div>
-        <div v-animate-in="{ delay: 0.35 }" class="col">
+        <div v-animate-in="{ delay: 0.45 }" class="col">
           <p class="cta-title">Follow us</p>
           <ul>
             <li>
@@ -38,7 +38,7 @@
         </div>
       </div>
       <div class="row">
-        <div v-animate-in="{ delay: 0.7 }" class="col">
+        <div v-animate-in="{ delay: 0.55 }" class="col">
           <p class="cta-title">Send us flowers and chocolate</p>
           <a
             class="cta-link"

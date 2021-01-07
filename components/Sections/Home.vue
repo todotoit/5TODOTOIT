@@ -1,7 +1,7 @@
 <template>
   <section class="home">
     <div class="middle">
-      <h1 v-animate-in class="big-title">
+      <h1 v-animate-in="{ delay: 0.2 }" class="big-title">
         Hello, we are TODO. <br />
         We design experiences that blend the digital world into real life, so people can live valuable, transformative moments.
       </h1>
