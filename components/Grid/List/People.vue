@@ -57,6 +57,7 @@ export default {
   width: 20%;
   padding-right: $padding;
   padding-bottom: $padding * 4;
+  user-select: none;
   &:hover {
     cursor: pointer;
   }
