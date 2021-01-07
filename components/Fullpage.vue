@@ -6,7 +6,7 @@
 
 <script>
 import { clamp } from '~/utils'
-const SCROLL_DELAY = 2000
+const SCROLL_DELAY = 1200
 
 export default {
   name: 'Fullpage',
@@ -49,12 +49,8 @@ export default {
       if (Math.abs(offsetMobile) > 8) return this.scroll(e)
     },
     move(direction) {
-      const last = this.current
       const next = clamp(this.current + direction, 0, this.sections.length - 1)
-      console.log(
-        `move from: ${last}, to: ${this.current}`,
-        this.lock ? 'LOCKED' : ''
-      )
+      // console.log(`move from: ${this.current}, to: ${this.current}`, this.lock ? 'LOCKED' : '')
 
       if (this.lock !== null) return
       // scroll to current section
@@ -81,16 +77,16 @@ export default {
       } else return false // target is not scrollable
     },
     scrollTo(idx) {
-      this.$scrollTo(this.sections[idx], 500, {
+      this.$scrollTo(this.sections[idx], 700, {
         easing: 'ease',
         container: this.$el,
         cancelable: false,
         onStart: () => {
-          console.log('start')
+          // console.log('start')
           this.$emit('start', { from: this.current, to: idx })
         },
         onDone: () => {
-          console.log('done')
+          // console.log('done')
           this.$emit('done', { current: idx })
         }
       })
