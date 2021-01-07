@@ -109,10 +109,10 @@ a {
 // Observer animation class
 .observer {
   opacity: 0;
-  transform: translateY(75px);
+  transform: translateY(100px);
   &.enter,
   &.leave {
-    transition: opacity 1s $bezier, transform $animationDuration * 2 $bezier;
+    transition: opacity 1.6s $bezier, transform $animationDuration * 2 $bezier;
   }
   &.enter {
     opacity: 1;
