@@ -141,14 +141,14 @@ export default {
     align-items: center;
     pointer-events: none;
     /deep/ .dot {
-      animation: pop 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      animation: pop 1.2s $bezier;
       width: var(--dotSize);
       height: var(--dotSize);
       justify-self: center;
     }
     &.hint {
       /deep/ .clickable {
-        animation: hint 2s $bezier;
+        animation: pop 1.2s $bezier, hint 1.2s $bezier 2s;
       }
     }
   }
