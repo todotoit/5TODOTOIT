@@ -69,26 +69,18 @@ export default {
       clearTimeout(this.hintTimeout)
     },
     handleDone({ current }) {
-      this.hideHint()
       if (current === this.$store.getters['sections/currentIndex']) return
       this.$store.commit('sections/setCurrent', current)
       this.$store.commit('grid/setCurrentGrid', this.current.grid)
     },
     handleStart(nav) {
-      console.log(nav)
-      if (nav.to <= 0 || nav.to >= 3)
-        this.$store.commit('grid/setCurrentGrid', null)
+      if (this.hint) this.hideHint()
+      if (nav.to <= 0 || nav.to >= 3) this.$store.commit('grid/setCurrentGrid', null)
     },
     updatePalette() {
       const index = random(0, palette.length - 1)
-      document.documentElement.style.setProperty(
-        '--col-primary',
-        palette[index][0]
-      )
-      document.documentElement.style.setProperty(
-        '--col-secondary',
-        palette[index][1]
-      )
+      document.documentElement.style.setProperty('--col-primary', palette[index][0])
+      document.documentElement.style.setProperty('--col-secondary', palette[index][1])
     }
   }
 }
