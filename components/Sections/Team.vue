@@ -1,54 +1,58 @@
 <template>
-  <section class="team">
-    <div class="top">
-      <transition name="fade" mode="out-in">
-        <h1 v-if="isListVisible || !currentPerson" :key="teamCopy" v-animate-in="{ delay: 0.1 }" class="title">{{ teamCopy }}</h1>
-        <h1 v-else :key="currentPerson.name" v-animate-in class="title">
-          <span>{{ currentPerson.name }}</span><br /><span>{{ currentPerson.jobs }}</span>
-        </h1>
-      </transition>
-    </div>
-    <div class="controls">
-      <transition name="fade" mode="out-in">
-        <div v-if="!currentPerson" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">
-          SWITCH MODE
-          <p :class="{ 'is-active': isGridVisible }" @click.prevent="toggleView(true)">GRID</p>
-          <p>/</p>
-          <p :class="{ 'is-active': isListVisible }" @click.prevent="toggleView(false)">LIST</p>
-        </div>
-        <div v-else :key="'button'" class="cta-link" @click.prevent="close">
-          <p class="is-active">CLOSE</p>
-        </div>
-      </transition>
-    </div>
-    <transition name="fade" :duration="{ enter: 500, leave: 200 }">
-      <div v-show="isListVisible" class="list">
-        <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
+  <vue100vh>
+    <section class="team">
+      <div class="top">
+        <transition name="fade" mode="out-in">
+          <h1 v-if="isListVisible || !currentPerson" :key="teamCopy" v-animate-in="{ delay: 0.1 }" class="title">{{ teamCopy }}</h1>
+          <h1 v-else :key="currentPerson.name" v-animate-in class="title">
+            <span>{{ currentPerson.name }}</span><br /><span>{{ currentPerson.jobs }}</span>
+          </h1>
+        </transition>
       </div>
-    </transition>
-    <div v-if="currentPerson" class="bg-anim">
-      <transition name="fade" mode="out-in">
-        <video
-          :key="currentPerson.name"
-          loop
-          autoplay
-          muted
-          playsinline
-          class="video"
-          :src="currentPerson.file"
-        ></video>
+      <div class="controls">
+        <transition name="fade" mode="out-in">
+          <div v-if="!currentPerson" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">
+            SWITCH MODE
+            <p :class="{ 'is-active': isGridVisible }" @click.prevent="toggleView(true)">GRID</p>
+            <p>/</p>
+            <p :class="{ 'is-active': isListVisible }" @click.prevent="toggleView(false)">LIST</p>
+          </div>
+          <div v-else :key="'button'" class="cta-link" @click.prevent="close">
+            <p class="is-active">CLOSE</p>
+          </div>
+        </transition>
+      </div>
+      <transition name="fade" :duration="{ enter: 500, leave: 200 }">
+        <div v-show="isListVisible" class="list">
+          <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
+        </div>
       </transition>
-    </div>
-  </section>
+      <div v-if="currentPerson" class="bg-anim">
+        <transition name="fade" mode="out-in">
+          <video
+            :key="currentPerson.name"
+            loop
+            autoplay
+            muted
+            playsinline
+            class="video"
+            :src="currentPerson.file"
+          ></video>
+        </transition>
+      </div>
+    </section>
+  </vue100vh>
 </template>
 
 <script>
+import vue100vh from 'vue-100vh'
 import People from '~/components/Grid/List/People'
 
 export default {
   name: 'Team',
   components: {
-    People
+    People,
+    vue100vh
   },
   data() {
     return {

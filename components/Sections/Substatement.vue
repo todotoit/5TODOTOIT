@@ -1,33 +1,40 @@
 <template>
-  <section class="substatment">
-    <div class="top">
-      <transition name="fade" mode="out-in">
-        <h1 :key="title" v-animate-in="{ delay: 0.1 }" class="title">{{ title }}</h1>
-      </transition>
-    </div>
-    <div v-show="!currentCopy" class="bg-neutral" :class="{ 'is-disable': currentCopy }" />
-    <div class="controls">
-      <transition name="fade" mode="out-in">
-        <div v-if="!currentCopy" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">CURIOUS? CLICK ON THE <span>RED DOTS</span></div>
-        <div v-if="currentCopy" :key="'button'" class="cta-link" @click.prevent="close"><p>CLOSE</p></div>
-      </transition>
-    </div>
-    <div v-show="currentCopy" class="bg-anim" :class="{ 'is-enable': currentCopy }">
-      <video
-        loop
-        autoplay
-        muted
-        playsinline
-        class="video"
-        :src="video"
-      ></video>
-    </div>
-  </section>
+  <vue100vh>
+    <section class="substatment">
+      <div class="top">
+        <transition name="fade" mode="out-in">
+          <h1 :key="title" v-animate-in="{ delay: 0.1 }" class="title">{{ title }}</h1>
+        </transition>
+      </div>
+      <div v-show="!currentCopy" class="bg-neutral" :class="{ 'is-disable': currentCopy }" />
+      <div class="controls">
+        <transition name="fade" mode="out-in">
+          <div v-if="!currentCopy" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">CURIOUS? CLICK ON THE <span>RED DOTS</span></div>
+          <div v-if="currentCopy" :key="'button'" class="cta-link" @click.prevent="close"><p>CLOSE</p></div>
+        </transition>
+      </div>
+      <div v-show="currentCopy" class="bg-anim" :class="{ 'is-enable': currentCopy }">
+        <video
+          loop
+          autoplay
+          muted
+          playsinline
+          class="video"
+          :src="video"
+        ></video>
+      </div>
+    </section>
+  </vue100vh>
 </template>
 
 <script>
+import vue100vh from 'vue-100vh'
+
 export default {
   name: 'Substatment',
+  components: {
+    vue100vh
+  },
   data() {
     return {
       defaultCopy: 'Experiences are more than the sum of their parts. And what we do is more than the projects in our portfolio. Always be exploring.'
