@@ -14,7 +14,7 @@
         </div>
         <div v-animate-in="{ delay: 0.35 }" class="col">
           <p class="cta-title">Work with us</p>
-          <a class="cta-link" href="mailto:info@todo.to.it" target="_blank">info@todo.to.it</a>
+          <a class="cta-link" href="mailto:hello@todo.to.it" target="_blank">hello@todo.to.it</a>
         </div>
         <div v-animate-in="{ delay: 0.45 }" class="col">
           <p class="cta-title">Follow us</p>
