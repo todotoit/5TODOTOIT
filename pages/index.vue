@@ -5,8 +5,8 @@
     </div>
     <Dots />
     <Fullpage ref="fullpage" @start="handleStart" @done="handleDone">
-      <Home id="home" />
-      <Substatement id="substatement" :hint="hint" />
+      <Home id="home" :hint="hint" />
+      <Substatement id="substatement" />
       <Team id="team" />
       <About id="about" />
     </Fullpage>
@@ -57,7 +57,7 @@ export default {
     this.updatePalette()
     this.hintTimeout = setTimeout(() => {
       this.hint = true
-    }, 3000)
+    }, 1500)
     window.addEventListener(
       'resize',
       debounce(() => this.$refs.fullpage.reposition(), 200)
@@ -86,12 +86,11 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 :root {
   --col-primary: #6123f3;
   --col-secondary: #ff4a00;
 }
-
 .logo {
   height: $navbar;
   width: 100%;

@@ -1,5 +1,5 @@
 <template>
-  <section class="substatment" :class="{ hint: hint }">
+  <section class="substatment">
     <div class="top">
       <transition name="fade" mode="out-in">
         <h1 :key="title" v-animate-in="{ delay: 0.1 }" class="title">{{ title }}</h1>
@@ -28,12 +28,6 @@
 <script>
 export default {
   name: 'Substatment',
-  props: {
-    hint: {
-      type: Boolean,
-      default: false
-    }
-  },
   data() {
     return {
       defaultCopy: 'Experiences are more than the sum of their parts. And what we do is more than the projects in our portfolio. Always be exploring.'
@@ -64,9 +58,6 @@ export default {
 <style lang="scss" scoped>
 .substatment {
   transition: transform $animationDuration $bezier;
-  &.hint {
-    transform: translateY(-20px);
-  }
   position: relative;
   .controls {
     .cta-link {
