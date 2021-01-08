@@ -69,6 +69,9 @@ body {
   }
   .col {
     width: 25%;
+    &.full {
+      width: 100%;
+    }
     @media screen and (max-width: $mqTablet) {
       padding-bottom: $padding;
       width: 100%;

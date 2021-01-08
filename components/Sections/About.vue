@@ -55,8 +55,8 @@
           </div>
         </div>
       </div>
-      <div v-animate-in="{ delay: 0.6 }" class="copyright">
-        <p class="cta-title">© 2007-2020 TODO s.r.l. / VAT number: IT 09657350014</p>
+      <div class="copyright">
+        <p class="cta-small-title">© 2007-2020 TODO s.r.l. / VAT number: IT 09657350014</p>
       </div>
       <h1 id="mama2020">
         We rebranded TODO with <br />
