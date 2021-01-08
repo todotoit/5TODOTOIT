@@ -10,7 +10,7 @@
     </div>
     <div class="controls">
       <transition name="fade" mode="out-in">
-        <div v-if="!currentPerson" :key="'buttons'" v-animate-in="{ delay: 0.25 }" class="cta-link">
+        <div v-if="!currentPerson" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">
           SWITCH MODE
           <p :class="{ 'is-active': isGridVisible }" @click.prevent="toggleView(true)">GRID</p>
           <p>/</p>

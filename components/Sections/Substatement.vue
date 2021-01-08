@@ -8,7 +8,7 @@
     <div v-show="!currentCopy" class="bg-neutral" :class="{ 'is-disable': currentCopy }" />
     <div class="controls">
       <transition name="fade" mode="out-in">
-        <div v-if="!currentCopy" :key="'buttons'" v-animate-in="{ delay: 0.25 }" class="cta-link">CURIOUS? CLICK ON THE <span>RED DOTS</span></div>
+        <div v-if="!currentCopy" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">CURIOUS? CLICK ON THE <span>RED DOTS</span></div>
         <div v-if="currentCopy" :key="'button'" class="cta-link" @click.prevent="close"><p>CLOSE</p></div>
       </transition>
     </div>
