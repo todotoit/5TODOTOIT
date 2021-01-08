@@ -142,8 +142,8 @@ export default {
     pointer-events: none;
     /deep/ .dot {
       animation: pop 1.2s $bezier;
-      width: var(--dotSize);
-      height: var(--dotSize);
+      width: calc(var(--dotSize) * 0.9);
+      height: calc(var(--dotSize) * 0.9);
       justify-self: center;
     }
     &.hint {
