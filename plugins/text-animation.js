@@ -2,7 +2,8 @@ import Vue from 'vue'
 
 const observeOptions = {
   root: null,
-  threshold: 0.2
+  rootMargin: '0px',
+  threshold: 0
 }
 
 const hasIntersectionObserver = () => {
