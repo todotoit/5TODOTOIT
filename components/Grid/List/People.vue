@@ -70,6 +70,7 @@ export default {
   }
   .cta-link {
     span:first-child {
+      font-weight: 500;
       color: var(--col-secondary);
     }
     span:last-child {
