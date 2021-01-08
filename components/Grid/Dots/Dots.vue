@@ -148,7 +148,7 @@ export default {
     }
     &.hint {
       /deep/ .clickable {
-        animation: pop 1.2s $bezier, hint 1.2s $bezier 2s;
+        animation: pop 1.2s $bezier, hint 1.2s $bezier 1.2s;
       }
     }
   }
