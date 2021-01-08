@@ -20,18 +20,23 @@
           <p class="cta-title">Follow us</p>
           <ul>
             <li>
+              <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
               <a class="cta-link" href="https://www.facebook.com/todotoit/" target="_blank">Facebook</a>
             </li>
             <li>
+              <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
               <a class="cta-link" href="https://www.instagram.com/todotoit/?hl=en" target="_blank">Instagram</a>
             </li>
             <li>
+              <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
               <a class="cta-link" href="https://www.flickr.com/photos/todotoit" target="_blank">Flickr</a>
             </li>
             <li>
+              <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
               <a class="cta-link" href="https://vimeo.com/todotoit" target="_blank">Vimeo</a>
             </li>
             <li>
+              <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
               <a class="cta-link" href="https://www.linkedin.com/company/todo/" target="_blank">Linkedin</a>
             </li>
           </ul>
@@ -69,14 +74,15 @@ export default {
   background-color: var(--col-primary);
   ul {
     list-style-type: none;
-    li:before {
-      content: '→';
-      color: var(--col-secondary);
-      font-size: 1.5rem;
-      padding-right: $padding/2;
-    }
     li {
       transition: margin 0.3s $bezier;
+      svg {
+        margin-right: $padding/2;
+        path {
+          stroke: var(--col-secondary);
+          transform: scale(0.9) translateY(4.5px);
+        }
+      }
       &:hover {
         cursor: pointer;
         margin-left: 20px;
