@@ -8,19 +8,19 @@
             <span>{{ currentPerson.name }}</span><br /><span>{{ currentPerson.jobs }}</span>
           </h1>
         </transition>
-      </div>
-      <div class="controls">
-        <transition name="fade" mode="out-in">
-          <div v-if="!currentPerson" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">
-            SWITCH MODE
-            <p :class="{ 'is-active': isGridVisible }" @click.prevent="toggleView(true)">GRID</p>
-            <p>/</p>
-            <p :class="{ 'is-active': isListVisible }" @click.prevent="toggleView(false)">LIST</p>
-          </div>
-          <div v-else :key="'button'" class="cta-link" @click.prevent="close">
-            <p class="is-active">CLOSE</p>
-          </div>
-        </transition>
+        <div class="controls">
+          <transition name="fade" mode="out-in">
+            <div v-if="!currentPerson" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">
+              SWITCH MODE
+              <p :class="{ 'is-active': isGridVisible }" @click.prevent="toggleView(true)">GRID</p>
+              <p>/</p>
+              <p :class="{ 'is-active': isListVisible }" @click.prevent="toggleView(false)">LIST</p>
+            </div>
+            <div v-else :key="'button'" class="cta-link" @click.prevent="close">
+              <p class="is-active">CLOSE</p>
+            </div>
+          </transition>
+        </div>
       </div>
       <transition name="fade" :duration="{ enter: 500, leave: 200 }">
         <div v-show="isListVisible" class="list">

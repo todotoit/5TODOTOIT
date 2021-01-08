@@ -111,6 +111,11 @@ export default {
       }
     }
   }
+  .top {
+    @media screen and (max-width: $mqMobile) {
+      height: auto;
+    }
+  }
   .col p {
     padding-bottom: $padding/4;
   }

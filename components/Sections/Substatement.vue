@@ -5,14 +5,14 @@
         <transition name="fade" mode="out-in">
           <h1 :key="title" v-animate-in="{ delay: 0.1 }" class="title">{{ title }}</h1>
         </transition>
+        <div class="controls">
+          <transition name="fade" mode="out-in">
+            <div v-if="!currentCopy" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">CURIOUS? CLICK ON THE <span>RED DOTS</span></div>
+            <div v-if="currentCopy" :key="'button'" class="cta-link" @click.prevent="close"><p>CLOSE</p></div>
+          </transition>
+        </div>
       </div>
       <div v-show="!currentCopy" class="bg-neutral" :class="{ 'is-disable': currentCopy }" />
-      <div class="controls">
-        <transition name="fade" mode="out-in">
-          <div v-if="!currentCopy" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">CURIOUS? CLICK ON THE <span>RED DOTS</span></div>
-          <div v-if="currentCopy" :key="'button'" class="cta-link" @click.prevent="close"><p>CLOSE</p></div>
-        </transition>
-      </div>
       <div v-show="currentCopy" class="bg-anim" :class="{ 'is-enable': currentCopy }">
         <video
           loop
