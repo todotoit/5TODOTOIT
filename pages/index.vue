@@ -1,5 +1,6 @@
 <template>
   <div class="main-container">
+    <Cookie />
     <div class="logo">
       <img svg-inline class="todo" src="@/assets/icons/TODO_LOGO.svg" />
     </div>

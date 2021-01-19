@@ -53,6 +53,7 @@ export default {
     '@nuxtjs/style-resources',
     'vue-scrollto/nuxt',
     'nuxt-polyfill',
+    'cookie-universal-nuxt',
     [
       'nuxt-mq',
       {
