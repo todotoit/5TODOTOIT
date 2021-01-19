@@ -125,6 +125,7 @@ export default {
     left: $padding;
     @media screen and (max-width: $mqTablet) {
       left: $padding/2;
+      bottom: $padding/2;
       .cta-small-title {
         font-size: 0.6rem;
       }
