@@ -30,13 +30,7 @@ export default {
   methods: {
     scroll(e) {
       const dir = e.one.direction
-      console.log(
-        e.one.id,
-        'inertial:',
-        e.one.inertial,
-        e.one.target,
-        this.hasScrollableInPath(e.one.target, dir)
-      )
+      console.log(e.one.id, 'inertial:', e.one.inertial, e.one.target, this.hasScrollableInPath(e.one.target, dir))
       // allows scrolling inside the section without triggering global navigation
       if (this.hasScrollableInPath(e.one.target, dir)) {
         console.log('scrollable', e.one.target)
@@ -72,8 +66,7 @@ export default {
           (scrollOffset <= scrollHeight - 10 && dir < 0) // begin of scroll area, going up
 
         if (isScrollable) return true
-        else if (target.parentElement !== this.$el)
-          return this.hasScrollableInPath(target.parentElement, dir)
+        else if (target.parentElement !== this.$el) return this.hasScrollableInPath(target.parentElement, dir)
       } else if (target.parentElement !== this.$el) {
         // target is not scrollable, check parent or bail if root $el
         return this.hasScrollableInPath(target.parentElement, dir)
@@ -107,6 +100,6 @@ export default {
 .fullpage {
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 100vh;
+  height: 100%;
 }
 </style>
