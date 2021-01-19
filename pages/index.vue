@@ -24,7 +24,7 @@ import { random, debounce } from '~/utils/'
 
 const palette = [
   ['#6123F3', '#FF4A00'],
-  ['#02E19F', '#FF4A00']
+  ['#09DA9C', '#FF4A00']
 ]
 
 export default {
