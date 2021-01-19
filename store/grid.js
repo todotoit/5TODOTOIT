@@ -16,6 +16,12 @@ export const state = () => ({
 })
 
 export const getters = {
+  videoAssets: (state) => {
+    return state.actions.substatements.map((c) => c.file)
+  },
+  teamAssets: (state) => {
+    return state.actions.team.map((t) => t.file)
+  },
   substatement: (state) => {
     return state.substatement
   },
@@ -61,7 +67,7 @@ export const mutations = {
   setCurrentCopy(state, data) {
     state.currentCopy = data
   },
-  setCurrentAction(state,data) {
+  setCurrentAction(state, data) {
     state.currentAction = data
   },
   setCurrentPerson(state, data) {
