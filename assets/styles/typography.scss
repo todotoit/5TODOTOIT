@@ -13,6 +13,9 @@
     font-size: 3rem;
     width: 100%;
   }
+  @media screen and (max-width: 1100px) {
+    width: 80%;
+  }
   @media screen and (max-width: $mqTablet) {
     font-size: 3.5rem;
     width: 100%;
