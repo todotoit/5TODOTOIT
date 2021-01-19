@@ -70,7 +70,7 @@ section {
       width: 100%;
     }
     @media screen and (max-width: $mqTablet) {
-      padding-bottom: $padding;
+      padding-bottom: $padding/1.5;
       width: 100%;
     }
   }
@@ -107,6 +107,9 @@ a {
 .observer {
   opacity: 0;
   transform: translateY(100px);
+  @media screen and (max-width: $mqTablet) {
+    transform: translateY(50px);
+  }
   &.enter,
   &.leave {
     transition: opacity 1.6s $bezier, transform $animationDuration * 2 $bezier;

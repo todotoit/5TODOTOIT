@@ -89,7 +89,7 @@ export default {
       display: flex;
       flex-direction: row;
       align-items: center;
-      margin-bottom: $padding/2;
+      margin-bottom: $padding/3;
       svg {
         margin-right: $padding/4;
         width: 20px;
@@ -97,6 +97,7 @@ export default {
         @media screen and (max-width: $mqMobile) {
           width: 15px;
           height: 15px;
+          transform: translateY(0.5px);
         }
         path {
           stroke: var(--col-secondary);
@@ -117,17 +118,19 @@ export default {
     }
   }
   .col p {
-    padding-bottom: $padding/4;
+    padding-bottom: $padding/10;
   }
   .copyright {
     position: absolute;
     left: $padding;
+    @media screen and (max-width: $mqTablet) {
+      left: $padding/2;
+      .cta-small-title {
+        font-size: 0.6rem;
+      }
+    }
     bottom: $padding;
     z-index: 100;
-    @media screen and (max-width: $mqMobile) {
-      position: static;
-      padding: 0;
-    }
   }
 }
 #mama2020 {
