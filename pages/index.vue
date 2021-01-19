@@ -3,6 +3,7 @@
     <div class="logo">
       <img svg-inline class="todo" src="@/assets/icons/TODO_LOGO.svg" />
     </div>
+    <Preloader :videos="videoAssets" />
     <Dots />
     <Fullpage ref="fullpage" @start="handleStart" @done="handleDone">
       <Home id="home" :hint="hint" />
@@ -20,6 +21,7 @@ import Substatement from '~/components/Sections/Substatement'
 import Team from '~/components/Sections/Team'
 import About from '~/components/Sections/About'
 import Dots from '~/components/Grid/Dots/Dots'
+import Preloader from '~/components/Preloader'
 import { random, debounce } from '~/utils/'
 
 const palette = [
@@ -35,7 +37,8 @@ export default {
     Substatement,
     Team,
     Dots,
-    About
+    About,
+    Preloader
   },
   data() {
     return {
@@ -51,6 +54,12 @@ export default {
     },
     current() {
       return this.$store.getters['sections/current']
+    },
+    videoAssets() {
+      return this.$store.getters['grid/videoAssets'].map(v => v[this.videoRatio])
+    },
+    videoRatio() {
+      return this.$mq === 'sm' || this.$mq === 'xs' ? 'vertical' : 'horizontal'
     }
   },
   mounted() {
@@ -75,12 +84,19 @@ export default {
     },
     handleStart(nav) {
       if (this.hint) this.hideHint()
-      if (nav.to <= 0 || nav.to >= 3) this.$store.commit('grid/setCurrentGrid', null)
+      if (nav.to <= 0 || nav.to >= 3)
+        this.$store.commit('grid/setCurrentGrid', null)
     },
     updatePalette() {
       const index = random(0, palette.length - 1)
-      document.documentElement.style.setProperty('--col-primary', palette[index][0])
-      document.documentElement.style.setProperty('--col-secondary', palette[index][1])
+      document.documentElement.style.setProperty(
+        '--col-primary',
+        palette[index][0]
+      )
+      document.documentElement.style.setProperty(
+        '--col-secondary',
+        palette[index][1]
+      )
     }
   }
 }

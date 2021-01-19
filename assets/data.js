@@ -15,7 +15,7 @@ export const substatements = [
     copy:
       'We make data meaningful, engaging, easy to grasp. Did we just turn statistics into fun for you? You’re welcome.',
     file: {
-      horizontal: '/videos/MAIN_DESKTOP_LITE.mp4',
+      horizontal: '/videos/MAIN_DESKTOP_LITE_B.mp4',
       vertical: '/videos/MAIN_MOBILE_LITE.mp4'
     }
   },
