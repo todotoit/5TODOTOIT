@@ -123,6 +123,9 @@ export default {
   .copyright {
     position: absolute;
     left: $padding;
+    .cta-small-title {
+      font-weight: 300;
+    }
     @media screen and (max-width: $mqTablet) {
       left: $padding/2;
       bottom: $padding/2;
