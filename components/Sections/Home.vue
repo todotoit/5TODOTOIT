@@ -31,6 +31,7 @@ export default {
 <style lang="scss" scoped>
 .home {
   background-color: $col-black;
+  position: relative;
   .hint {
     position: absolute;
     left: 0;
