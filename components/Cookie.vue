@@ -1,6 +1,6 @@
 <template>
   <div class="cookie" :class="{ active: show }">
-    <p class="cta-title">We use cookies to improve your browsing experience (find out how).</p>
+    <p class="cta-title">We use cookies to improve your browsing experience <a href="/favicon.png" download target="_blank"> (find out how).</a></p>
     <img svg-inline src="~/assets/icons/cross.svg" class="cross" @click="acceptCookie" />
   </div>
 </template>
@@ -47,6 +47,9 @@ export default {
   transform: translateX(-100%);
   transition: transform $animationDuration * 2 $bezier;
   justify-content: space-between;
+  a {
+    color: white;
+  }
   @media screen and (max-width: $mqTablet) {
     width: 80%;
   }
