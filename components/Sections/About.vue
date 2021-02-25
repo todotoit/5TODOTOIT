@@ -14,7 +14,7 @@
             <a class="cta-link" href="mailto:careers@todo.to.it" target="_blank">careers@todo.to.it</a>
           </div>
           <div v-animate-in="{ delay: 0.35 }" class="col">
-            <p class="cta-title">Work with us</p>
+            <p class="cta-title">Hire us</p>
             <a class="cta-link" href="mailto:hello@todo.to.it" target="_blank">hello@todo.to.it</a>
           </div>
           <div v-animate-in="{ delay: 0.45 }" class="col">
@@ -30,10 +30,6 @@
               </li>
               <li>
                 <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
-                <a class="cta-link" href="https://www.flickr.com/photos/todotoit" target="_blank">Flickr</a>
-              </li>
-              <li>
-                <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
                 <a class="cta-link" href="https://vimeo.com/todotoit" target="_blank">Vimeo</a>
               </li>
               <li>
@@ -45,13 +41,11 @@
         </div>
         <div class="row">
           <div v-animate-in="{ delay: 0.55 }" class="col full">
-            <p class="cta-title">Send us flowers and chocolate</p>
-            <a
-              class="cta-link"
-              href="https://goo.gl/maps/zQ8usiv8gvesgDcY6"
-              target="_blank"
-            >Via Bernardino Galliari, 6 <br />
-              10125 Torino, Italy</a>
+            <p class="cta-title">Send us chocolate / Stalk us</p>
+            <a class="cta-link" href="https://goo.gl/maps/zQ8usiv8gvesgDcY6" target="_blank">
+              Via Bernardino Galliari, 6 <br />
+              10125 Torino, Italy
+            </a>
           </div>
         </div>
       </div>
