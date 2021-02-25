@@ -37,7 +37,7 @@ export default {
   },
   data() {
     return {
-      defaultCopy: 'Experiences are more than the sum of their parts. And what we do is more than the projects in our portfolio. Always be exploring.'
+      defaultCopy: 'Design and technology are not our product, but our creative tools. That’s why what we can do for you is more than the projects in our portfolio.'
     }
   },
   computed: {

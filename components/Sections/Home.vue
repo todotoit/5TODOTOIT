@@ -5,7 +5,7 @@
       <div class="middle">
         <h1 v-animate-in="{ delay: 0.2 }" class="big-title">
           Hello, we are TODO. <br />
-          We design experiences that blend the digital world into real life, so people can live valuable, transformative moments.
+          We blend the digital world into real life, designing spaces and experiences. From Italy, with love, since 2007.
         </h1>
       </div>
     </section>
