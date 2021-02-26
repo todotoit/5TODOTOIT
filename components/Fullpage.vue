@@ -30,10 +30,10 @@ export default {
   methods: {
     scroll(e) {
       const dir = e.one.direction
-      console.log(e.one.id, 'inertial:', e.one.inertial, e.one.target, this.hasScrollableInPath(e.one.target, dir))
+      // console.log(e.one.id, 'inertial:', e.one.inertial, e.one.target, this.hasScrollableInPath(e.one.target, dir))
       // allows scrolling inside the section without triggering global navigation
       if (this.hasScrollableInPath(e.one.target, dir)) {
-        console.log('scrollable', e.one.target)
+        // console.log('scrollable', e.one.target)
         return false
       }
       e.stopPropagation()
@@ -46,7 +46,7 @@ export default {
       const next = clamp(this.current + direction, 0, this.sections.length - 1)
 
       if (this.lock !== null) return
-      console.log(`move from: ${this.current}, to: ${next}`)
+      // console.log(`move from: ${this.current}, to: ${next}`)
       // scroll to current section
       this.scrollTo(next)
       this.current = next

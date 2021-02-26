@@ -1,10 +1,5 @@
 <template>
-  <div
-    v-if="action"
-    class="people"
-    :class="isActive"
-    @click.stop="runAction"
-  >
+  <div v-if="action" class="people" :class="isActive" @click.stop="runAction">
     <h1 class="cta-link">
       <span> {{ action.name }}</span>
       <br />
@@ -28,7 +23,7 @@ export default {
     },
     isActive() {
       if (this.currentAction) {
-        if(this.action.id === this.currentAction) return 'active'
+        if (this.action.id === this.currentAction) return 'active'
         else return 'disabled'
       }
       return ''

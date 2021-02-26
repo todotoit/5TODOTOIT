@@ -2,12 +2,10 @@
   <vue100vh>
     <section class="home">
       <div class="hint" :class="{ active: hint }"></div>
-      <div class="middle">
-        <h1 v-animate-in="{ delay: 0.2 }" class="big-title">
-          Hello, we are TODO. <br />
-          We design experiences that blend the digital world into real life, so people can live valuable, transformative moments.
-        </h1>
-      </div>
+      <h1 v-animate-in="{ delay: 0.2 }" class="big-title">
+        Hello, we are TODO. <br />
+        We blend the digital world into real life, designing spaces and experiences. From Italy, with love, since 2007.
+      </h1>
     </section>
   </vue100vh>
 </template>
@@ -31,6 +29,11 @@ export default {
 <style lang="scss" scoped>
 .home {
   background-color: $col-black;
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   .hint {
     position: absolute;
     left: 0;
@@ -43,12 +46,6 @@ export default {
     &.active {
       height: 20px;
     }
-  }
-  .middle {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 }
 </style>

@@ -154,6 +154,7 @@ export default {
   }
 }
 
+// Dot Pop Transition
 @keyframes pop {
   0% {
     transform: scale(0);
@@ -163,6 +164,7 @@ export default {
   }
 }
 
+// Dot Hint Transition
 @keyframes hint {
   0% {
     transform: scale(1);

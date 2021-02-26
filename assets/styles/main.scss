@@ -2,7 +2,6 @@ html,
 body {
   font-family: $fontFamily;
   color: $col-white;
-  padding: 0;
   overflow-x: hidden;
   overflow-y: scroll;
   height: 100%;
@@ -35,50 +34,18 @@ section {
     flex-direction: column;
     justify-content: space-between;
     @media screen and (max-width: $mqMobile) {
-      padding-top: calc(40px);
-    }
-    .controls {
-      p {
-        display: inline-block;
-        &:hover {
-          cursor: pointer;
-        }
-      }
+      padding-top: 40px;
     }
   }
   .bottom {
     position: relative;
-    padding-top: $padding * 1;
+    padding-top: $padding;
   }
 }
 
-.peoples {
-  padding: 0 $padding;
-  padding-bottom: $padding;
-  @media screen and (max-width: $mqSmallMobile) {
-    padding: 0 $padding/2;
-    padding-bottom: $padding/2;
-  }
-}
-
-.row {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  padding-bottom: $padding * 2;
-  @media screen and (max-width: $mqTablet) {
-    flex-direction: column;
-    padding-bottom: 0;
-  }
-  .col {
-    width: 25%;
-    &.full {
-      width: 100%;
-    }
-    @media screen and (max-width: $mqTablet) {
-      padding-bottom: $padding/1.5;
-      width: 100%;
-    }
+.cta-link {
+  a:not(.btn-active) {
+    color: $col-white;
   }
 }
 
@@ -86,13 +53,17 @@ a {
   color: var(--col-secondary);
   text-decoration: none;
   &:hover {
+    cursor: pointer;
     text-decoration: underline;
   }
 }
 
 ::selection {
   background-color: var(--col-secondary);
-  // color: var(--col-primary);
+}
+
+.btn-active {
+  color: var(--col-secondary);
 }
 
 .bg-anim {
@@ -107,6 +78,21 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.preload {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  display: flex;
+  flex-direction: row;
+  pointer-events: none;
+  opacity: 1;
+  video {
+    width: 100px;
+  }
 }
 
 // Observer animation class
@@ -126,21 +112,5 @@ a {
   }
   &.leave {
     opacity: 0;
-  }
-}
-
-.preload {
-  z-index: 1000;
-  border: 1px solid red;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200px;
-  display: flex;
-  flex-direction: row;
-  pointer-events: none;
-  opacity: 1;
-  video {
-    width: 100px;
   }
 }

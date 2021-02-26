@@ -14,7 +14,7 @@
             <a class="cta-link" href="mailto:careers@todo.to.it" target="_blank">careers@todo.to.it</a>
           </div>
           <div v-animate-in="{ delay: 0.35 }" class="col">
-            <p class="cta-title">Work with us</p>
+            <p class="cta-title">Hire us</p>
             <a class="cta-link" href="mailto:hello@todo.to.it" target="_blank">hello@todo.to.it</a>
           </div>
           <div v-animate-in="{ delay: 0.45 }" class="col">
@@ -30,10 +30,6 @@
               </li>
               <li>
                 <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
-                <a class="cta-link" href="https://www.flickr.com/photos/todotoit" target="_blank">Flickr</a>
-              </li>
-              <li>
-                <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
                 <a class="cta-link" href="https://vimeo.com/todotoit" target="_blank">Vimeo</a>
               </li>
               <li>
@@ -45,18 +41,17 @@
         </div>
         <div class="row">
           <div v-animate-in="{ delay: 0.55 }" class="col full">
-            <p class="cta-title">Send us flowers and chocolate</p>
-            <a
-              class="cta-link"
-              href="https://goo.gl/maps/zQ8usiv8gvesgDcY6"
-              target="_blank"
-            >Via Bernardino Galliari, 6 <br />
-              10125 Torino, Italy</a>
+            <p class="cta-title">Send us chocolate / Stalk us</p>
+            <br />
+            <a class="cta-link" href="https://goo.gl/maps/zQ8usiv8gvesgDcY6" target="_blank">
+              Via Bernardino Galliari, 6 <br />
+              10125 Torino, Italy
+            </a>
           </div>
         </div>
       </div>
       <div class="copyright">
-        <p class="cta-small-title">© 2007-2020 TODO s.r.l. / VAT number: IT 09657350014</p>
+        <p class="cta-small-title">© 2007-2021 TODO s.r.l. / VAT number: IT 09657350014</p>
       </div>
       <h1 id="mama2020">
         We rebranded TODO with <br />
@@ -82,6 +77,26 @@ export default {
 .about {
   position: relative;
   background-color: var(--col-primary);
+  .row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: $padding * 2;
+    @media screen and (max-width: $mqTablet) {
+      flex-direction: column;
+      padding-bottom: 0;
+    }
+    .col {
+      width: 25%;
+      &.full {
+        width: 100%;
+      }
+      @media screen and (max-width: $mqTablet) {
+        padding-bottom: $padding/1.5;
+        width: 100%;
+      }
+    }
+  }
   ul {
     list-style-type: none;
     li {
@@ -123,6 +138,9 @@ export default {
   .copyright {
     position: absolute;
     left: $padding;
+    .cta-small-title {
+      font-weight: 300;
+    }
     @media screen and (max-width: $mqTablet) {
       left: $padding/2;
       bottom: $padding/2;
