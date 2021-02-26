@@ -2,6 +2,10 @@
   <Nuxt />
 </template>
 
-<script></script>
+<script>
+export default {
+  name: 'DefaultLayout'
+}
+</script>
 
 <style lang="scss" scoped></style>
