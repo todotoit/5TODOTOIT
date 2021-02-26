@@ -68,7 +68,7 @@ export const team = [
   {
     id: 4,
     name: 'Luca Zanconi',
-    jobs: 'Native & 3D Software developer',
+    jobs: 'Technical Artist & Software Developer',
     file: '/team/People_Luca.mp4'
   },
   {
@@ -80,35 +80,41 @@ export const team = [
   {
     id: 6,
     name: 'Kerem Türkyilmaz',
-    jobs: 'Designer & Junior Developer',
+    jobs: 'Graphic Designer & Junior Developer',
     file: '/team/People_Marco.mp4'
   },
   {
     id: 7,
     name: 'Marta Monge',
-    jobs: 'Art Director e Visual designer',
+    jobs: 'Art Director & Visual Designer',
     file: '/team/People_Alessandra.mp4'
   },
   {
     id: 8,
     name: 'Federica Zucchini',
-    jobs: 'Interaction Designer',
+    jobs: 'Visual Designer',
     file: '/team/People_Alessandra.mp4'
   },
   {
     id: 9,
     name: 'Matteo Palu',
-    jobs: 'Graphic Designer',
+    jobs: 'Information Designer',
     file: '/team/People_Luca.mp4'
   },
   {
     id: 10,
+    name: 'Alice Mela',
+    jobs: 'Designers Director & Interaction Designer',
+    file: '/team/People_Alessandra.mp4'
+  },
+  {
+    id: 11,
     name: 'Virginia Toffetti',
     jobs: 'Product Designer',
     file: '/team/People_Alessandra.mp4'
   },
   {
-    id: 11,
+    id: 12,
     name: 'Alessandra Martina',
     jobs: 'Administrative Assistant',
     file: '/team/People_Alessandra.mp4'
