@@ -64,26 +64,8 @@ export default {
 
 <style lang="scss" scoped>
 .substatment {
-  transition: transform $animationDuration $bezier;
   position: relative;
-  .controls {
-    .cta-link {
-      span {
-        color: var(--col-secondary);
-      }
-      p {
-        color: var(--col-secondary);
-      }
-    }
-  }
-  .bg-neutral {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--col-primary);
-  }
+  background-color: var(--col-primary);
   .bg-anim {
     .video {
       filter: brightness(45%);

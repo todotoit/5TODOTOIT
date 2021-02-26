@@ -42,6 +42,7 @@
         <div class="row">
           <div v-animate-in="{ delay: 0.55 }" class="col full">
             <p class="cta-title">Send us chocolate / Stalk us</p>
+            <br />
             <a class="cta-link" href="https://goo.gl/maps/zQ8usiv8gvesgDcY6" target="_blank">
               Via Bernardino Galliari, 6 <br />
               10125 Torino, Italy
@@ -76,6 +77,26 @@ export default {
 .about {
   position: relative;
   background-color: var(--col-primary);
+  .row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: $padding * 2;
+    @media screen and (max-width: $mqTablet) {
+      flex-direction: column;
+      padding-bottom: 0;
+    }
+    .col {
+      width: 25%;
+      &.full {
+        width: 100%;
+      }
+      @media screen and (max-width: $mqTablet) {
+        padding-bottom: $padding/1.5;
+        width: 100%;
+      }
+    }
+  }
   ul {
     list-style-type: none;
     li {
