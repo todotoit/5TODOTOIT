@@ -8,7 +8,7 @@
         <div class="controls">
           <transition name="fade" mode="out-in">
             <div v-if="!currentCopy" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">
-              <p>CURIOUS? CLICK ON THE <span class="btn-active">RED DOTS</span></p>
+              <p>CURIOUS? CLICK ON THE <span>RED DOTS</span></p>
             </div>
             <div v-else :key="'button'" class="cta-link btn-active" @click.prevent="close"><p>CLOSE</p></div>
           </transition>
