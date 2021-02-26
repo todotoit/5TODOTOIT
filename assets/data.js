@@ -61,72 +61,54 @@ export const team = [
   },
   {
     id: 3,
-    name: 'Michelle Nebiolo',
-    jobs: 'Content & Project Manager',
-    file: '/team/People_Alessandra.mp4'
-  },
-  {
-    id: 4,
     name: 'Julie Faure',
     jobs: 'Project Manager',
     file: '/team/People_Alessandra.mp4'
   },
   {
-    id: 5,
-    name: 'Marco Aimo',
-    jobs: 'Full Stack Developer',
-    file: '/team/People_Marco.mp4'
-  },
-  {
-    id: 6,
+    id: 4,
     name: 'Luca Zanconi',
     jobs: 'Native & 3D Software developer',
     file: '/team/People_Luca.mp4'
   },
   {
-    id: 7,
+    id: 5,
     name: 'Emilio Bondioli',
     jobs: 'Interaction designer & Developer',
     file: '/team/People_Luca.mp4'
   },
   {
-    id: 8,
+    id: 6,
     name: 'Kerem Türkyilmaz',
     jobs: 'Designer & Junior Developer',
     file: '/team/People_Marco.mp4'
   },
   {
-    id: 9,
+    id: 7,
     name: 'Marta Monge',
     jobs: 'Art Director e Visual designer',
     file: '/team/People_Alessandra.mp4'
   },
   {
-    id: 10,
+    id: 8,
     name: 'Federica Zucchini',
     jobs: 'Interaction Designer',
     file: '/team/People_Alessandra.mp4'
   },
   {
-    id: 11,
+    id: 9,
     name: 'Matteo Palu',
     jobs: 'Graphic Designer',
     file: '/team/People_Luca.mp4'
   },
   {
-    id: 12,
+    id: 10,
     name: 'Virginia Toffetti',
     jobs: 'Product Designer',
     file: '/team/People_Alessandra.mp4'
   },
   {
-    id: 13,
-    name: 'Edoardo Falletta',
-    jobs: 'Business Development',
-    file: '/team/People_Marco.mp4'
-  },
-  {
-    id: 14,
+    id: 11,
     name: 'Alessandra Martina',
     jobs: 'Administrative Assistant',
     file: '/team/People_Alessandra.mp4'
