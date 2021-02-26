@@ -64,10 +64,10 @@ export default {
     pointer-events: auto;
     background-color: var(--col-secondary);
     &:hover {
-      transform: scale(1.5);
+      transform: scale(1.9);
     }
     &.active {
-      transform: scale(2);
+      transform: scale(2.5);
     }
   }
   &.disabled {
