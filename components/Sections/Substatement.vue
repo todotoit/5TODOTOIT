@@ -7,20 +7,24 @@
         </transition>
         <div class="controls">
           <transition name="fade" mode="out-in">
-            <div v-if="!currentCopy" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">CURIOUS? CLICK ON THE <span>RED DOTS</span></div>
-            <div v-if="currentCopy" :key="'button'" class="cta-link" @click.prevent="close"><p>CLOSE</p></div>
+            <div v-if="!currentCopy" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">
+              <p>CURIOUS? CLICK ON THE <span class="btn-active">RED DOTS</span></p>
+            </div>
+            <div v-else :key="'button'" class="cta-link btn-active" @click.prevent="close"><p>CLOSE</p></div>
           </transition>
         </div>
       </div>
-      <div v-show="!currentCopy" class="bg-neutral" :class="{ 'is-disable': currentCopy }" />
-      <div v-show="currentCopy" class="bg-anim" :class="{ 'is-enable': currentCopy }">
+      <div v-show="currentCopy" class="bg-anim">
         <video
+          v-for="(v, i) in videoAssets"
+          v-show="v.horizontal === video"
+          :key="i"
           loop
           autoplay
           muted
           playsinline
           class="video"
-          :src="video"
+          :src="v.horizontal"
         ></video>
       </div>
     </section>
@@ -41,6 +45,9 @@ export default {
     }
   },
   computed: {
+    videoAssets() {
+      return this.$store.getters['grid/videoAssets']
+    },
     currentCopy() {
       return this.$store.getters['grid/currentCopy']
     },
