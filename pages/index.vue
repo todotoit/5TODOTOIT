@@ -51,7 +51,7 @@ export default {
       return this.$store.getters['sections/current']
     },
     videoAssets() {
-      return this.$store.getters['grid/videoAssets'].map((v) => v[this.videoRatio])
+      return this.$store.getters['grid/videoAssets'].map((v) => v.file[this.videoRatio])
     },
     videoRatio() {
       return this.$mq === 'sm' || this.$mq === 'xs' ? 'vertical' : 'horizontal'
