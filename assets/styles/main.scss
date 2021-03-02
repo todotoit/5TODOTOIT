@@ -44,6 +44,9 @@ section {
 }
 
 .cta-link {
+  span {
+    color: var(--col-secondary);
+  }
   a:not(.btn-active) {
     color: $col-white;
   }
@@ -64,6 +67,7 @@ a {
 
 .btn-active {
   color: var(--col-secondary);
+  cursor: pointer;
 }
 
 .bg-anim {
@@ -91,7 +95,7 @@ a {
   pointer-events: none;
   opacity: 1;
   video {
-    width: 100px;
+    width: 20px;
   }
 }
 

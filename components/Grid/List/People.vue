@@ -53,7 +53,8 @@ export default {
   padding-right: $padding;
   padding-bottom: $padding * 4;
   user-select: none;
-  &:hover {
+  h1,
+  span {
     cursor: pointer;
   }
   &.disabled {

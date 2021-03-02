@@ -39,7 +39,7 @@ export const meta = [
   {
     hid: 'copyright',
     name: 'copyright',
-    content: 'TODO - 2020'
+    content: 'TODO - 2021'
   },
   {
     hid: 'language',

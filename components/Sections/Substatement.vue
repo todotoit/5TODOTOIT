@@ -8,23 +8,23 @@
         <div class="controls">
           <transition name="fade" mode="out-in">
             <div v-if="!currentCopy" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">
-              <p>CURIOUS? CLICK ON THE <span class="btn-active">RED DOTS</span></p>
+              <p>CURIOUS? CLICK ON THE <span>RED DOTS</span></p>
             </div>
             <div v-else :key="'button'" class="cta-link btn-active" @click.prevent="close"><p>CLOSE</p></div>
           </transition>
         </div>
       </div>
-      <div v-show="currentCopy" class="bg-anim">
+      <div v-if="currentCopy" class="bg-anim">
         <video
           v-for="(v, i) in videoAssets"
-          v-show="v.horizontal === video"
+          v-show="v.id === currentCopy.id"
           :key="i"
           loop
           autoplay
           muted
           playsinline
           class="video"
-          :src="v.horizontal"
+          :src="v.file[videoRatio]"
         ></video>
       </div>
     </section>
@@ -56,10 +56,10 @@ export default {
     },
     videoRatio() {
       return this.$mq === 'sm' || this.$mq === 'xs' ? 'vertical' : 'horizontal'
-    },
-    video() {
-      return this.currentCopy ? this.currentCopy.file[this.videoRatio] : null
     }
+    // video() {
+    //   return this.currentCopy ? this.currentCopy.file[this.videoRatio] : null
+    // }
   },
   methods: {
     close() {

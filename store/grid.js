@@ -17,7 +17,7 @@ export const state = () => ({
 
 export const getters = {
   videoAssets: (state) => {
-    return state.actions.substatements.map((c) => c.file)
+    return state.actions.substatements
   },
   teamAssets: (state) => {
     return state.actions.team.map((t) => t.file)

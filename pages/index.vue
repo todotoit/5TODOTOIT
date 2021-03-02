@@ -47,17 +47,11 @@ export default {
     }
   },
   computed: {
-    currentGrid() {
-      return this.$store.getters['grid/currentGrid']
-    },
-    sections() {
-      return this.$store.getters['sections/sections']
-    },
     current() {
       return this.$store.getters['sections/current']
     },
     videoAssets() {
-      return this.$store.getters['grid/videoAssets'].map(v => v[this.videoRatio])
+      return this.$store.getters['grid/videoAssets'].map((v) => v.file[this.videoRatio])
     },
     videoRatio() {
       return this.$mq === 'sm' || this.$mq === 'xs' ? 'vertical' : 'horizontal'
@@ -85,19 +79,12 @@ export default {
     },
     handleStart(nav) {
       if (this.hint) this.hideHint()
-      if (nav.to <= 0 || nav.to >= 3)
-        this.$store.commit('grid/setCurrentGrid', null)
+      if (nav.to <= 0 || nav.to >= 3) this.$store.commit('grid/setCurrentGrid', null)
     },
     updatePalette() {
       const index = random(0, palette.length - 1)
-      document.documentElement.style.setProperty(
-        '--col-primary',
-        palette[index][0]
-      )
-      document.documentElement.style.setProperty(
-        '--col-secondary',
-        palette[index][1]
-      )
+      document.documentElement.style.setProperty('--col-primary', palette[index][0])
+      document.documentElement.style.setProperty('--col-secondary', palette[index][1])
     }
   }
 }
