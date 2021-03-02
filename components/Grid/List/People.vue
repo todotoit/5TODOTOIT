@@ -70,6 +70,7 @@ export default {
       color: var(--col-secondary);
     }
     span:last-child {
+      color: $col-white;
       width: 70%;
     }
   }
