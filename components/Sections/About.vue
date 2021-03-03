@@ -2,63 +2,56 @@
   <vue100vh>
     <section class="about">
       <div class="top">
-        <h1 v-animate-in class="title">
-          If you want to get to know us, find out if we are available for a project, submit your portfolio or interact with us in any other way, here is where you can
-          find us.
-        </h1>
+        <h1 v-animate-in class="title">Get in touch with us</h1>
       </div>
-      <div class="bottom">
-        <div class="row">
-          <div v-animate-in="{ delay: 0.25 }" class="col">
+      <div class="row">
+        <div v-animate-in="{ delay: 0.25 }" class="col">
+          <p class="cta-title">Follow us</p>
+          <ul>
+            <li>
+              <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
+              <a class="cta-link" href="https://www.facebook.com/todotoit/" target="_blank">Facebook</a>
+            </li>
+            <li>
+              <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
+              <a class="cta-link" href="https://www.instagram.com/todotoit/?hl=en" target="_blank">Instagram</a>
+            </li>
+            <li>
+              <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
+              <a class="cta-link" href="https://vimeo.com/todotoit" target="_blank">Vimeo</a>
+            </li>
+            <li>
+              <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
+              <a class="cta-link" href="https://www.linkedin.com/company/todo/" target="_blank">Linkedin</a>
+            </li>
+          </ul>
+        </div>
+        <div v-animate-in="{ delay: 0.45 }" class="col">
+          <div class="block">
             <p class="cta-title">Join our team</p>
             <a class="cta-link" href="mailto:careers@todo.to.it" target="_blank">careers@todo.to.it</a>
           </div>
-          <div v-animate-in="{ delay: 0.35 }" class="col">
+          <div class="block">
             <p class="cta-title">Hire us</p>
             <a class="cta-link" href="mailto:hello@todo.to.it" target="_blank">hello@todo.to.it</a>
           </div>
-          <div v-animate-in="{ delay: 0.45 }" class="col">
-            <p class="cta-title">Follow us</p>
-            <ul>
-              <li>
-                <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
-                <a class="cta-link" href="https://www.facebook.com/todotoit/" target="_blank">Facebook</a>
-              </li>
-              <li>
-                <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
-                <a class="cta-link" href="https://www.instagram.com/todotoit/?hl=en" target="_blank">Instagram</a>
-              </li>
-              <li>
-                <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
-                <a class="cta-link" href="https://vimeo.com/todotoit" target="_blank">Vimeo</a>
-              </li>
-              <li>
-                <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
-                <a class="cta-link" href="https://www.linkedin.com/company/todo/" target="_blank">Linkedin</a>
-              </li>
-            </ul>
-          </div>
         </div>
-        <div class="row">
-          <div v-animate-in="{ delay: 0.55 }" class="col full">
-            <p class="cta-title">Send us chocolate / Stalk us</p>
-            <br />
-            <a class="cta-link" href="https://goo.gl/maps/zQ8usiv8gvesgDcY6" target="_blank">
-              Via Bernardino Galliari, 6 <br />
-              10125 Torino, Italy
-            </a>
-          </div>
+        <div v-animate-in="{ delay: 0.55 }" class="col">
+          <p class="cta-title">Send us chocolate / Stalk us</p>
+          <a class="cta-link" href="https://goo.gl/maps/zQ8usiv8gvesgDcY6" target="_blank">
+            Via Bernardino Galliari, 6 <br />
+            10125 Torino, Italy
+          </a>
         </div>
       </div>
-      <div class="copyright">
-        <p class="cta-small-title">© 2007-2021 TODO s.r.l. / VAT number: IT 09657350014</p>
+      <div v-animate-in="{ delay: 0.7 }" class="footer">
+        <div class="about-image">
+          <img class="" src="/about/spamghetto.jpg" />
+        </div>
+        <div class="copyright">
+          <p class="cta-small-title">© 2007-2021 TODO s.r.l. / VAT number: IT 09657350014</p>
+        </div>
       </div>
-      <h1 id="mama2020">
-        We rebranded TODO with <br />
-        one single purpose. <br />
-        Make Andre mad again!
-        <div>#mama2020</div>
-      </h1>
     </section>
   </vue100vh>
 </template>
@@ -76,7 +69,17 @@ export default {
 <style lang="scss" scoped>
 .about {
   position: relative;
+  height: 100%;
   background-color: var(--col-primary);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: $padding/1.5;
+  align-content: space-between;
+  .top {
+    height: auto;
+    padding-bottom: $padding/1.5;
+    transform: translateX(-2px);
+  }
   .row {
     width: 100%;
     display: flex;
@@ -88,23 +91,33 @@ export default {
     }
     .col {
       width: 25%;
-      &.full {
-        width: 100%;
-      }
+      display: flex;
+      flex-direction: column;
       @media screen and (max-width: $mqTablet) {
         padding-bottom: $padding/1.5;
         width: 100%;
       }
+      p {
+        padding-bottom: $padding/6;
+      }
+      .block {
+        display: flex;
+        flex-direction: column;
+        &:first-child {
+          padding-bottom: $padding / 1.5;
+        }
+      }
     }
   }
   ul {
+    padding-top: 0.5px;
     list-style-type: none;
     li {
       transition: margin 0.3s $bezier;
       display: flex;
       flex-direction: row;
       align-items: center;
-      margin-bottom: $padding/3;
+      margin-bottom: $padding/2;
       svg {
         margin-right: $padding/4;
         width: 20px;
@@ -127,36 +140,35 @@ export default {
       }
     }
   }
-  .top {
-    @media screen and (max-width: $mqMobile) {
-      height: auto;
-    }
-  }
-  .col p {
-    padding-bottom: $padding/10;
-  }
-  .copyright {
-    position: absolute;
-    left: $padding;
-    .cta-small-title {
-      font-weight: 300;
-    }
-    @media screen and (max-width: $mqTablet) {
-      left: $padding/2;
-      bottom: $padding/2;
-      .cta-small-title {
-        font-size: 0.6rem;
+  .footer {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    .about-image {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      width: 75%;
+      margin-bottom: $padding/1.5;
+      @media screen and (max-width: $mqTablet) {
+        margin-bottom: $padding/4;
+      }
+      img {
+        width: 100%;
       }
     }
-    bottom: $padding;
-    z-index: 100;
-  }
-}
-#mama2020 {
-  color: var(--col-primary);
-  user-select: none;
-  div {
-    font-size: small;
+    .copyright {
+      .cta-small-title {
+        font-weight: 300;
+        @media screen and (max-width: $mqTablet) {
+          font-size: 0.6rem;
+        }
+      }
+    }
   }
 }
 </style>
