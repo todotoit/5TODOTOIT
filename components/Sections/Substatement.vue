@@ -14,17 +14,18 @@
           </transition>
         </div>
       </div>
-      <div v-if="currentCopy" class="bg-anim">
+      <div v-show="currentCopy" class="bg-anim">
         <video
           v-for="(v, i) in videoAssets"
-          v-show="v.id === currentCopy.id"
+          v-show="currentCopy ? v.id === currentCopy.id : false"
           :key="i"
           loop
           autoplay
           muted
           playsinline
           class="video"
-          :src="v.file[videoRatio]"
+          :poster="v.file.poster[ratio]"
+          :src="v.file.videos[ratio]"
         ></video>
       </div>
     </section>
@@ -54,12 +55,9 @@ export default {
     title() {
       return this.currentCopy ? this.currentCopy.copy : this.defaultCopy
     },
-    videoRatio() {
+    ratio() {
       return this.$mq === 'sm' || this.$mq === 'xs' ? 'vertical' : 'horizontal'
     }
-    // video() {
-    //   return this.currentCopy ? this.currentCopy.file[this.videoRatio] : null
-    // }
   },
   methods: {
     close() {
@@ -75,7 +73,7 @@ export default {
   background-color: var(--col-primary);
   .bg-anim {
     .video {
-      filter: brightness(45%);
+      filter: brightness(43%);
       width: 100%;
       height: 100%;
       object-fit: cover;
