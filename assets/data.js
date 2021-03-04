@@ -9,8 +9,8 @@ export const substatements = [
         vertical: '/videos/mobile/01_Poster.jpg'
       },
       videos: {
-        horizontal: '/videos/desktop/01_InteractiveExhibit_Desktop.mp4',
-        vertical: '/videos/mobile/01_InteractiveExhibit_Mobile.mp4'
+        horizontal: '/videos/desktop/01_InteractiveExhibit.mp4',
+        vertical: '/videos/mobile/01_InteractiveExhibit.mp4'
       }
     }
   },
@@ -24,8 +24,8 @@ export const substatements = [
         vertical: '/videos/mobile/02_Poster.jpg'
       },
       videos: {
-        horizontal: '/videos/desktop/02_KineticInstallations_Desktop.mp4',
-        vertical: '/videos/mobile/02_KineticInstallations_Mobile.mp4'
+        horizontal: '/videos/desktop/02_KineticInstallations.mp4',
+        vertical: '/videos/mobile/02_KineticInstallations.mp4'
       }
     }
   },
@@ -39,8 +39,8 @@ export const substatements = [
         vertical: '/videos/mobile/03_Poster.jpg'
       },
       videos: {
-        horizontal: '/videos/desktop/03_Dataviz_Desktop.mp4',
-        vertical: '/videos/mobile/03_Dataviz_Mobile.mp4'
+        horizontal: '/videos/desktop/03_Dataviz.mp4',
+        vertical: '/videos/mobile/03_Dataviz.mp4'
       }
     }
   },
@@ -54,8 +54,8 @@ export const substatements = [
         vertical: '/videos/mobile/04_Poster.jpg'
       },
       videos: {
-        horizontal: '/videos/desktop/04_DigitalProducts_Desktop.mp4',
-        vertical: '/videos/mobile/04_DigitalProducts_Mobile.mp4'
+        horizontal: '/videos/desktop/04_DigitalProducts.mp4',
+        vertical: '/videos/mobile/04_DigitalProducts.mp4'
       }
     }
   },
@@ -69,8 +69,8 @@ export const substatements = [
         vertical: '/videos/mobile/05_Poster.jpg'
       },
       videos: {
-        horizontal: '/videos/desktop/05_Museum_Desktop.mp4',
-        vertical: '/videos/mobile/05_Museum_Mobile.mp4'
+        horizontal: '/videos/desktop/05_Museum.mp4',
+        vertical: '/videos/mobile/05_Museum.mp4'
       }
     }
   }
@@ -99,13 +99,13 @@ export const team = [
     id: 4,
     name: 'Luca Zanconi',
     jobs: 'Technical Artist & Software Developer',
-    file: '/team/People_Luca.mp4'
+    file: '/team/LucaZanconi.mp4'
   },
   {
     id: 5,
     name: 'Emilio Bondioli',
     jobs: 'Interaction designer & Developer',
-    file: '/team/People_Luca.mp4'
+    file: '/team/EmilioBondioli.mp4'
   },
   {
     id: 6,
@@ -129,13 +129,13 @@ export const team = [
     id: 9,
     name: 'Matteo Palù',
     jobs: 'Information Designer',
-    file: '/team/People_Luca.mp4'
+    file: '/team/MatteoPalu.mp4'
   },
   {
     id: 10,
     name: 'Alice Mela',
     jobs: 'Design Director & Interaction Designer',
-    file: '/team/People_Alessandra.mp4'
+    file: '/team/AliceMela.mp4'
   },
   {
     id: 11,
@@ -147,6 +147,6 @@ export const team = [
     id: 12,
     name: 'Alessandra Martina',
     jobs: 'Administrative Assistant',
-    file: '/team/People_Alessandra.mp4'
+    file: '/team/AlessandraMartina.mp4'
   }
 ]
