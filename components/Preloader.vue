@@ -27,25 +27,27 @@ export default {
     }
   },
   mounted() {
+    this.boundCheckReady = this.checkVideoIsReady.bind(this)
+    this.interval = setInterval(this.boundCheckReady, 50)
     if (this.canPlay(this.$refs.video)) this.next()
-    this.$refs.video.addEventListener('canplaythrough', () => {
-      console.log(this.current + 'canplaythrough - ready state: ' + this.$refs.video.readyState)
-    })
-    this.$refs.video.addEventListener('canplay', () => {
-      console.log(this.current + 'canplay - ready state: ' + this.$refs.video.readyState)
-      this.next()
-      this.$nextTick(() => {
-        this.$refs.video.load();
-      })
-    })
   },
   methods: {
     canPlay(video) {
-      return video.readyState === 4
+      return video.readyState > 3
+    },
+    checkVideoIsReady() {
+      if (this.canPlay(this.$refs.video)) {
+        console.log(
+          this.current + 'canplay - ready state: ' + this.$refs.video.readyState
+        )
+        this.next()
+      }
     },
     next() {
+      console.log('next')
       this.current++
       if (this.current >= this.videos.length) {
+        clearInterval(this.interval)
         setTimeout(() => {
           this.done = true
         }, 0.2)
