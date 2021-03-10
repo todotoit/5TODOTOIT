@@ -28,7 +28,7 @@ export default {
   },
   mounted() {
     if (this.canPlay(this.$refs.video)) this.next()
-    this.$refs.video.addEventListener('canplaythrough', () => {
+    this.$refs.video.addEventListener('canplay', () => {
       this.next()
     })
   },
