@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     canPlay(video) {
-      return video.readyState > 3
+      return video.readyState >= 3
     },
     checkVideoIsReady() {
       if (this.canPlay(this.$refs.video)) {
