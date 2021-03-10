@@ -33,12 +33,20 @@ export default {
   },
   methods: {
     canPlay(video) {
-      return video.readyState >= 3
+      return video.readyState >= 2 && this.getPlayableLength(video) >= 3
+    },
+    getPlayableLength(video) {
+      const buffered = video.buffered
+      if (!buffered.length) return 0
+      else return buffered.end(0) - buffered.start(0)
     },
     checkVideoIsReady() {
+      const playable = this.getPlayableLength(this.$refs.video)
       if (this.canPlay(this.$refs.video)) {
         console.log(
-          this.current + 'canplay - ready state: ' + this.$refs.video.readyState
+          `${this.current} canplay - ready state: ${
+            this.$refs.video.readyState
+          } ready time: ${playable.toFixed(1)}`
         )
         this.next()
       }
