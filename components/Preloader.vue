@@ -29,7 +29,10 @@ export default {
   mounted() {
     if (this.canPlay(this.$refs.video)) this.next()
     this.$refs.video.addEventListener('canplaythrough', () => {
-      console.log(this.current + 'loaded - ready state: ' + this.$refs.video.readyState)
+      console.log(this.current + 'canplaythrough - ready state: ' + this.$refs.video.readyState)
+    })
+    this.$refs.video.addEventListener('canplay', () => {
+      console.log(this.current + 'canplay - ready state: ' + this.$refs.video.readyState)
       this.next()
       this.$nextTick(() => {
         this.$refs.video.load();
