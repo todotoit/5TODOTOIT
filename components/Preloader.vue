@@ -35,7 +35,9 @@ export default {
   mounted() {
     if (this.canPlay(this.$refs.video)) this.next()
     this.$refs.video.addEventListener('canplay', () => {
-      this.next()
+      setTimeout(() => {
+        this.next()
+      }, 500)
     })
   },
   methods: {
