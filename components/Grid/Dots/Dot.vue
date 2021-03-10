@@ -1,5 +1,6 @@
 <template>
   <div
+    :id="action ? action.label : ''"
     v-on-clickaway="close"
     class="dot"
     :class="[{ clickable: action }, isActive]"

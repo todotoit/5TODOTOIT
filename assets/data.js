@@ -1,7 +1,7 @@
 export const substatements = [
   {
     id: 1,
-    label: 'sub01',
+    label: 'interactive-exhibits',
     copy: 'We create interactive exhibits, turning new ideas into truly unique experiences that people enjoy and remember.',
     file: {
       poster: {
@@ -16,7 +16,7 @@ export const substatements = [
   },
   {
     id: 2,
-    label: 'sub02',
+    label: 'kinetic-installations',
     copy: 'We design and deliver kinetic installations, with technical mastery and beauty. Always finding new ways to stand out.',
     file: {
       poster: {
@@ -31,7 +31,7 @@ export const substatements = [
   },
   {
     id: 3,
-    label: 'sub03',
+    label: 'dataviz',
     copy: 'We unleash data\'s untapped potential by sensing the environment and turning numbers into engaging content and stories for your audience.',
     file: {
       poster: {
@@ -46,7 +46,7 @@ export const substatements = [
   },
   {
     id: 4,
-    label: 'sub04',
+    label: 'digital-products',
     copy: 'We craft strong concepts and tailor digital communication, to shape and improve the relationship between people and brands.',
     file: {
       poster: {
@@ -61,7 +61,7 @@ export const substatements = [
   },
   {
     id: 5,
-    label: 'sub05',
+    label: 'museums',
     copy: 'We leverage a wide spectrum of design tools to explain what matters to you, making even the most complex idea engaging for everyone.',
     file: {
       poster: {
