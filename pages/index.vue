@@ -51,7 +51,11 @@ export default {
       return this.$store.getters['sections/current']
     },
     videoAssets() {
-      return this.$store.getters['grid/videoAssets']
+      return this.$store.getters['grid/videoAssets'].map((v) => {
+        const ratio =
+          this.$mq === 'sm' || this.$mq === 'xs' ? 'vertical' : 'horizontal'
+        return v.file.videos[ratio]
+      })
     }
   },
   mounted() {
@@ -76,12 +80,19 @@ export default {
     },
     handleStart(nav) {
       if (this.hint) this.hideHint()
-      if (nav.to <= 0 || nav.to >= 3) this.$store.commit('grid/setCurrentGrid', null)
+      if (nav.to <= 0 || nav.to >= 3)
+        this.$store.commit('grid/setCurrentGrid', null)
     },
     updatePalette() {
       const index = random(0, palette.length - 1)
-      document.documentElement.style.setProperty('--col-primary', palette[index][0])
-      document.documentElement.style.setProperty('--col-secondary', palette[index][1])
+      document.documentElement.style.setProperty(
+        '--col-primary',
+        palette[index][0]
+      )
+      document.documentElement.style.setProperty(
+        '--col-secondary',
+        palette[index][1]
+      )
     }
   }
 }

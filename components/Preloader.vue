@@ -20,8 +20,12 @@ export default {
     }
   },
   mounted() {
+    console.log(this.videos)
+
+    console.log('begin preload', this.current)
     if (this.canPlay(this.$refs.video)) this.next()
     this.$refs.video.addEventListener('canplaythrough', () => {
+      console.log('can play', this.current)
       this.next()
     })
   },
@@ -31,6 +35,7 @@ export default {
     },
     next() {
       this.current++
+      console.log('next', this.current)
       if (this.current >= this.videos.length) {
         this.done = true
       }
