@@ -12,6 +12,7 @@
         :key="dot.id"
         :action="dot.action"
         :index="dot.index"
+        :style="getAnimationDelay(dot)"
       />
     </div>
   </div>
@@ -66,6 +67,10 @@ export default {
     }, 2000)
   },
   methods: {
+    getAnimationDelay(dot) {
+      if (!dot.action) return ''
+      return '--animation-delay: ' + (1.2 + dot.action.id * 0.1) + 's'
+    },
     initGrid() {
       this.modulo = this.updateModulo()
       this.bounds = this.gridContainer.getBoundingClientRect()
@@ -156,7 +161,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(var(--cols), 0.5fr);
     grid-template-rows: repeat(var(--rows), 0.5fr);
-    grid-gap: calc(var(--dotSize)*0.75);
+    grid-gap: calc(var(--dotSize) * 0.75);
     align-items: center;
     pointer-events: none;
     overflow: visible;
@@ -169,7 +174,7 @@ export default {
     }
     &.hint {
       /deep/ .clickable {
-        animation: pop 1.2s $bezier, hint 1.2s $bezier 1.2s;
+        animation: pop 1.2s $bezier, hint 1.2s $bezier var(--animation-delay);
       }
     }
   }
