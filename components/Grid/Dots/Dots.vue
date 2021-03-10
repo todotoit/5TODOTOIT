@@ -1,7 +1,18 @@
 <template>
   <div ref="dots" class="dots">
-    <div v-show="isGridVisible" v-move-dots class="dots-container" :class="{ hint: hint }">
-      <Dot v-for="dot in dots" ref="dot" :key="dot.id" :action="dot.action" :index="dot.index" />
+    <div
+      v-show="isGridVisible"
+      v-move-dots
+      class="dots-container"
+      :class="{ hint: hint }"
+    >
+      <Dot
+        v-for="dot in dots"
+        ref="dot"
+        :key="dot.id"
+        :action="dot.action"
+        :index="dot.index"
+      />
     </div>
   </div>
 </template>
@@ -66,7 +77,10 @@ export default {
 
       document.documentElement.style.setProperty('--cols', this.cols)
       document.documentElement.style.setProperty('--rows', this.rows)
-      document.documentElement.style.setProperty('--dotSize', this.modulo / 2.5 + 'px')
+      document.documentElement.style.setProperty(
+        '--dotSize',
+        this.modulo / 2.5 + 'px'
+      )
 
       for (let i = 0; i < this.cols * this.rows; i++) {
         this.dots.push({
@@ -77,7 +91,12 @@ export default {
       this.actions.forEach((action) => {
         let dot = 0
         let current = 0
-        while (dot % this.cols === this.cols - 1 || dot % this.cols === 0 || current < 2000 || this.dots[dot].action) {
+        while (
+          dot % this.cols === this.cols - 1 ||
+          dot % this.cols === 0 ||
+          current < 2000 ||
+          this.dots[dot].action
+        ) {
           dot = Math.floor(Math.random() * this.dots.length)
           current++
         }
@@ -137,13 +156,15 @@ export default {
     display: grid;
     grid-template-columns: repeat(var(--cols), 0.5fr);
     grid-template-rows: repeat(var(--rows), 0.5fr);
-    grid-gap: $padding;
+    grid-gap: calc(var(--dotSize)*0.75);
     align-items: center;
     pointer-events: none;
+    overflow: visible;
     /deep/ .dot {
+      overflow: visible;
       animation: pop 1.2s $bezier;
-      width: calc(var(--dotSize) * 0.9);
-      height: calc(var(--dotSize) * 0.9);
+      width: calc(var(--dotSize) * 1.75);
+      height: calc(var(--dotSize) * 1.75);
       justify-self: center;
     }
     &.hint {
@@ -160,20 +181,20 @@ export default {
     transform: scale(0);
   }
   100% {
-    transform: scale(1);
+    transform: scale(0.5);
   }
 }
 
 // Dot Hint Transition
 @keyframes hint {
   0% {
-    transform: scale(1);
+    transform: scale(0.5);
   }
   50% {
-    transform: scale(1.7);
+    transform: scale(1.25);
   }
   100% {
-    transform: scale(1);
+    transform: scale(0.5);
   }
 }
 </style>

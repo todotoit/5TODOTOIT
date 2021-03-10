@@ -56,33 +56,21 @@ export default {
 
 <style lang="scss" scoped>
 .dot {
-  &:after {
-    content: '';
-    display: block;
-    pointer-events: none;
-    background-color: $col-white;
-    border-radius: 50px;
-    transition: background-color 0.3s $bezier, transform 0.2s ease-out;
-    will-change: transform;
-    width: 150%;
-    height: 150%;
-    transform: translate(-10%, -10%) scale(0.75);
-  }
+  pointer-events: none;
+  background-color: $col-white;
+  border-radius: 50px;
+  transition: background-color 0.3s $bezier, transform 0.2s ease-out;
+  will-change: transform;
+  transform: scale(0.5);
   &.clickable {
-    &:after {
-      cursor: pointer;
-      background-color: var(--col-secondary);
-      pointer-events: auto;
-    }
+    cursor: pointer;
+    background-color: var(--col-secondary);
+    pointer-events: auto;
     &:hover {
-      &:after {
-        transform: translate(-10%, -10%) scale(1.25);
-      }
+      transform: scale(1);
     }
     &.active {
-      &:after {
-        transform: translate(-10%, -10%) scale(1.5);
-      }
+      transform: scale(1.5);
     }
   }
   &.disabled {
