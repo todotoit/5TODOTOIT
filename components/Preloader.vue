@@ -1,13 +1,6 @@
 <template>
   <div v-if="!done" class="preloader">
-    <video
-      ref="video"
-      preload="none"
-      :src="videoSrc"
-      muted
-      autoplay
-      loop
-    ></video>
+    <video ref="video" :src="videoSrc" muted autoplay loop></video>
   </div>
 </template>
 
@@ -28,16 +21,18 @@ export default {
   },
   computed: {
     videoSrc() {
-      if (this.videos && this.videos.length > this.current) return this.videos[this.current]
+      if (this.videos && this.videos.length > this.current)
+        return this.videos[this.current]
       return ''
     }
   },
   mounted() {
     if (this.canPlay(this.$refs.video)) this.next()
-    this.$refs.video.addEventListener('canplay', () => {
-      setTimeout(() => {
-        this.next()
-      }, 500)
+    this.$refs.video.addEventListener('canplaythrough', () => {
+      this.next()
+      this.$nextTick(() => {
+        this.$refs.video.load();
+      })
     })
   },
   methods: {
