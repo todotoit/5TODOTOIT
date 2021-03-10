@@ -29,18 +29,24 @@
         </div>
       </div>
       <div v-if="currentCopy" class="bg-anim">
-        <video
+        <div
           v-for="(v, i) in videoAssets"
           :key="i"
-          loop
-          autoplay
-          muted
-          playsinline
           class="video"
           :class="{ visible: currentCopy ? v.id === currentCopy.id : false }"
-          :poster="v.file.poster[ratio]"
-          :src="v.file.videos[ratio]"
-        ></video>
+        >
+          <transition name="videofade">
+            <video
+              v-if="currentCopy ? v.id === currentCopy.id : false"
+              loop
+              autoplay
+              muted
+              playsinline
+              :poster="v.file.poster[ratio]"
+              :src="v.file.videos[ratio]"
+            ></video>
+          </transition>
+        </div>
       </div>
     </section>
   </vue100vh>
@@ -88,11 +94,16 @@ export default {
   background-color: var(--col-primary);
   .bg-anim {
     .video {
-      filter: brightness(43%);
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      display: none;
+      position: absolute;
+      top: 0;
+      video {
+        filter: brightness(43%);
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
       &.visible {
         display: block;
       }
