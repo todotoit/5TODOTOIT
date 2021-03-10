@@ -33,21 +33,39 @@ export default {
   },
   methods: {
     canPlay(video) {
-      return this.getPlayableLength(video) >= 3
+      return this.getLoadedPercent(video) >= 0.2
     },
-    getPlayableLength(video) {
-      const buffered = video.buffered
-      if (!buffered.length) return 0
-      else return buffered.end(0) - buffered.start(0)
+    getLoadedPercent(video) {
+      let percent = 0
+      // FF4+, Chrome
+      if (
+        video &&
+        video.buffered &&
+        video.buffered.length > 0 &&
+        video.buffered.end &&
+        video.duration
+      ) {
+        percent = video.buffered.end(0) / video.duration
+      }
+      // e.g., FF3.6 and Safari 5
+      else if (
+        video &&
+        video.bytesTotal !== undefined &&
+        video.bytesTotal > 0 &&
+        video.bufferedBytes !== undefined
+      ) {
+        percent = video.bufferedBytes / video.bytesTotal
+      }
+      return percent
     },
     checkVideoIsReady() {
-      const playable = this.getPlayableLength(this.$refs.video)
-      console.log(playable.toFixed(1))
+      const playable = this.getLoadedPercent(this.$refs.video)
+      console.log(playable.toFixed(5))
       if (this.canPlay(this.$refs.video)) {
         console.log(
           `${this.current} canplay - ready state: ${
             this.$refs.video.readyState
-          } ready time: ${playable.toFixed(1)}`
+          } ready percent: ${playable.toFixed(1)}`
         )
         this.next()
       }
