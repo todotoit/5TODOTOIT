@@ -1,6 +1,13 @@
 <template>
   <div v-if="!done" class="preloader">
-    <video ref="video" :src="videoSrc" muted autoplay loop></video>
+    <video
+      ref="video"
+      preload="none"
+      :src="videoSrc"
+      muted
+      autoplay
+      loop
+    ></video>
   </div>
 </template>
 
@@ -21,8 +28,7 @@ export default {
   },
   computed: {
     videoSrc() {
-      if (this.videos && this.videos.length > this.current)
-        return this.videos[this.current]
+      if (this.videos && this.videos.length > this.current) return this.videos[this.current]
       return ''
     }
   },
