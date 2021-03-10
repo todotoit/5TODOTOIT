@@ -34,7 +34,8 @@ export default {
   methods: {
     runAction() {
       if (!this.action) return
-      const mutation = this.currentGrid === 'team' ? 'setCurrentPerson' : 'setCurrentCopy'
+      const mutation =
+        this.currentGrid === 'team' ? 'setCurrentPerson' : 'setCurrentCopy'
       if (this.action.id !== this.currentAction) {
         this.$store.commit('grid/setCurrentAction', this.action.id)
         this.$store.commit(`grid/${mutation}`, this.action)
@@ -44,7 +45,8 @@ export default {
       }
     },
     close() {
-      const mutation = this.currentGrid === 'team' ? 'setCurrentPerson' : 'setCurrentCopy'
+      const mutation =
+        this.currentGrid === 'team' ? 'setCurrentPerson' : 'setCurrentCopy'
       this.$store.commit('grid/setCurrentAction', null)
       this.$store.commit(`grid/${mutation}`, null)
     }
@@ -54,20 +56,33 @@ export default {
 
 <style lang="scss" scoped>
 .dot {
-  pointer-events: none;
-  background-color: $col-white;
-  border-radius: 50px;
-  transition: background-color 0.3s $bezier, transform 0.2s ease-out;
-  will-change: transform;
+  &:after {
+    content: '';
+    display: block;
+    pointer-events: none;
+    background-color: $col-white;
+    border-radius: 50px;
+    transition: background-color 0.3s $bezier, transform 0.2s ease-out;
+    will-change: transform;
+    width: 150%;
+    height: 150%;
+    transform: translate(-10%, -10%) scale(0.75);
+  }
   &.clickable {
-    cursor: pointer;
-    pointer-events: auto;
-    background-color: var(--col-secondary);
+    &:after {
+      cursor: pointer;
+      background-color: var(--col-secondary);
+      pointer-events: auto;
+    }
     &:hover {
-      transform: scale(1.9);
+      &:after {
+        transform: translate(-10%, -10%) scale(1.25);
+      }
     }
     &.active {
-      transform: scale(2.5);
+      &:after {
+        transform: translate(-10%, -10%) scale(1.5);
+      }
     }
   }
   &.disabled {
