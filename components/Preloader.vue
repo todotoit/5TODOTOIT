@@ -28,12 +28,12 @@ export default {
   },
   mounted() {
     this.boundCheckReady = this.checkVideoIsReady.bind(this)
-    this.interval = setInterval(this.boundCheckReady, 50)
+    this.interval = setInterval(this.boundCheckReady, 100)
     if (this.canPlay(this.$refs.video)) this.next()
   },
   methods: {
     canPlay(video) {
-      return video.readyState >= 2 && this.getPlayableLength(video) >= 3
+      return this.getPlayableLength(video) >= 3
     },
     getPlayableLength(video) {
       const buffered = video.buffered
@@ -42,6 +42,7 @@ export default {
     },
     checkVideoIsReady() {
       const playable = this.getPlayableLength(this.$refs.video)
+      console.log(playable.toFixed(1))
       if (this.canPlay(this.$refs.video)) {
         console.log(
           `${this.current} canplay - ready state: ${
