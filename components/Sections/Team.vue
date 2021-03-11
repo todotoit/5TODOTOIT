@@ -18,8 +18,8 @@
               <p>/</p>
               <a :class="{ 'btn-active': isListVisible }" @click="toggleView(false)">LIST</a>
             </div>
-            <div v-else :key="'button'" class="cta-link" @click="close">
-              <p class="btn-active">CLOSE</p>
+            <div v-else :key="'button'" class="cta-link btn-active" @click="close">
+              <p>CLOSE</p>
             </div>
           </transition>
         </div>
