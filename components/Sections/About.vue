@@ -146,6 +146,10 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    margin-top: 10rem;
+    @media screen and (max-width: $mqTablet) {
+      margin-top: 5rem;
+    }
     .about-image {
       display: flex;
       flex: 1;
