@@ -28,13 +28,13 @@ export default {
   mounted() {
     if (this.canPlay(this.$refs.video)) this.next()
 
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-    console.log('isSafari', isSafari)
+    // console.log('isSafari', isSafari)
 
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
     const event = isSafari ? 'loadedmetadata' : 'canplay'
 
     this.$refs.video.addEventListener(event, () => {
-      console.log(this.current + ' ' + event + ' - ready state:  this.$refs.video.readyState')
+      // console.log(this.current + ' ' + event + ' - ready state:  this.$refs.video.readyState')
       this.next()
       this.$nextTick(() => {
         this.$refs.video.load()
