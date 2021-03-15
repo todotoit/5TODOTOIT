@@ -122,7 +122,7 @@ export default {
   }
   .bg-anim {
     video {
-      filter: brightness(100%);
+      filter: brightness(80%);
       width: 540px;
       height: 540px;
       margin-top: 80px;
