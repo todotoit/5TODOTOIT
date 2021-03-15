@@ -57,19 +57,24 @@ export default {
         d.action = null
       })
       setTimeout(this.initGrid, 500)
+    },
+    isGridVisible(newValue){
+      if(newValue) {
+        clearTimeout(this.hintTimeout)
+        this.hintTimeout = setTimeout(() => {
+          this.hint = true
+        }, 1400)
+      }
     }
   },
   mounted() {
     this.gridContainer = this.$refs.dots
     window.addEventListener('resize', debounce(this.initGrid, 1000))
-    this.hintTimeout = setTimeout(() => {
-      this.hint = true
-    }, 2000)
   },
   methods: {
     getAnimationDelay(dot) {
       if (!dot.action) return ''
-      return '--animation-delay: ' + (1.2 + dot.action.id * 0.1) + 's'
+      return '--animation-delay: ' + (dot.action.id * 0.1) + 's'
     },
     initGrid() {
       this.modulo = this.updateModulo()
@@ -174,7 +179,7 @@ export default {
     }
     &.hint {
       /deep/ .clickable {
-        animation: pop 1.2s $bezier, hint 1.2s $bezier var(--animation-delay);
+        animation: hint 1.2s $bezier var(--animation-delay);
       }
     }
   }
@@ -196,7 +201,7 @@ export default {
     transform: scale(0.5);
   }
   50% {
-    transform: scale(1.25);
+    transform: scale(1);
   }
   100% {
     transform: scale(0.5);
