@@ -30,15 +30,13 @@ export default {
     if (this.canPlay(this.$refs.video)) this.next()
 
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-    const event = isSafari ? 'loadedmetadata' : 'canplay'
+    const event = isSafari ? 'loadedmetadata' : 'canplaythrough'
 
     this.$refs.video.addEventListener(event, () => {
-      setTimeout(() => {
-        this.next()
-        this.$nextTick(() => {
-          this.$refs.video.load()
-        })
-      }, 200)
+      this.next()
+      this.$nextTick(() => {
+        this.$refs.video.load()
+      })
     })
   },
   methods: {
@@ -50,7 +48,7 @@ export default {
       if (this.current >= this.videos.length) {
         setTimeout(() => {
           this.done = true
-        }, 0.2)
+        }, 100)
       }
     }
   }
