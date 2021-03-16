@@ -21,24 +21,24 @@ export default {
   },
   computed: {
     videoSrc() {
-      if (this.videos && this.videos.length > this.current) return this.videos[this.current]
+      if (this.videos && this.videos.length > this.current)
+        return this.videos[this.current]
       return ''
     }
   },
   mounted() {
     if (this.canPlay(this.$refs.video)) this.next()
 
-    // console.log('isSafari', isSafari)
-
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
     const event = isSafari ? 'loadedmetadata' : 'canplay'
 
     this.$refs.video.addEventListener(event, () => {
-      // console.log(this.current + ' ' + event + ' - ready state:  this.$refs.video.readyState')
-      this.next()
-      this.$nextTick(() => {
-        this.$refs.video.load()
-      })
+      setTimeout(() => {
+        this.next()
+        this.$nextTick(() => {
+          this.$refs.video.load()
+        })
+      }, 200)
     })
   },
   methods: {
