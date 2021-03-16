@@ -4,7 +4,7 @@
   font-weight: 500;
   width: 70%;
   word-spacing: -5px;
-  letter-spacing: -1.5px;
+  letter-spacing: -1px;
   @media screen and (max-width: $mqDesktop) and (max-height: 900px) {
     font-size: 3.5rem;
     width: 100%;
@@ -28,6 +28,8 @@
   @media screen and (max-width: $mqMobile) {
     font-size: 2rem;
     line-height: 120%;
+    word-spacing: -2px;
+    letter-spacing: -0.2px;
   }
 }
 
