@@ -1,4 +1,4 @@
-const useAbsoluteUrls = false
+const useAbsoluteUrls = true
 const prefix = useAbsoluteUrls ? 'https://todotoit5.netlify.app/' : ''
 
 export const substatements = [
