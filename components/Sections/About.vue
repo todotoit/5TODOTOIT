@@ -85,7 +85,7 @@ export default {
     display: flex;
     flex-direction: row;
     padding-bottom: $padding * 2;
-    @media screen and (max-width: $mqTablet) {
+    @media screen and (max-width: $mqMobile) {
       flex-direction: column;
       padding-bottom: 0;
     }
@@ -148,6 +148,9 @@ export default {
     justify-content: flex-end;
     margin-top: 10rem;
     @media screen and (max-width: $mqTablet) {
+      margin-top: 2rem;
+    }
+    @media screen and (max-width: $mqMobile) {
       margin-top: 5rem;
     }
     .about-image {
