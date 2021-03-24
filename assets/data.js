@@ -35,7 +35,8 @@ export const substatements = [
   {
     id: 3,
     label: 'dataviz',
-    copy: 'We unleash data\'s untapped potential by sensing the environment and turning numbers into engaging content and stories for your audience.',
+    // eslint-disable-next-line quotes
+    copy: 'We unleash data’s untapped potential by sensing the environment and turning numbers into engaging content and stories for your audience.',
     file: {
       poster: {
         horizontal: prefix + '/videos/desktop/03_Poster.jpg',
