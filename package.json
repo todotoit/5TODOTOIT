@@ -14,7 +14,6 @@
     "@ebondioli/one-scroll": "0.0.2",
     "cookie-universal-nuxt": "^2.1.4",
     "core-js": "^3.6.5",
-    "gsap": "^3.5.1",
     "intersection-observer": "^0.12.0",
     "nuxt": "^2.14.5",
     "nuxt-mq": "^2.0.1",
