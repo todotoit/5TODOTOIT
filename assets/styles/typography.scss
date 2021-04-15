@@ -66,15 +66,16 @@
     line-height: 110%;
   }
   @media screen and (max-width: $mqMobile) {
-    font-size: 1.2rem;
+    font-size: 1rem;
     width: 100%;
-    line-height: 130%;
-    letter-spacing: 0px;
+    line-height: 140%;
+    letter-spacing: 0.2px;
+    word-spacing: -0.2px;
   }
   @media screen and (max-width: $mqSmallMobile) {
-    font-size: 1.2rem;
+    font-size: 1rem;
     width: 100%;
-    line-height: 110%;
+    line-height: 140%;
   }
 }
 
