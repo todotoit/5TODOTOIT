@@ -1,22 +1,16 @@
 <template>
-  <vue100vh>
-    <section class="home">
-      <div class="hint" :class="{ active: hint }"></div>
-      <h1 v-animate-in="{ delay: 0.2 }" class="big-title">
-        Hello, we are TODO. <br />
-        We blend the digital world into real life, designing spaces and experiences. From Italy, with love, since 2007.
-      </h1>
-    </section>
-  </vue100vh>
+  <section class="home">
+    <div class="hint" :class="{ active: hint }"></div>
+    <h1 v-animate-in="{ delay: 0.2 }" class="big-title">
+      Hello, we are TODO. <br />
+      We blend the digital world into real life, designing spaces and experiences. From Italy, with love, since 2007.
+    </h1>
+  </section>
 </template>
 
 <script>
-import vue100vh from 'vue-100vh'
 export default {
   name: 'Home',
-  components: {
-    vue100vh
-  },
   props: {
     hint: {
       type: Boolean,

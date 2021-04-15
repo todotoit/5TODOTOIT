@@ -1,69 +1,46 @@
 <template>
-  <vue100vh>
-    <section class="substatment">
-      <div class="top">
+  <section class="substatment">
+    <div class="top">
+      <transition name="fade" mode="out-in">
+        <h1 :key="title" v-animate-in="{ delay: 0.1 }" class="title">
+          {{ title }}
+        </h1>
+      </transition>
+      <div class="controls">
         <transition name="fade" mode="out-in">
-          <h1 :key="title" v-animate-in="{ delay: 0.1 }" class="title">
-            {{ title }}
-          </h1>
+          <div v-if="!currentCopy" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">
+            <p>CURIOUS? CLICK ON THE <span>RED DOTS</span></p>
+          </div>
+          <div v-else :key="'button'" class="cta-link btn-active" @click.prevent="close">
+            <p>CLOSE</p>
+          </div>
         </transition>
-        <div class="controls">
-          <transition name="fade" mode="out-in">
-            <div
-              v-if="!currentCopy"
-              :key="'buttons'"
-              v-animate-in="{ delay: 0.15 }"
-              class="cta-link"
-            >
-              <p>CURIOUS? CLICK ON THE <span>RED DOTS</span></p>
-            </div>
-            <div
-              v-else
-              :key="'button'"
-              class="cta-link btn-active"
-              @click.prevent="close"
-            >
-              <p>CLOSE</p>
-            </div>
-          </transition>
-        </div>
       </div>
-      <div v-if="currentCopy" class="bg-anim">
-        <div
-          v-for="(v, i) in videoAssets"
-          :key="i"
-          class="video"
-          :class="{ visible: currentCopy ? v.id === currentCopy.id : false }"
-        >
-          <transition name="videofade">
-            <video
-              v-if="currentCopy ? v.id === currentCopy.id : false"
-              loop
-              autoplay
-              muted
-              playsinline
-              :poster="v.file.poster[ratio]"
-              :src="v.file.videos[ratio]"
-            ></video>
-          </transition>
-        </div>
+    </div>
+    <div v-if="currentCopy" class="bg-anim">
+      <div v-for="(v, i) in videoAssets" :key="i" class="video" :class="{ visible: currentCopy ? v.id === currentCopy.id : false }">
+        <transition name="videofade">
+          <video
+            v-if="currentCopy ? v.id === currentCopy.id : false"
+            loop
+            autoplay
+            muted
+            playsinline
+            :poster="v.file.poster[ratio]"
+            :src="v.file.videos[ratio]"
+          ></video>
+        </transition>
       </div>
-    </section>
-  </vue100vh>
+    </div>
+  </section>
 </template>
 
 <script>
-import vue100vh from 'vue-100vh'
-
 export default {
   name: 'Substatment',
-  components: {
-    vue100vh
-  },
   data() {
     return {
-      defaultCopy:
-        'Design and technology are not our product, but our creative tools. That’s why what we can do for you is more than the projects in our portfolio.'
+      defaultCopy: 'Design and technology are not our product, but our creative tools. That’s why what we can do for you is more than the projects in our portfolio.'
     }
   },
   computed: {
