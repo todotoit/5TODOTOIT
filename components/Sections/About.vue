@@ -48,7 +48,7 @@
         <img class="" src="/about/spamghetto.jpg" />
       </div>
       <div class="copyright">
-        <p class="cta-small-title">© 2007-2021 TODO s.r.l. / VAT number: IT 09657350014</p>
+        <p class="cta-small-title">© 2021 TODO s.r.l. / VAT number: IT 09657350014</p>
       </div>
     </div>
   </section>
