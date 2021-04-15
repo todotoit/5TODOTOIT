@@ -50,6 +50,7 @@ export default {
         normalScrollElements: '.list',
         afterLoad: (origin, destination) => {
           const { index: destinationIndex } = destination
+          console.log('Current Section: ' + destinationIndex)
           if (destinationIndex === this.$store.getters['sections/currentIndex']) return
           this.$store.commit('sections/setCurrent', destinationIndex)
           this.$store.commit('grid/setCurrentGrid', this.current.grid)
