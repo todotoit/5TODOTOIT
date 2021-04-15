@@ -1,5 +1,6 @@
 <template>
   <section class="team">
+    <Hint />
     <div class="top">
       <transition name="fade" mode="out-in">
         <h1 v-if="isListVisible || !currentPerson" :key="teamCopy" v-animate-in="{ delay: 0.1 }" class="title">{{ teamCopy }}</h1>
@@ -45,11 +46,12 @@
 </template>
 
 <script>
+import Hint from '~/components/Hint'
 import People from '~/components/Grid/List/People'
 
 export default {
   name: 'Team',
-  components: { People },
+  components: { Hint, People },
   data() {
     return {
       teamCopy: 'Different is better. Our team shares rich layers of expertise, diverse backgrounds and a common passion for a job well done.'

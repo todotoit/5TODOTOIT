@@ -1,5 +1,6 @@
 <template>
   <section class="substatment">
+    <Hint :inverted="true" />
     <div class="top">
       <transition name="fade" mode="out-in">
         <h1 :key="title" v-animate-in="{ delay: 0.1 }" class="title">
@@ -36,8 +37,10 @@
 </template>
 
 <script>
+import Hint from '~/components/Hint'
 export default {
   name: 'Substatment',
+  components: { Hint },
   data() {
     return {
       defaultCopy: 'Design and technology are not our product, but our creative tools. That’s why what we can do for you is more than the projects in our portfolio.'
