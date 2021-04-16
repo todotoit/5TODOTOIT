@@ -8,7 +8,7 @@
     <Dots />
     <client-only>
       <full-page :options="options">
-        <Home class="section" :hint="hint" />
+        <Home class="section" />
         <Substatement class="section" />
         <Team class="section" />
         <About class="section" />
@@ -78,19 +78,12 @@ export default {
   },
   mounted() {
     this.updatePalette()
-    this.hintTimeout = setTimeout(() => {
-      this.hint = true
-    }, 1500)
     // window.addEventListener(
     //   'resize',
     //   debounce(() => this.$refs.fullpage.reposition(), 200)
     // )
   },
   methods: {
-    hideHint() {
-      this.hint = false
-      clearTimeout(this.hintTimeout)
-    },
     // handleDone({ current }) {
     //   if (current === this.$store.getters['sections/currentIndex']) return
     //   this.$store.commit('sections/setCurrent', current)
