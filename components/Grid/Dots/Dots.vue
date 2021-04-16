@@ -146,7 +146,7 @@ export default {
   }
   @media screen and (max-width: $mqSmallMobile) {
     padding: 0 $padding/6;
-    padding-bottom: $padding/6;
+    padding-bottom: $padding;
   }
   .dots-container {
     height: 100%;
