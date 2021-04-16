@@ -35,7 +35,7 @@ export default {
     height: 0px;
   }
   &.inverted {
-    background-color: var(--col-secondary);
+    background-color: $col-black;
   }
   @media screen and (max-width: $mqMobile) {
      height: 15px;
