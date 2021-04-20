@@ -47,7 +47,7 @@ export default {
       options: {
         verticalCentered: false,
         scrollingSpeed: 800,
-        normalScrollElements: '.list',
+        // normalScrollElements: '.fp-noscroll',
         afterLoad: (origin, destination) => {
           const { index: destinationIndex } = destination
           console.log('Current Section: ' + destinationIndex)
