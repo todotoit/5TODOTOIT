@@ -30,7 +30,8 @@ export default {
     { src: '~/plugins/text-animation.js' },
     { src: '~/plugins/vue-clickaway.js', ssr: false },
     { src: '~/plugins/move-dots.js', ssr: false },
-    { src: '~/plugins/nuxt-fullpage.js', ssr: false }
+    { src: '~/plugins/nuxt-fullpage.js', ssr: false },
+    { src: '~/plugins/scrollable.js', ssr: false }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
