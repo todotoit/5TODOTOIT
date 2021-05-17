@@ -45,6 +45,7 @@ export default {
     return {
       hint: false,
       options: {
+        licenseKey: '3427928C-E0174480-B0DC05AF-C88703F7',
         verticalCentered: false,
         scrollingSpeed: 800,
         // normalScrollElements: '.fp-noscroll',
