@@ -6,24 +6,25 @@
     </div>
     <Preloader :videos="videoAssets" />
     <Dots />
-    <Fullpage ref="fullpage" @start="handleStart" @done="handleDone">
-      <Home id="home" :hint="hint" />
-      <Substatement id="substatement" />
-      <Team id="team" />
-      <About id="about" />
-    </Fullpage>
+    <client-only>
+      <full-page :options="options">
+        <Home class="section" />
+        <Substatement class="section" />
+        <Team class="section" />
+        <About class="section" />
+      </full-page>
+    </client-only>
   </div>
 </template>
 
 <script>
 import Home from '~/components/Sections/Home'
-import Fullpage from '~/components/Fullpage'
 import Substatement from '~/components/Sections/Substatement'
 import Team from '~/components/Sections/Team'
 import About from '~/components/Sections/About'
 import Dots from '~/components/Grid/Dots/Dots'
 import Preloader from '~/components/Preloader'
-import { random, debounce } from '~/utils/'
+import { random } from '~/utils/'
 
 const palette = [
   ['#6123F3', '#FF4A00'],
@@ -33,7 +34,6 @@ const palette = [
 export default {
   name: 'Index',
   components: {
-    Fullpage,
     Home,
     Substatement,
     Team,
@@ -43,7 +43,27 @@ export default {
   },
   data() {
     return {
-      hint: false
+      hint: false,
+      options: {
+        licenseKey: '3427928C-E0174480-B0DC05AF-C88703F7',
+        verticalCentered: false,
+        scrollingSpeed: 800,
+        // normalScrollElements: '.fp-noscroll',
+        afterLoad: (origin, destination) => {
+          const { index: destinationIndex } = destination
+          console.log('Current Section: ' + destinationIndex)
+          if (destinationIndex === this.$store.getters['sections/currentIndex']) return
+          this.$store.commit('sections/setCurrent', destinationIndex)
+          this.$store.commit('grid/setCurrentGrid', this.current.grid)
+        },
+        onLeave: (origin, destination) => {
+          const { index: destinationIndex } = destination
+          if (this.hint) this.hideHint()
+          if (destinationIndex <= 0 || destinationIndex >= 3) {
+            this.$store.commit('grid/setCurrentGrid', null)
+          }
+        }
+      }
     }
   },
   computed: {
@@ -51,33 +71,29 @@ export default {
       return this.$store.getters['sections/current']
     },
     videoAssets() {
-      return this.$store.getters['grid/videoAssets']
+      return this.$store.getters['grid/videoAssets'].map((v) => {
+        const ratio = this.$mq === 'sm' || this.$mq === 'xs' ? 'vertical' : 'horizontal'
+        return v.file.videos[ratio]
+      })
     }
   },
   mounted() {
     this.updatePalette()
-    this.hintTimeout = setTimeout(() => {
-      this.hint = true
-    }, 1500)
-    window.addEventListener(
-      'resize',
-      debounce(() => this.$refs.fullpage.reposition(), 200)
-    )
+    // window.addEventListener(
+    //   'resize',
+    //   debounce(() => this.$refs.fullpage.reposition(), 200)
+    // )
   },
   methods: {
-    hideHint() {
-      this.hint = false
-      clearTimeout(this.hintTimeout)
-    },
-    handleDone({ current }) {
-      if (current === this.$store.getters['sections/currentIndex']) return
-      this.$store.commit('sections/setCurrent', current)
-      this.$store.commit('grid/setCurrentGrid', this.current.grid)
-    },
-    handleStart(nav) {
-      if (this.hint) this.hideHint()
-      if (nav.to <= 0 || nav.to >= 3) this.$store.commit('grid/setCurrentGrid', null)
-    },
+    // handleDone({ current }) {
+    //   if (current === this.$store.getters['sections/currentIndex']) return
+    //   this.$store.commit('sections/setCurrent', current)
+    //   this.$store.commit('grid/setCurrentGrid', this.current.grid)
+    // },
+    // handleStart(nav) {
+    //   if (this.hint) this.hideHint()
+    //   if (nav.to <= 0 || nav.to >= 3) this.$store.commit('grid/setCurrentGrid', null)
+    // },
     updatePalette() {
       const index = random(0, palette.length - 1)
       document.documentElement.style.setProperty('--col-primary', palette[index][0])

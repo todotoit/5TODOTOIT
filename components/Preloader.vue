@@ -1,6 +1,6 @@
 <template>
   <div v-if="!done" class="preloader">
-    <video ref="video" :src="videos[current]" muted autoplay loop></video>
+    <video ref="video" :src="videoSrc" muted autoplay loop></video>
   </div>
 </template>
 
@@ -19,10 +19,24 @@ export default {
       done: false
     }
   },
+  computed: {
+    videoSrc() {
+      if (this.videos && this.videos.length > this.current)
+        return this.videos[this.current]
+      return ''
+    }
+  },
   mounted() {
     if (this.canPlay(this.$refs.video)) this.next()
-    this.$refs.video.addEventListener('canplaythrough', () => {
+
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+    const event = isSafari ? 'loadedmetadata' : 'canplaythrough'
+
+    this.$refs.video.addEventListener(event, () => {
       this.next()
+      this.$nextTick(() => {
+        this.$refs.video.load()
+      })
     })
   },
   methods: {
@@ -32,7 +46,9 @@ export default {
     next() {
       this.current++
       if (this.current >= this.videos.length) {
-        this.done = true
+        setTimeout(() => {
+          this.done = true
+        }, 100)
       }
     }
   }

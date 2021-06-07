@@ -1,10 +1,10 @@
 .big-title {
-  font-size: 3.8rem;
+  font-size: 3.6rem;
   line-height: 110%;
   font-weight: 500;
   width: 70%;
   word-spacing: -5px;
-  letter-spacing: -1.5px;
+  letter-spacing: -1px;
   @media screen and (max-width: $mqDesktop) and (max-height: 900px) {
     font-size: 3.5rem;
     width: 100%;
@@ -28,6 +28,8 @@
   @media screen and (max-width: $mqMobile) {
     font-size: 2rem;
     line-height: 120%;
+    word-spacing: -2px;
+    letter-spacing: -0.2px;
   }
 }
 
@@ -35,8 +37,8 @@
   font-size: 2.8rem;
   line-height: 105%;
   font-weight: 500;
-  word-spacing: -0.5px;
-  letter-spacing: -1px;
+  word-spacing: -1.5px;
+  letter-spacing: -0.6px;
   width: 85%;
   @media screen and (max-height: 800px) {
     font-size: 2.2rem;
@@ -44,7 +46,7 @@
     line-height: 110%;
   }
   @media screen and (max-width: $mqDesktop) and (max-height: 900px) {
-    font-size: 2.2rem;
+    font-size: 2.1rem;
     width: 100%;
     line-height: 110%;
   }
@@ -54,7 +56,7 @@
     line-height: 100%;
   }
   @media screen and (max-width: $mqTablet) {
-    font-size: 2.5rem;
+    font-size: 2rem;
     width: 100%;
     line-height: 110%;
   }
@@ -64,15 +66,16 @@
     line-height: 110%;
   }
   @media screen and (max-width: $mqMobile) {
-    font-size: 1.2rem;
+    font-size: 1rem;
     width: 100%;
-    line-height: 130%;
-    letter-spacing: 0px;
+    line-height: 140%;
+    letter-spacing: 0.2px;
+    word-spacing: -0.2px;
   }
   @media screen and (max-width: $mqSmallMobile) {
-    font-size: 1.2rem;
+    font-size: 1rem;
     width: 100%;
-    line-height: 110%;
+    line-height: 140%;
   }
 }
 
@@ -80,6 +83,9 @@
   font-size: 1.2rem;
   line-height: 110%;
   font-weight: 300;
+  @media screen and (max-width: $mqTablet) {
+    font-size: 1rem;
+  }
   @media screen and (max-width: $mqMobile) {
     font-size: 0.8rem;
     width: 100%;

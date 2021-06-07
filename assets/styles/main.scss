@@ -67,7 +67,9 @@ a {
 
 .btn-active {
   color: var(--col-secondary);
-  cursor: pointer;
+  * {
+    cursor: pointer;
+  }
 }
 
 .bg-anim {

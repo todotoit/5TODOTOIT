@@ -1,5 +1,6 @@
 <template>
   <div
+    :id="action ? action.label : ''"
     v-on-clickaway="close"
     class="dot"
     :class="[{ clickable: action }, isActive]"
@@ -34,7 +35,8 @@ export default {
   methods: {
     runAction() {
       if (!this.action) return
-      const mutation = this.currentGrid === 'team' ? 'setCurrentPerson' : 'setCurrentCopy'
+      const mutation =
+        this.currentGrid === 'team' ? 'setCurrentPerson' : 'setCurrentCopy'
       if (this.action.id !== this.currentAction) {
         this.$store.commit('grid/setCurrentAction', this.action.id)
         this.$store.commit(`grid/${mutation}`, this.action)
@@ -44,7 +46,8 @@ export default {
       }
     },
     close() {
-      const mutation = this.currentGrid === 'team' ? 'setCurrentPerson' : 'setCurrentCopy'
+      const mutation =
+        this.currentGrid === 'team' ? 'setCurrentPerson' : 'setCurrentCopy'
       this.$store.commit('grid/setCurrentAction', null)
       this.$store.commit(`grid/${mutation}`, null)
     }
@@ -59,15 +62,16 @@ export default {
   border-radius: 50px;
   transition: background-color 0.3s $bezier, transform 0.2s ease-out;
   will-change: transform;
+  transform: scale(0.5);
   &.clickable {
     cursor: pointer;
-    pointer-events: auto;
     background-color: var(--col-secondary);
+    pointer-events: auto;
     &:hover {
-      transform: scale(1.9);
+      transform: scale(1);
     }
     &.active {
-      transform: scale(2.5);
+      transform: scale(1.5);
     }
   }
   &.disabled {

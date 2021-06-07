@@ -29,7 +29,7 @@ Vue.directive('move-dots', {
         ey += (Math.sin(angle) * strength) / dist
         // end repulsion calculation
         if (dist > 300) ex = ey = 0
-        dot.style.transform = `translate(${ex}px, ${ey}px)`
+        dot.style.transform = `scale(0.5) translate(${ex}px, ${ey}px)`
       })
       window.requestAnimationFrame(animate)
     }

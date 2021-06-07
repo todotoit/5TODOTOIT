@@ -56,7 +56,7 @@ export const meta = [
     hid: 'og:image',
     name: 'og:image',
     property: 'og:image',
-    content: `${domain}/social_card/social_card.jpg`
+    content: `${domain}/social_card.png`
   },
   {
     hid: 'og:site_name',
@@ -75,7 +75,7 @@ export const meta = [
     name: 'og:description',
     property: 'og:description',
     content:
-      'Since 2007, TODO has been creating on- and offline experiences that blend the digital world into real life, so people can live valuable, transformative moments.'
+      'Since 2007, TODO has been creating on and offline experiences that blend the digital world into real life, so people can live valuable, transformative moments.'
   },
   {
     hid: 'og:url',
@@ -87,6 +87,6 @@ export const meta = [
     hid: 'og:image:secure',
     name: 'og:image:secure',
     property: 'og:image:secure',
-    content: `${domain}/social_card/social_card.jpg`
+    content: `${domain}/social_card.png`
   }
 ]

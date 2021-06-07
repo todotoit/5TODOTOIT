@@ -1,7 +1,14 @@
 <template>
   <div ref="dots" class="dots">
     <div v-show="isGridVisible" v-move-dots class="dots-container" :class="{ hint: hint }">
-      <Dot v-for="dot in dots" ref="dot" :key="dot.id" :action="dot.action" :index="dot.index" />
+      <Dot
+        v-for="dot in dots"
+        ref="dot"
+        :key="dot.id"
+        :action="dot.action"
+        :index="dot.index"
+        :style="getAnimationDelay(dot)"
+      />
     </div>
   </div>
 </template>
@@ -13,8 +20,8 @@ import { debounce } from '~/utils/'
 const breakpoints = {
   lg: 60,
   md: 60,
-  sm: 50,
-  xs: 50
+  sm: 48,
+  xs: 40
 }
 
 export default {
@@ -45,16 +52,25 @@ export default {
         d.action = null
       })
       setTimeout(this.initGrid, 500)
+    },
+    isGridVisible(newValue) {
+      if (newValue) {
+        clearTimeout(this.hintTimeout)
+        this.hintTimeout = setTimeout(() => {
+          this.hint = true
+        }, 1400)
+      }
     }
   },
   mounted() {
     this.gridContainer = this.$refs.dots
     window.addEventListener('resize', debounce(this.initGrid, 1000))
-    this.hintTimeout = setTimeout(() => {
-      this.hint = true
-    }, 2000)
   },
   methods: {
+    getAnimationDelay(dot) {
+      if (!dot.action) return ''
+      return '--animation-delay: ' + dot.action.id * 0.1 + 's'
+    },
     initGrid() {
       this.modulo = this.updateModulo()
       this.bounds = this.gridContainer.getBoundingClientRect()
@@ -121,34 +137,36 @@ export default {
   width: 100%;
   height: 65%;
   padding: 0 $padding/2;
-  padding-bottom: $padding/2;
+  padding-bottom: $padding * 1.5;
   pointer-events: none;
   @media screen and (max-width: $mqMobile) {
     height: 65%;
     padding: 0 $padding/4;
-    padding-bottom: $padding/4;
+    padding-bottom: $padding;
   }
   @media screen and (max-width: $mqSmallMobile) {
     padding: 0 $padding/6;
-    padding-bottom: $padding/6;
+    padding-bottom: $padding;
   }
   .dots-container {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(var(--cols), 0.5fr);
     grid-template-rows: repeat(var(--rows), 0.5fr);
-    grid-gap: $padding;
+    grid-gap: calc(var(--dotSize) * 0.75);
     align-items: center;
     pointer-events: none;
+    overflow: visible;
     /deep/ .dot {
+      overflow: visible;
       animation: pop 1.2s $bezier;
-      width: calc(var(--dotSize) * 0.9);
-      height: calc(var(--dotSize) * 0.9);
+      width: calc(var(--dotSize) * 1.75);
+      height: calc(var(--dotSize) * 1.75);
       justify-self: center;
     }
     &.hint {
       /deep/ .clickable {
-        animation: pop 1.2s $bezier, hint 1.2s $bezier 1.2s;
+        animation: hint 1.2s $bezier var(--animation-delay);
       }
     }
   }
@@ -160,20 +178,20 @@ export default {
     transform: scale(0);
   }
   100% {
-    transform: scale(1);
+    transform: scale(0.5);
   }
 }
 
 // Dot Hint Transition
 @keyframes hint {
   0% {
-    transform: scale(1);
+    transform: scale(0.5);
   }
   50% {
-    transform: scale(1.7);
+    transform: scale(1);
   }
   100% {
-    transform: scale(1);
+    transform: scale(0.5);
   }
 }
 </style>
