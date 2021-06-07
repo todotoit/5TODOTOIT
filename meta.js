@@ -1,4 +1,4 @@
-const domain = 'https://todo.to.it/'
+const domain = 'https://todo.to.it'
 
 export const meta = [
   { charset: 'utf-8' },
