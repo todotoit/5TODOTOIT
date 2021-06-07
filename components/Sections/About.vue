@@ -1,68 +1,62 @@
 <template>
-  <vue100vh>
-    <section class="about">
-      <div class="top">
-        <h1 v-animate-in class="title">Get in touch with us</h1>
+  <section class="about">
+    <div class="top">
+      <h1 v-animate-in class="title">Get in touch with us</h1>
+    </div>
+    <div class="row">
+      <div v-animate-in="{ delay: 0.25 }" class="col">
+        <p class="cta-title">Follow us</p>
+        <ul>
+          <li>
+            <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
+            <a class="cta-link" href="https://www.facebook.com/todotoit/" target="_blank">Facebook</a>
+          </li>
+          <li>
+            <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
+            <a class="cta-link" href="https://www.instagram.com/todotoit/?hl=en" target="_blank">Instagram</a>
+          </li>
+          <li>
+            <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
+            <a class="cta-link" href="https://vimeo.com/todotoit" target="_blank">Vimeo</a>
+          </li>
+          <li>
+            <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
+            <a class="cta-link" href="https://www.linkedin.com/company/todo/" target="_blank">Linkedin</a>
+          </li>
+        </ul>
       </div>
-      <div class="row">
-        <div v-animate-in="{ delay: 0.25 }" class="col">
-          <p class="cta-title">Follow us</p>
-          <ul>
-            <li>
-              <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
-              <a class="cta-link" href="https://www.facebook.com/todotoit/" target="_blank">Facebook</a>
-            </li>
-            <li>
-              <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
-              <a class="cta-link" href="https://www.instagram.com/todotoit/?hl=en" target="_blank">Instagram</a>
-            </li>
-            <li>
-              <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
-              <a class="cta-link" href="https://vimeo.com/todotoit" target="_blank">Vimeo</a>
-            </li>
-            <li>
-              <img svg-inline src="~/assets/icons/arrow.svg" alt="" />
-              <a class="cta-link" href="https://www.linkedin.com/company/todo/" target="_blank">Linkedin</a>
-            </li>
-          </ul>
+      <div v-animate-in="{ delay: 0.45 }" class="col">
+        <div class="block">
+          <p class="cta-title">Join our team</p>
+          <a class="cta-link" href="mailto:careers@todo.to.it" target="_blank">careers@todo.to.it</a>
         </div>
-        <div v-animate-in="{ delay: 0.45 }" class="col">
-          <div class="block">
-            <p class="cta-title">Join our team</p>
-            <a class="cta-link" href="mailto:careers@todo.to.it" target="_blank">careers@todo.to.it</a>
-          </div>
-          <div class="block">
-            <p class="cta-title">Hire us</p>
-            <a class="cta-link" href="mailto:hello@todo.to.it" target="_blank">hello@todo.to.it</a>
-          </div>
-        </div>
-        <div v-animate-in="{ delay: 0.55 }" class="col">
-          <p class="cta-title">Send us chocolate / Stalk us</p>
-          <a class="cta-link" href="https://goo.gl/maps/zQ8usiv8gvesgDcY6" target="_blank">
-            Via Bernardino Galliari, 6 <br />
-            10125 Torino, Italy
-          </a>
+        <div class="block">
+          <p class="cta-title">Hire us</p>
+          <a class="cta-link" href="mailto:hello@todo.to.it" target="_blank">hello@todo.to.it</a>
         </div>
       </div>
-      <div v-animate-in="{ delay: 0.7 }" class="footer">
-        <div class="about-image">
-          <img class="" src="/about/spamghetto.jpg" />
-        </div>
-        <div class="copyright">
-          <p class="cta-small-title">© 2007-2021 TODO s.r.l. / VAT number: IT 09657350014</p>
-        </div>
+      <div v-animate-in="{ delay: 0.55 }" class="col">
+        <p class="cta-title">Send us chocolate / Stalk us</p>
+        <a class="cta-link" href="https://goo.gl/maps/zQ8usiv8gvesgDcY6" target="_blank">
+          Via Bernardino Galliari, 6 <br />
+          10125 Torino, Italy
+        </a>
       </div>
-    </section>
-  </vue100vh>
+    </div>
+    <div v-animate-in="{ delay: 0.7 }" class="footer">
+      <div class="about-image">
+        <img class="" src="/about/spamghetto.jpg" />
+      </div>
+      <div class="copyright">
+        <p class="cta-small-title">© 2021 TODO s.r.l. / VAT number: IT 09657350014</p>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
-import vue100vh from 'vue-100vh'
 export default {
-  name: 'About',
-  components: {
-    vue100vh
-  }
+  name: 'About'
 }
 </script>
 

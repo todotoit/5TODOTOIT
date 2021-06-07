@@ -1,11 +1,6 @@
 <template>
   <div ref="dots" class="dots">
-    <div
-      v-show="isGridVisible"
-      v-move-dots
-      class="dots-container"
-      :class="{ hint: hint }"
-    >
+    <div v-show="isGridVisible" v-move-dots class="dots-container" :class="{ hint: hint }">
       <Dot
         v-for="dot in dots"
         ref="dot"
@@ -25,8 +20,8 @@ import { debounce } from '~/utils/'
 const breakpoints = {
   lg: 60,
   md: 60,
-  sm: 50,
-  xs: 50
+  sm: 48,
+  xs: 40
 }
 
 export default {
@@ -58,8 +53,8 @@ export default {
       })
       setTimeout(this.initGrid, 500)
     },
-    isGridVisible(newValue){
-      if(newValue) {
+    isGridVisible(newValue) {
+      if (newValue) {
         clearTimeout(this.hintTimeout)
         this.hintTimeout = setTimeout(() => {
           this.hint = true
@@ -74,7 +69,7 @@ export default {
   methods: {
     getAnimationDelay(dot) {
       if (!dot.action) return ''
-      return '--animation-delay: ' + (dot.action.id * 0.1) + 's'
+      return '--animation-delay: ' + dot.action.id * 0.1 + 's'
     },
     initGrid() {
       this.modulo = this.updateModulo()
@@ -87,10 +82,7 @@ export default {
 
       document.documentElement.style.setProperty('--cols', this.cols)
       document.documentElement.style.setProperty('--rows', this.rows)
-      document.documentElement.style.setProperty(
-        '--dotSize',
-        this.modulo / 2.5 + 'px'
-      )
+      document.documentElement.style.setProperty('--dotSize', this.modulo / 2.5 + 'px')
 
       for (let i = 0; i < this.cols * this.rows; i++) {
         this.dots.push({
@@ -101,12 +93,7 @@ export default {
       this.actions.forEach((action) => {
         let dot = 0
         let current = 0
-        while (
-          dot % this.cols === this.cols - 1 ||
-          dot % this.cols === 0 ||
-          current < 2000 ||
-          this.dots[dot].action
-        ) {
+        while (dot % this.cols === this.cols - 1 || dot % this.cols === 0 || current < 2000 || this.dots[dot].action) {
           dot = Math.floor(Math.random() * this.dots.length)
           current++
         }
@@ -150,16 +137,16 @@ export default {
   width: 100%;
   height: 65%;
   padding: 0 $padding/2;
-  padding-bottom: $padding/2;
+  padding-bottom: $padding * 1.5;
   pointer-events: none;
   @media screen and (max-width: $mqMobile) {
     height: 65%;
     padding: 0 $padding/4;
-    padding-bottom: $padding/4;
+    padding-bottom: $padding;
   }
   @media screen and (max-width: $mqSmallMobile) {
     padding: 0 $padding/6;
-    padding-bottom: $padding/6;
+    padding-bottom: $padding;
   }
   .dots-container {
     height: 100%;

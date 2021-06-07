@@ -114,7 +114,7 @@ export const team = [
   {
     id: 6,
     name: 'Kerem Türkyilmaz',
-    jobs: 'Graphic Designer & Junior Developer',
+    jobs: 'Graphic Designer & Developer',
     file: prefix + '/team/KeremTurkyilmaz.mp4'
   },
   {
@@ -149,6 +149,12 @@ export const team = [
   },
   {
     id: 12,
+    name: 'Eric Tron',
+    jobs: 'UX Designer',
+    file: prefix + '/team/EricTron.mp4'
+  },
+  {
+    id: 13,
     name: 'Alessandra Martina',
     jobs: 'Administrative Assistant',
     file: prefix + '/team/AlessandraMartina.mp4'

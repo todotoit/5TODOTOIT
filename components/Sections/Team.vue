@@ -1,61 +1,61 @@
 <template>
-  <vue100vh>
-    <section class="team">
-      <div class="top">
+  <section class="team">
+    <Hint />
+    <div class="top">
+      <transition name="fade" mode="out-in">
+        <h1 v-if="isListVisible || !currentPerson" :key="teamCopy" v-animate-in="{ delay: 0.1 }" class="title">
+          {{ teamCopy }}
+        </h1>
+        <h1 v-else :key="currentPerson.name" v-animate-in class="title">
+          <span>{{ currentPerson.name }}</span>
+          <br />
+          <span>{{ currentPerson.jobs }}</span>
+        </h1>
+      </transition>
+      <div class="controls">
         <transition name="fade" mode="out-in">
-          <h1 v-if="isListVisible || !currentPerson" :key="teamCopy" v-animate-in="{ delay: 0.1 }" class="title">{{ teamCopy }}</h1>
-          <h1 v-else :key="currentPerson.name" v-animate-in class="title">
-            <span>{{ currentPerson.name }}</span>
-            <br />
-            <span>{{ currentPerson.jobs }}</span>
-          </h1>
+          <div v-if="!currentPerson" key="buttons" v-animate-in="{ delay: 0.15 }" class="cta-link switch">
+            SWITCH MODE
+            <a :class="{ 'btn-active': isGridVisible }" @click="toggleView(true)">GRID</a>
+            <p>/</p>
+            <a :class="{ 'btn-active': isListVisible }" @click="toggleView(false)">LIST</a>
+          </div>
+          <div v-else key="button" class="cta-link btn-active" @click="close">
+            <p>CLOSE</p>
+          </div>
         </transition>
-        <div class="controls">
-          <transition name="fade" mode="out-in">
-            <div v-if="!currentPerson" :key="'buttons'" v-animate-in="{ delay: 0.15 }" class="cta-link">
-              SWITCH MODE
-              <a :class="{ 'btn-active': isGridVisible }" @click="toggleView(true)">GRID</a>
-              <p>/</p>
-              <a :class="{ 'btn-active': isListVisible }" @click="toggleView(false)">LIST</a>
-            </div>
-            <div v-else :key="'button'" class="cta-link btn-active" @click="close">
-              <p>CLOSE</p>
-            </div>
-          </transition>
-        </div>
       </div>
-      <transition name="fade" :duration="{ enter: 500, leave: 200 }">
-        <div v-show="isListVisible" class="list">
+    </div>
+    <transition name="fade" :duration="{ enter: 500, leave: 200 }">
+      <div v-if="isListVisible" v-scrollable class="fp-noscroll list-wrapper">
+        <div class="list">
           <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
         </div>
-      </transition>
-      <div v-if="currentPerson" class="bg-anim">
-        <transition name="fade" mode="out-in">
-          <video
-            :key="currentPerson.name"
-            loop
-            autoplay
-            muted
-            playsinline
-            class="video"
-            :src="currentPerson.file"
-          ></video>
-        </transition>
       </div>
-    </section>
-  </vue100vh>
+    </transition>
+    <div v-if="currentPerson" class="bg-anim">
+      <transition name="fade" mode="out-in">
+        <video
+          :key="currentPerson.name"
+          loop
+          autoplay
+          muted
+          playsinline
+          class="video"
+          :src="currentPerson.file"
+        ></video>
+      </transition>
+    </div>
+  </section>
 </template>
 
 <script>
-import vue100vh from 'vue-100vh'
+import Hint from '~/components/Hint'
 import People from '~/components/Grid/List/People'
 
 export default {
   name: 'Team',
-  components: {
-    People,
-    vue100vh
-  },
+  components: { Hint, People },
   data() {
     return {
       teamCopy: 'Different is better. Our team shares rich layers of expertise, diverse backgrounds and a common passion for a job well done.'
@@ -100,24 +100,37 @@ export default {
   flex-direction: column;
   background-color: $col-black;
   justify-content: space-between;
+  .list-wrapper {
+    height: 65%;
+    z-index: 4;
+    position: relative;
+    @media screen and (max-width: $mqMobile) {
+      height: 65%;
+    }
+    @media screen and (max-width: $mqTablet) {
+      overflow: scroll;
+    }
+  }
   .list {
     width: 100%;
-    height: 65%;
+    height: auto;
     display: flex;
     flex-flow: row wrap;
     align-content: baseline;
-    z-index: 4;
     @media screen and (max-width: $mqTablet) {
-      overflow-y: scroll;
       flex-flow: column nowrap;
-    }
-    @media screen and (max-width: $mqMobile) {
-      height: 65%;
     }
   }
   .top {
     .title span:first-child {
       color: var(--col-secondary);
+    }
+  }
+  .controls {
+    .switch {
+      @media screen and (max-width: $mqTablet) {
+        display: none;
+      }
     }
   }
   .bg-anim {
