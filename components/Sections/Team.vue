@@ -3,12 +3,7 @@
     <Hint />
     <div class="top">
       <transition name="fade" mode="out-in">
-        <h1
-          v-if="isListVisible || !currentPerson"
-          :key="teamCopy"
-          v-animate-in="{ delay: 0.1 }"
-          class="title"
-        >
+        <h1 v-if="isListVisible || !currentPerson" :key="teamCopy" v-animate-in="{ delay: 0.1 }" class="title">
           {{ teamCopy }}
         </h1>
         <h1 v-else :key="currentPerson.name" v-animate-in class="title">
@@ -19,29 +14,13 @@
       </transition>
       <div class="controls">
         <transition name="fade" mode="out-in">
-          <div
-            v-if="!currentPerson"
-            :key="'buttons'"
-            v-animate-in="{ delay: 0.15 }"
-            class="cta-link"
-          >
+          <div v-if="!currentPerson" key="buttons" v-animate-in="{ delay: 0.15 }" class="cta-link switch">
             SWITCH MODE
-            <a
-              :class="{ 'btn-active': isGridVisible }"
-              @click="toggleView(true)"
-            >GRID</a>
+            <a :class="{ 'btn-active': isGridVisible }" @click="toggleView(true)">GRID</a>
             <p>/</p>
-            <a
-              :class="{ 'btn-active': isListVisible }"
-              @click="toggleView(false)"
-            >LIST</a>
+            <a :class="{ 'btn-active': isListVisible }" @click="toggleView(false)">LIST</a>
           </div>
-          <div
-            v-else
-            :key="'button'"
-            class="cta-link btn-active"
-            @click="close"
-          >
+          <div v-else key="button" class="cta-link btn-active" @click="close">
             <p>CLOSE</p>
           </div>
         </transition>
@@ -50,12 +29,7 @@
     <transition name="fade" :duration="{ enter: 500, leave: 200 }">
       <div v-if="isListVisible" v-scrollable class="fp-noscroll list-wrapper">
         <div class="list">
-          <People
-            v-for="(action, id) in actions"
-            :id="id"
-            :key="id"
-            :action="action"
-          />
+          <People v-for="(action, id) in actions" :id="id" :key="id" :action="action" />
         </div>
       </div>
     </transition>
@@ -84,8 +58,7 @@ export default {
   components: { Hint, People },
   data() {
     return {
-      teamCopy:
-        'Different is better. Our team shares rich layers of expertise, diverse backgrounds and a common passion for a job well done.'
+      teamCopy: 'Different is better. Our team shares rich layers of expertise, diverse backgrounds and a common passion for a job well done.'
     }
   },
   computed: {
@@ -151,6 +124,13 @@ export default {
   .top {
     .title span:first-child {
       color: var(--col-secondary);
+    }
+  }
+  .controls {
+    .switch {
+      @media screen and (max-width: $mqTablet) {
+        display: none;
+      }
     }
   }
   .bg-anim {
