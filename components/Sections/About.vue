@@ -47,9 +47,10 @@
       <div class="about-image">
         <img class="" src="/about/spamghetto.jpg" />
       </div>
-      <div class="copyright">
-        <p class="cta-small-title">© 2021 TODO s.r.l. / VAT number: IT 09657350014</p>
-      </div>
+    </div>
+    <div class="copyright">
+      <p class="cta-small-title">© 2021 TODO s.r.l. / VAT number: IT 09657350014</p>
+      <p class="cta-small-title">Copy by <a href="https://www.michellenebiolo.com/" target="_blank">Michelle Nebiolo &#9829;</a></p>
     </div>
   </section>
 </template>
@@ -162,12 +163,25 @@ export default {
         width: 100%;
       }
     }
-    .copyright {
-      .cta-small-title {
-        font-weight: 300;
-        @media screen and (max-width: $mqTablet) {
-          font-size: 0.6rem;
-        }
+  }
+  .copyright {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    @media screen and (max-width: $mqTablet) {
+      flex-direction: column;
+    }
+    .cta-small-title {
+      font-weight: 300;
+      color: white;
+      font-size: 0.8rem;
+      @media screen and (max-width: $mqTablet) {
+        font-size: 0.6rem;
+        margin-top: $padding / 4;
+      }
+      a {
+        color: white;
       }
     }
   }
