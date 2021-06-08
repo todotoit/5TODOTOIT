@@ -175,9 +175,10 @@ export default {
     .cta-small-title {
       font-weight: 300;
       color: white;
+      font-size: 0.8rem;
       @media screen and (max-width: $mqTablet) {
         font-size: 0.6rem;
-        margin-top: $padding / 1.5;
+        margin-top: $padding / 4;
       }
       a {
         color: white;
