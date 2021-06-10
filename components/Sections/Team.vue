@@ -15,10 +15,17 @@
       <div class="controls">
         <transition name="fade" mode="out-in">
           <div v-if="!currentPerson" key="buttons" v-animate-in="{ delay: 0.15 }" class="cta-link switch">
-            SWITCH MODE
-            <a :class="{ 'btn-active': isGridVisible }" @click="toggleView(true)">GRID</a>
-            <p>/</p>
-            <a :class="{ 'btn-active': isListVisible }" @click="toggleView(false)">LIST</a>
+            <template v-if="$mq === 'lg'">
+              SWITCH MODE
+              <a :class="{ 'btn-active': isGridVisible }" @click="toggleView(true)">GRID</a>
+              <p>/</p>
+              <a :class="{ 'btn-active': isListVisible }" @click="toggleView(false)">LIST</a>
+            </template>
+            <template v-else>
+              <div key="buttons" v-animate-in="{ delay: 0.15 }" class="cta-link">
+                <p>CURIOUS? CLICK ON THE <span>RED DOTS</span></p>
+              </div>
+            </template>
           </div>
           <div v-else key="button" class="cta-link btn-active" @click="close">
             <p>CLOSE</p>
@@ -127,11 +134,11 @@ export default {
     }
   }
   .controls {
-    .switch {
-      @media screen and (max-width: $mqTablet) {
-        display: none;
-      }
-    }
+    // .switch {
+    //   @media screen and (max-width: $mqTablet) {
+    //     display: none;
+    //   }
+    // }
   }
   .bg-anim {
     video {
