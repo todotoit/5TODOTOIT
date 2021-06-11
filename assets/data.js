@@ -150,7 +150,7 @@ export const team = [
   {
     id: 12,
     name: 'Eric Tron Gianet',
-    jobs: 'UX Designer',
+    jobs: 'UX Designer Intern',
     file: prefix + '/team/EricTron.mp4'
   },
   {
