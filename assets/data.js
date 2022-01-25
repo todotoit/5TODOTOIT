@@ -142,12 +142,6 @@ export const team = [
     file: prefix + '/team/AliceMela.mp4'
   },
   {
-    id: 11,
-    name: 'Virginia Toffetti',
-    jobs: 'Product Designer',
-    file: prefix + '/team/VirginiaToffetti.mp4'
-  },
-  {
     id: 12,
     name: 'Eric Tron Gianet',
     jobs: 'UX Designer Intern',
