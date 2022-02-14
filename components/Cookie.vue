@@ -14,7 +14,7 @@ export default {
     }
   },
   mounted() {
-    if (!this.$cookies.get('dolcino')) {
+    if (!this.$cookies.get('todo-cookie-consent')) {
       setTimeout(() => {
         this.show = true
       }, 2000)
@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     acceptCookie() {
-      this.$cookies.set('dolcino', true, {
+      this.$cookies.set('todo-cookie-consent', true, {
         path: '/',
         maxAge: 60 * 60 * 24 * 7
       })
