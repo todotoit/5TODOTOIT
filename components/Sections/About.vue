@@ -50,6 +50,7 @@
     </div>
     <div class="copyright">
       <p class="cta-small-title">© 2021 TODO s.r.l. / VAT number: IT 09657350014</p>
+      <p class="cta-small-title"><a href="/todo-client-supplier-policy.pdf" target="_blank">Client &amp; supplier privacy policy</a></p>
       <p class="cta-small-title">Copy by <a href="https://www.michellenebiolo.com/" target="_blank">Michelle Nebiolo &#9829;</a></p>
     </div>
   </section>

@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import { meta } from './meta'
 dotenv.config()
-const host = process.env.DEV_IP || '0.0.0.0'
+const host = process.env.DEV_IP || 'localhost'
 
 export default {
   // Disable server-side rendering (https://go.nuxtjs.dev/ssr-mode)
