@@ -113,42 +113,36 @@ export const team = [
   },
   {
     id: 6,
-    name: 'Kerem Türkyilmaz',
-    jobs: 'Graphic Designer & Developer',
-    file: prefix + '/team/KeremTurkyilmaz.mp4'
-  },
-  {
-    id: 7,
     name: 'Marta Monge',
     jobs: 'Art Director & Designer',
     file: prefix + '/team/MartaMonge.mp4'
   },
   {
-    id: 8,
+    id: 7,
     name: 'Federica Zucchini',
     jobs: 'Visual Designer',
     file: prefix + '/team/FedericaZucchini.mp4'
   },
   {
-    id: 9,
+    id: 8,
     name: 'Matteo Palù',
     jobs: 'Information Designer',
     file: prefix + '/team/MatteoPalu.mp4'
   },
   {
-    id: 10,
+    id: 9,
     name: 'Alice Mela',
     jobs: 'Design Director & Interaction Designer',
     file: prefix + '/team/AliceMela.mp4'
   },
   {
-    id: 12,
+    id: 10,
     name: 'Eric Tron Gianet',
     jobs: 'UX Designer Intern',
     file: prefix + '/team/EricTron.mp4'
   },
   {
-    id: 13,
+    id: 11,
     name: 'Alessandra Martina',
     jobs: 'Administrative Assistant',
     file: prefix + '/team/AlessandraMartina.mp4'
