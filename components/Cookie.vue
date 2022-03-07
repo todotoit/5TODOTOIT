@@ -1,6 +1,6 @@
 <template>
   <div class="cookie" :class="{ active: show }">
-    <p class="cta-title">We use cookies to improve your browsing experience, find out how on our <a href="/todo-cookie-policy.pdf" target="_blank">cookie policy</a> and <a href="/todo-privacy-policy.pdf" target="_blank">privacy policy.</a></p>
+    <p class="cta-title">We use cookies to improve your browsing experience, find out how on our cookie policy (<a href="/todo-cookie-policy-it.pdf" target="_blank">IT</a>-<a href="/todo-cookie-policy-en.pdf" target="_blank">EN</a>) and privacy policy (<a href="/todo-privacy-policy-it.pdf" target="_blank">IT</a>-<a href="/todo-privacy-policy-en.pdf" target="_blank">EN</a>).</a></p>
     <img svg-inline src="~/assets/icons/cross.svg" class="cross" @click="acceptCookie" />
   </div>
 </template>
