@@ -50,7 +50,9 @@
     </div>
     <div class="copyright">
       <p class="cta-small-title">© 2021 TODO s.r.l. / VAT number: IT 09657350014</p>
-      <p class="cta-small-title"><a href="/todo-client-supplier-policy.pdf" target="_blank">Client &amp; supplier privacy policy</a></p>
+      <p class="cta-small-title">Client &amp; supplier privacy policy: <a href="/todo-client-supplier-policy-it.pdf" target="_blank">IT</a>-<a href="/todo-client-supplier-policy-en.pdf" target="_blank">EN</a></p>
+      <p class="cta-small-title">Cookie policy: <a href="/todo-cookie-policy-it.pdf" target="_blank">IT</a>-<a href="/todo-cookie-policy-en.pdf" target="_blank">EN</a></p>
+      <p class="cta-small-title">Privacy policy: <a href="/todo-privacy-policy-it.pdf" target="_blank">IT</a>-<a href="/todo-privacy-policy-en.pdf" target="_blank">EN</a></p>
       <p class="cta-small-title">Copy by <a href="https://www.michellenebiolo.com/" target="_blank">Michelle Nebiolo &#9829;</a></p>
     </div>
   </section>
