@@ -10,7 +10,7 @@
       <full-page :options="options">
         <Home class="section" />
         <Substatement class="section" />
-        <Team class="section" />
+        <!-- <Team class="section" /> -->
         <About class="section" />
       </full-page>
     </client-only>
