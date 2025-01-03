@@ -11,6 +11,7 @@
         <Home class="section" />
         <Substatement class="section" />
         <!-- <Team class="section" /> -->
+        <!-- commit -->
         <About class="section" />
       </full-page>
     </client-only>
